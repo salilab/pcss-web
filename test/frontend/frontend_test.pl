@@ -5,6 +5,7 @@ use Test::Builder;
 use Test::Exception;
 use Test::File::Contents;
 
+use File::Basename;
 use File::Temp;
 use strict;
 use DBI;
@@ -40,9 +41,10 @@ my $frontend = $t->make_frontend();
 my $dbh = &loadDbh();
 $frontend->{'dbh'} = $dbh;
 
-my $applicationScanTestDir = "/modbase5/home/dbarkan/peptide/test/frontend/applicationScan/";
-my $applicationDefinedTestDir = "/modbase5/home/dbarkan/peptide/test/frontend/applicationDefined/";
-my $trainingTestDir = "/modbase5/home/dbarkan/peptide/test/frontend/training/";
+my $testdir = dirname($0);
+my $applicationScanTestDir = "${testdir}/applicationScan/";
+my $applicationDefinedTestDir = "${testdir}/applicationDefined/";
+my $trainingTestDir = "${testdir}/training/";
 
 my $parameterFileName= "/netapp/sali/peptide/data/testPeptideServerParameters.txt";
 
