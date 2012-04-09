@@ -1,0 +1,26 @@
+2011-01-14 20:05:38:	 Loading peptides to prepare for benchmarking
+2011-01-14 20:05:38:	 BenchmarkerPipeline: Loaded 51 peptides from 42 sequences with classification positive
+2011-01-14 20:05:38:	 BenchmarkerPipeline: Loaded 372 peptides from 11 sequences with classification negative
+2011-01-14 20:05:38:	 Duration of function loadPeptides: 0 minutes 0 seconds
+2011-01-14 20:05:38 (Model):	Creating test set
+2011-01-14 20:05:38 (Model):	Benchmark statistics: 51 total positives (46 training peptides and 5 test peptides)
+2011-01-14 20:05:38 (Model):	372 total negatives (46 training peptides and 326 test peptides)
+2011-01-14 20:05:38 (Model):	Benchmarker: count = 5
+2011-01-14 20:05:38 (Model):	Benchmarker: count = 326
+2011-01-14 20:05:38 (Model):	Duration of function writeTestSet: 0 minutes 0 seconds
+2011-01-14 20:05:38 (Model):	Creating Training Set
+2011-01-14 20:05:38 (Model):	Done creating training set
+2011-01-14 20:05:38 (Model):	Duration of function writeTrainingSet: 0 minutes 0 seconds
+2011-01-14 20:05:38 (Model):	Training model
+2011-01-14 20:05:38:	 training svm with command /netapp/sali/peptide/bin/svm_learn_x64 -t 2 -g 0.01 -c 10 /scratch/peptide//svm_iteration_8/svmTrainingSet
+			 /scratch/peptide//svm_iteration_8/trainingModel
+2011-01-14 20:05:38 (Model):	Duration of function trainModel: 0 minutes 0 seconds
+2011-01-14 20:05:38 (Model):	Testing model
+2011-01-14 20:05:38:	 writing peptides to SVM application file /scratch/peptide//svm_iteration_8/svmTestSet
+2011-01-14 20:05:38:	 applying svm to application set with command /netapp/sali/peptide/bin/svm_classify_x64 /scratch/peptide//svm_iteration_8/svmTestSet
+			 /scratch/peptide//svm_iteration_8/trainingModel /scratch/peptide//svm_iteration_8/svmScoreFile
+			
+2011-01-14 20:05:39 (Model):	Duration of function trainModel: 0 minutes 1 seconds
+2011-01-14 20:05:39 (Model):	Processing Results
+2011-01-14 20:05:39:	 reading /scratch/peptide//svm_iteration_8/svmScoreFile
+2011-01-14 20:05:39 (Model):	Duration of function processResults: 0 minutes 0 seconds

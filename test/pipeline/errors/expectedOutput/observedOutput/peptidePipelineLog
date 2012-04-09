@@ -1,0 +1,1143 @@
+2011-01-30 00:23:35:	 Pipeline Application Mode; parsing peptides from protein sequences using rules file
+2011-01-30 00:23:35:	 Done loading peptides; loaded 241 peptides from 1 sequences
+2011-01-30 00:23:35:	 Duration of function parsePeptidesFromSequence: 0 minutes 0 seconds
+2011-01-30 00:23:35:	 Getting best models for sequences
+2011-01-30 00:23:37:	 Done getting best models. Processed 1 sequences, found 5 total models in 1 unique sequences,
+			 1122 models containing at least one peptide,  and 225 peptides had a best-scoring model according
+			 to criteria nativeOverlap
+2011-01-30 00:23:37:	 Duration of function getBestModels: 0 minutes 2 seconds
+2011-01-30 00:23:37:	 Parsing results of DSSP runs to get structure information from structures and models
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 127 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   128  128   X  H  X S+     0  
+			 0   34     -4,-2.4     4,-2.6    -5,-0.2    -1,-0.2   0.899 111.4  53.8 -63.8 -37.2   10.9
+			  -16.9   50.7)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 32 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    33   33   X    <<  +     0   0  
+			 27     -3,-1.2     2,-0.1    -4,-0.5    -2,-0.1   0.313  60.5 129.3 104.9 -12.1   -9.2   -7.4
+			   47.2)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 90 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    91   91   X  H  X S+     0   0  
+			 77     -4,-1.5     4,-2.7     1,-0.2    -1,-0.2   0.928 114.3  51.1 -65.1 -39.7   12.8   -5.4
+			   59.3)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 206 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   207  207   X  G <  S+     0  
+			 0   48     -3,-3.6    -1,-0.3    -6,-0.2    -2,-0.2   0.676  79.0 107.7 -63.4 -27.5    8.1
+			  -14.4   19.2)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 118 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   119  119   X  H  X S+     0  
+			 0   24     -4,-3.0     4,-2.0    -5,-0.2    -2,-0.2   0.920 114.4  41.8 -58.1 -49.1    4.1
+			  -13.6   38.6)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 71 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    72   72   X  S    S+     0   0  164
+			     -2,-0.3     9,-0.1     9,-0.1    -5,-0.0  -0.377  89.5  29.4 -74.5 153.1   26.8  -15.8
+			   68.4)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 102 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   103  103   X  H  <>S+     0  
+			 0    0     -4,-2.4     5,-2.5     3,-0.2     6,-0.6   0.929 115.2  43.5 -63.5 -47.2    0.4
+			  -13.0   48.3)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 200 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   201  201   X  H  < S+     0  
+			 0    0     -4,-1.9     4,-0.2   -37,-0.3    -1,-0.2   0.922 108.7  54.9 -65.6 -42.3   14.2
+			  -18.0   24.1)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 18 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    19   19   X  H  > S+     0   0  
+			 60     -2,-0.8     4,-3.3     1,-0.2     5,-0.2   0.814  70.1  59.2 -68.6 -36.1    9.8   
+			 3.2   48.2)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 125 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   126  126   X  H  X S+     0  
+			 0    6     -4,-2.7     4,-2.4     1,-0.2    -2,-0.2   0.933 111.8  45.7 -61.6 -48.7   11.6
+			  -14.6   45.8)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 16 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    17   17   X  T  <5 +     0   0  141
+			     -4,-1.6     2,-0.8    -3,-0.5    -3,-0.2   0.857  63.9 139.4  69.3  34.2   12.2    7.2
+			   45.3)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 44 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    45   45   X  H  X S+     0   0  
+			 28     -4,-2.4     4,-2.5     1,-0.2    -2,-0.2   0.896 112.1  49.1 -64.5 -43.6    6.7   -5.5
+			   42.8)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 55 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    56   56   X  H  X S+     0   0  
+			 35     -4,-2.7     4,-2.2     1,-0.2    -1,-0.2   0.912 110.9  48.2 -63.2 -40.9   19.2   -7.1
+			   52.0)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 84 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    85   85   X  H <> S+     0   0  
+			 26    -16,-1.7     4,-3.5    -3,-1.0    -2,-0.3   0.890 118.1  53.2 -68.3 -38.2   22.3   -7.0
+			   61.8)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 27 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    28   28   X  H  X S+     0   0  
+			 18     -4,-2.2     4,-0.9     1,-0.2    -2,-0.2   0.908 109.6  48.9 -62.1 -43.6   -3.4   -0.7
+			   50.4)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 190 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   191  191   X  H  X S+     0  
+			 0   57     -4,-3.0     4,-2.9     1,-0.2     5,-0.3   0.917 111.2  51.3 -66.4 -42.6   23.1
+			  -23.9   35.0)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 161 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   162  162   X     << -     0  
+			 0   13     -4,-2.3    -1,-0.0    -5,-0.5     0, 0.0  -0.818  68.0-134.3-120.1 149.4    4.1
+			  -19.2   28.2)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 194 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   195  195   X  H  X S+     0  
+			 0  113     -4,-2.9     4,-2.7     2,-0.2    -1,-0.2   0.907 111.9  45.9 -65.5 -44.6   20.8
+			  -22.7   29.8)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 95 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    96   96   X  H  X S+     0   0  
+			  0     -4,-2.5     4,-3.2     1,-0.2    -1,-0.2   0.921 112.4  51.0 -62.9 -40.5    9.0  -10.4
+			   53.5)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 57 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    58   58   X  H  X S+     0   0  
+			 36     -4,-2.3     4,-2.5    -5,-0.3     5,-0.3   0.914 110.6  55.1 -63.7 -40.9   22.6   -3.6
+			   54.4)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 220 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   221  221   X  H  X S+     0  
+			 0   85     -4,-2.2     4,-3.2     1,-0.2    -1,-0.3   0.897 106.3  53.6 -64.5 -39.3   21.7
+			  -11.6   29.0)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 20 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    21   21   X  H  > S+     0   0  
+			 41      2,-0.2     4,-2.3     1,-0.2    -2,-0.2   0.909 112.8  52.2 -64.2 -40.4    5.5   
+			 5.1   50.6)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 163 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   164  164   X  T 3  S+     0  
+			 0   14      0, 0.0    37,-0.3     0, 0.0    38,-0.1   0.622 113.8  61.1 -65.5 -22.5   10.2
+			  -19.0   26.2)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 109 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   110  110   X  H 3< S+     0  
+			 0   95     -4,-1.9    -1,-0.2     1,-0.1    -2,-0.2   0.613  88.3  93.7 -76.3 -19.3   -7.3
+			  -14.1   43.3)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 151 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   152  152   X  H  X S+     0  
+			 0   58     -4,-2.7     4,-2.6     2,-0.2    -1,-0.2   0.926 110.7  45.6 -61.6 -44.3    8.3
+			  -24.9   40.8)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 89 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    90   90   X  H  X S+     0   0  
+			 65     -4,-2.0     4,-2.7     2,-0.2    -1,-0.2   0.928 108.9  44.6 -63.7 -45.2   13.9   -8.1
+			   61.7)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 175 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   176  176   X  H  X S+     0  
+			 0    5     -4,-2.8     4,-2.5     2,-0.2    -1,-0.2   0.901 108.2  50.8 -64.8 -40.9   14.8
+			  -19.9   40.0)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 148 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   149  149   X  H  X S+     0  
+			 0   54     -4,-2.9     4,-2.2     1,-0.2     5,-0.2   0.925 110.4  46.6 -60.9 -47.3    7.6
+			  -25.0   45.9)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 31 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    32   32   X  H << S-     0   0  149
+			     -4,-0.9    -1,-0.3    -3,-0.7    -2,-0.2   0.879 100.4-133.5 -60.8 -37.5   -9.0   -3.9
+			   48.7)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 35 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    36   36   X        -     0   0  
+			 14      1,-0.1    -1,-0.1    71,-0.1    80,-0.0  -0.529  24.5-127.4 -80.4 141.7   -4.4   -6.1
+			   40.5)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 11 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    12   12   X  H  X S+     0   0  104
+			     -4,-1.8     4,-2.6     1,-0.2    -1,-0.2   0.926 111.7  49.9 -64.4 -42.5    4.7    9.6
+			   42.4)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 208 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   209  209   X     >  -     0  
+			 0   73      1,-0.1     4,-1.5    -2,-0.0    -1,-0.1  -0.416  24.1-112.9 -88.0 168.2    6.8
+			   -8.2   21.1)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 78 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    79   79   X        -     0   0  
+			 75      0, 0.0    -1,-0.3     0, 0.0    -2,-0.1  -0.375  65.7 -94.2 -75.4 163.9   21.0   -5.8
+			   72.3)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 93 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    94   94   X  H  X S+     0   0  
+			 35     -4,-2.7     4,-2.6     1,-0.2    -1,-0.2   0.912 109.3  50.1 -62.6 -41.5    8.8   -8.3
+			   58.5)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 106 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   107  107   X  H  ><S+     0  
+			 0    8     -5,-1.6     4,-1.4     2,-0.2    -4,-0.2   0.905 112.8  38.0 -65.2 -56.9   -2.8
+			  -12.1   45.2)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 157 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   158  158   X  H  X5S+     0  
+			 0    1     -4,-2.5     4,-2.3    -5,-0.3    -1,-0.2   0.885 108.3  47.5 -61.9 -41.4    5.1
+			  -20.7   32.7)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 65 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    66   66   X     <  +     0   0  
+			 73     -4,-1.8     2,-0.3     1,-0.1     5,-0.2   0.024  25.5  93.7  57.6 174.3   30.1   -8.7
+			   62.8)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 29 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    30   30   X  H >< S+     0   0  
+			  1     -4,-2.3     3,-1.2     1,-0.2    -1,-0.2   0.876 101.5  61.6 -64.5 -37.9   -3.9   -4.9
+			   47.4)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 197 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   198  198   X  H  X S+     0  
+			 0   23     -4,-2.6     4,-2.6     1,-0.2    -1,-0.2   0.928 113.2  51.1 -65.9 -44.8   18.2
+			  -19.1   27.3)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 203 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   204  204   X  T ><  +     0  
+			 0   45     -4,-1.4     3,-3.6    -3,-0.2     4,-0.3   0.131  66.1 127.3 -81.8   5.7   12.1
+			  -18.0   19.5)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 138 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   139  139   X     >  -     0  
+			 0   68      1,-0.1     4,-2.2     2,-0.0    -1,-0.3  -0.924  63.8-162.8-146.1 117.1   12.8
+			  -22.9   60.0)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 199 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   200  200   X  H  X S+     0  
+			 0   58     -4,-2.7     4,-1.4     1,-0.2    -1,-0.2   0.905 113.6  46.6 -64.4 -42.7   14.6
+			  -21.8   24.2)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 114 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   115  115   X  H  > S+     0  
+			 0   87      1,-0.2     4,-3.0     2,-0.2    -1,-0.2   0.934 113.7  44.6 -60.9 -45.9    0.6
+			  -14.6   33.8)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 58 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    59   59   X  H  X S+     0   0  
+			 32     -4,-3.1     4,-3.5     1,-0.2     5,-0.3   0.900 105.0  54.1 -60.8 -41.3   22.2   -7.0
+			   56.0)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 211 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   212  212   X  T  > S+     0  
+			 0   20      1,-0.2     4,-3.2     2,-0.1     5,-0.3   0.598  91.0  91.3 -84.1 -13.4    8.7
+			   -7.0   25.7)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 153 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   154  154   X  H  X S+     0  
+			 0    0     -4,-2.6     4,-2.5     1,-0.2    -2,-0.2   0.926 111.7  51.4 -62.1 -41.0    5.4
+			  -20.9   38.7)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 15 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    16   16   X  H  <5S-     0   0  
+			 49     -4,-2.6    -1,-0.3    -5,-0.2    -2,-0.2   0.713 109.4-129.5 -64.7 -25.0   10.3   10.4
+			   44.5)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 137 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   138  138   X  S    S-     0  
+			 0  156      1,-0.3     2,-0.3     2,-0.1     0, 0.0   0.981 140.7  -8.7 -59.3 -51.4   11.7
+			  -19.9   61.9)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 81 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    82   82   X  T >> S+     0   0  
+			 86    -11,-0.7     4,-3.4    -9,-0.4     3,-1.0   0.627  86.8 116.8 -64.0 -13.8   24.4   -9.5
+			   66.0)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 60 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    61   61   X  H  X S+     0   0  
+			 72     -4,-1.8     4,-2.3     1,-0.2    -2,-0.2   0.963 120.0  38.3 -64.1 -49.0   27.4   -5.7
+			   54.9)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 101 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   102  102   X  H  X>S+     0  
+			 0   11     -4,-2.1     4,-1.9     1,-0.2     5,-1.6   0.902 113.1  48.8 -63.6 -40.1   -0.5
+			  -10.3   50.8)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 73 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    74   74   X        -     0   0  
+			 75      6,-0.1     2,-0.6     7,-0.1     6,-0.1  -0.960  15.8-133.6-133.4 150.9   22.3  -13.1
+			   72.6)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 86 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    87   87   X  H  X S+     0   0  
+			 96     -4,-2.9     4,-1.5    -5,-0.4    -2,-0.2   0.926 112.2  45.8 -64.1 -44.0   17.9   -5.5
+			   63.8)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 76 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    77   77   X  S    S-     0   0  188
+			      2,-0.1    -1,-0.1     0, 0.0     3,-0.1   0.918 127.0  -2.6 -62.0 -45.8   20.7   -7.1
+			   79.1)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 62 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    63   63   X  H  < S+     0   0  
+			 19     -4,-3.5    -1,-0.2    -5,-0.3    -2,-0.2   0.896 110.7  46.3 -59.6 -39.4   26.3   -9.7
+			   58.4)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 67 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    68   68   X  S    S+     0   0  176
+			     -2,-0.3    16,-0.9     1,-0.3     3,-0.1   0.738 140.7  47.0 -64.8 -27.3   28.9   -5.7
+			   67.5)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 204 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   205  205   X  G X   +     0  
+			 0   64     -3,-0.8     3,-1.8     1,-0.3    -1,-0.2   0.736  68.6  65.8 -49.4 -28.8   13.1
+			  -14.3   19.1)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 165 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   166  166   X    <>  -     0  
+			 0   35     -3,-1.2     4,-2.7     1,-0.2     5,-0.2  -0.274  64.8-139.8 -57.2 130.3    8.1
+			  -14.0   27.7)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 198 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   199  199   X  H  X S+     0  
+			 0   66     -4,-2.7     4,-1.6     1,-0.2    -2,-0.2   0.917 110.4  48.2 -61.6 -44.9   18.3
+			  -21.6   24.5)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 139 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   140  140   X  H  > S+     0  
+			 0   66     -2,-0.3     4,-2.2    -3,-0.3     5,-0.2   0.930  95.3  48.3 -64.7 -43.5   15.6
+			  -22.6   57.4)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 129 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   130  130   X  H  X S+     0  
+			 0    5     -4,-2.4     4,-1.2     1,-0.2    -1,-0.2   0.920 111.3  48.9 -64.2 -40.5   15.1
+			  -13.6   50.7)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 2 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line     3    3   X  H  > S+     0   0  
+			 84      1,-0.2     4,-2.8     2,-0.2     5,-0.2   0.926 119.4  46.2 -58.5 -47.4   -7.6   
+			 3.0   44.7)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 17 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    18   18   X     >< +     0   0  156
+			     -5,-2.6     4,-1.9     1,-0.2    -1,-0.2  -0.801  22.2 170.4-107.2  85.3   10.2    6.9
+			   48.4)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 186 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   187  187   X  H  > S+     0  
+			 0   50      0, 0.0     4,-3.0     0, 0.0     5,-0.2   0.855  79.0  60.0 -66.9 -32.1   25.3
+			  -25.1   40.4)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 110 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   111  111   X    <<  +     0  
+			 0    3     -4,-1.4     2,-0.6    -3,-0.7    -1,-0.1   0.913  40.6 166.1 -55.8 -64.3   -5.1
+			  -14.3   40.3)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 82 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    83   83   X  H 3>  +     0   0  
+			 69      1,-0.3     4,-2.9     2,-0.3    -1,-0.2   0.632  69.1  46.8 -42.8 -42.8   22.0   -6.7
+			   67.1)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 147 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   148  148   X  H  X S+     0  
+			 0  122     -4,-3.1     4,-2.7     1,-0.2    -2,-0.2   0.918 110.4  52.7 -63.6 -42.6   11.2
+			  -24.1   46.0)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 218 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   219  219   X  H  X S+     0  
+			 0   27     -4,-2.4     4,-2.4     1,-0.3    -2,-0.2   0.903 107.9  54.9 -63.0 -40.0   16.9
+			  -11.0   31.0)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 202 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   203  203   X  H 3< S+     0  
+			 0   79     -4,-1.6     3,-0.3     1,-0.2    -1,-0.3   0.921 113.5  47.5 -63.7 -42.3   15.4
+			  -19.9   19.2)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 168 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   169  169   X  H  > S+     0  
+			 0   13      2,-0.2     4,-2.4    -6,-0.2    -1,-0.2   0.906 115.8  47.0 -65.6 -43.8    8.9
+			  -16.6   32.2)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 184 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   185  185   X      < +     0  
+			 0  126     -5,-0.7    -4,-0.2    -6,-0.4    -3,-0.1   0.894  57.9 133.1  66.7  36.5   23.9
+			  -24.7   46.4)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 135 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   136  136   X  S    S+     0  
+			 0  115      1,-0.1     2,-0.1     0, 0.0    -4,-0.0   0.227  73.2 149.2 -62.2 127.8   18.0
+			  -19.9   59.9)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 14 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    15   15   X  H  <5S+     0   0  130
+			     -4,-2.2    -1,-0.2     1,-0.3    -2,-0.2   0.914 113.7  51.5 -63.5 -39.7    9.6    8.9
+			   41.0)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 112 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   113  113   X  S  > S-     0  
+			 0  102     -2,-0.6     4,-2.2     1,-0.1     5,-0.2  -0.723  78.9-130.0 -97.9 148.5   -4.8
+			  -15.5   34.9)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 69 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    70   70   X        +     0   0  
+			  1     14,-0.1    -3,-1.1    15,-0.1    -1,-0.3  -0.950  68.7 152.5-160.4 141.4   27.0   -9.7
+			   64.6)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 191 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   192  192   X  H  X S+     0  
+			 0   54     -4,-2.6     4,-2.5    -5,-0.2     5,-0.3   0.936 112.2  47.3 -61.8 -42.3   20.8
+			  -26.4   33.4)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 172 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   173  173   X  H  X S+     0  
+			 0    6     -4,-2.4     4,-2.5     1,-0.2    -2,-0.2   0.917 110.6  52.0 -61.8 -39.5   13.9
+			  -18.9   35.1)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 145 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   146  146   X  H  X S+     0  
+			 0   30     -4,-2.7     4,-2.2     1,-0.2    -1,-0.2   0.920 112.1  48.7 -63.2 -41.6    8.4
+			  -23.0   50.5)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 49 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    50   50   X  H  X S+     0   0  
+			 70     -4,-2.4     4,-2.1     2,-0.2    -1,-0.2   0.913 116.0  49.3 -66.7 -41.5   13.3   -1.7
+			   46.5)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 178 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   179  179   X  H  X>S+     0  
+			 0    8     -4,-2.4     5,-2.2     1,-0.2     4,-1.4   0.945 110.3  44.8 -57.9 -48.4   17.6
+			  -20.1   43.9)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 24 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    25   25   X  H  X S+     0   0  
+			 10     -4,-2.3     4,-2.5     1,-0.2    -1,-0.2   0.942 113.2  48.1 -61.2 -49.4    0.2   
+			 2.5   48.7)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 224 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   225  225   X  H  X S+     0  
+			 0   79     -4,-3.2     4,-2.2     1,-0.2    -1,-0.2   0.926 112.4  48.3 -62.3 -42.2   26.1
+			  -13.8   32.3)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 187 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   188  188   X  H  > S+     0  
+			 0  139      1,-0.2     4,-2.6     2,-0.2     5,-0.2   0.926 108.7  42.7 -63.3 -45.2   24.4
+			  -28.0   38.0)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 140 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   141  141   X  H  > S+     0  
+			 0  119      1,-0.2     4,-2.1     2,-0.2    -1,-0.2   0.906 111.8  48.7 -65.3 -42.3   14.6
+			  -25.9   55.8)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 223 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   224  224   X  H  X S+     0  
+			 0  135     -4,-2.3     4,-2.6     1,-0.2    -2,-0.2   0.909 110.6  50.2 -63.5 -43.3   23.9
+			  -15.8   30.0)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 124 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   125  125   X  H  X S+     0  
+			 0    0     -4,-2.3     4,-2.4     1,-0.2    -2,-0.2   0.939 111.0  50.2 -62.4 -43.8    9.5
+			  -17.8   45.7)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 104 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   105  105   X  H  <5S+     0  
+			 0   80     -4,-3.4    -3,-0.2    -5,-0.2    -2,-0.2   0.990 135.8   3.8 -69.3 -66.3   -4.3
+			  -13.8   51.2)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 131 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   132  132   X  H  < S+     0  
+			 0    7     -4,-2.6     3,-0.2     1,-0.3    -1,-0.2   0.873  99.7  59.5 -61.7 -37.1   16.2
+			  -18.1   53.2)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 181 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   182  182   X  H  <5S+     0  
+			 0   69     -4,-3.8    -3,-0.2     3,-0.1    -2,-0.2   0.944 134.3  26.1 -77.1 -52.8   22.6
+			  -19.8   46.0)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 121 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   122  122   X  H  X S+     0  
+			 0   42     -4,-2.9     4,-2.7    -5,-0.2    -1,-0.2   0.932 110.0  50.5 -61.5 -43.6    7.6
+			  -16.2   41.4)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 79 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    80   80   X        -     0   0  
+			 47      1,-0.1     4,-0.2    -6,-0.1    -6,-0.1  -0.174  26.9-115.7 -72.1 165.4   22.7   -8.8
+			   70.7)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 212 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   213  213   X  H  X S+     0  
+			 0  121     -4,-1.5     4,-2.9     1,-0.2     5,-0.3   0.889  88.0  46.2 -60.4 -43.3   11.8
+			   -7.2   23.6)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 154 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   155  155   X  H  X S+     0  
+			 0   31     -4,-3.4     4,-2.0    -5,-0.2    -1,-0.2   0.907 109.4  49.0 -62.5 -43.2    7.8
+			  -22.7   36.5)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 23 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    24   24   X  H  X S+     0   0  
+			 48     -4,-2.5     4,-2.2     1,-0.2    -1,-0.2   0.929 109.9  45.8 -60.8 -43.2    2.4   
+			 1.4   51.6)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 96 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    97   97   X  H  X S+     0   0  
+			 75     -4,-2.7     4,-2.9     1,-0.2    -1,-0.2   0.906 108.2  52.6 -63.3 -39.7    6.3  -11.6
+			   55.8)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 126 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   127  127   X  H  X S+     0  
+			 0    2     -4,-2.8     4,-2.2     2,-0.2    -1,-0.2   0.881 114.0  47.7 -67.1 -39.1   10.4
+			  -13.5   49.2)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 159 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   160  160   X  H  <5S+     0  
+			 0  153     -4,-2.3    -2,-0.2    -5,-0.2    -3,-0.2   0.987 128.2  28.4 -65.5 -58.2    2.7
+			  -24.5   29.8)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 160 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   161  161   X  H  <5S+     0  
+			 0  103     -4,-3.6    -3,-0.2    -5,-0.1    -2,-0.2   0.740 117.9  60.1 -75.6 -30.7    1.1
+			  -21.1   29.4)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 176 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   177  177   X  H  X S+     0  
+			 0    0     -4,-2.5     4,-2.8    -5,-0.3    -1,-0.2   0.924 110.3  49.5 -63.2 -41.0   18.3
+			  -20.6   38.7)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 47 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    48   48   X  H  X S+     0   0  
+			 10     -4,-2.2     4,-3.6     1,-0.2     5,-0.4   0.887 111.3  57.0 -66.0 -39.3    8.7   -4.1
+			   47.7)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 8 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line     9    9   X  H  X S+     0   0  
+			 57     -4,-2.9     4,-2.9     1,-0.2    -1,-0.2   0.878 104.8  57.8 -64.4 -36.7    0.5   
+			 8.1   44.6)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 209 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   210  210   X  T  4 S+     0  
+			 0  161      2,-0.2     4,-0.5     1,-0.2    -1,-0.1   0.885 118.8  50.2 -67.4 -38.4    7.9
+			   -4.6   20.6)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 98 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    99   99   X  H  X S+     0   0  
+			  1     -4,-2.5     4,-2.4     1,-0.2    -2,-0.2   0.922 114.0  51.9 -65.3 -40.6    4.6   -9.5
+			   51.0)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 216 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   217  217   X  H  X S+     0  
+			 0   61     -4,-2.9     4,-2.2    -5,-0.3    -1,-0.2   0.900 110.8  50.6 -65.4 -40.2   16.7
+			   -9.5   25.9)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 37 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    38   38   X  H  > S+     0   0  
+			 71      2,-0.2     4,-2.2     1,-0.2     5,-0.2   0.916 125.8  48.8 -63.9 -40.6   -0.6   -5.3
+			   35.3)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 117 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   118  118   X  H  X S+     0  
+			 0    0     -4,-2.7     4,-2.9     2,-0.2     5,-0.2   0.952 113.5  51.6 -63.2 -45.6    3.2
+			  -17.1   37.6)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 43 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    44   44   X  H  X S+     0   0  
+			  2     -4,-2.5     4,-2.2     1,-0.2     5,-0.3   0.948 113.7  46.4 -60.4 -48.2    3.7   -3.5
+			   43.9)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 195 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   196  196   X  H  X S+     0  
+			 0   60     -4,-2.5     4,-2.7    -5,-0.3     5,-0.2   0.940 113.3  50.5 -64.8 -43.7   17.5
+			  -24.3   28.8)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 5 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line     6    6   X  H  X S+     0   0  
+			 28     -4,-3.3     4,-2.3     2,-0.2    -2,-0.2   0.921 109.3  46.9 -62.6 -45.2   -3.4   
+			 5.4   45.6)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 170 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   171  171   X  H  X S+     0  
+			 0   11     -4,-2.5     4,-2.3     1,-0.2    -1,-0.2   0.886 110.2  49.7 -62.2 -39.8   12.6
+			  -13.6   34.9)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 33 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    34   34   X  S    S-     0   0  111
+			     -5,-0.4    -1,-0.4     1,-0.1    -2,-0.1  -0.502  72.4 -93.5 -74.6 152.1   -9.8   -6.5
+			   43.6)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 21 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    22   22   X  H  X S+     0   0  
+			  0     -4,-1.9     4,-2.3     1,-0.2    -2,-0.2   0.933 111.2  46.5 -61.9 -44.8    5.2   
+			 3.4   47.3)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 63 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    64   64   X  H  < S+     0   0  
+			 99     -4,-2.4    -1,-0.2    -5,-0.3    -2,-0.2   0.938 115.0  46.3 -67.6 -45.7   29.7  -10.0
+			   56.9)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 7 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line     8    8   X  H  X S+     0   0  135
+			     -4,-2.4     4,-1.8     1,-0.2    -2,-0.2   0.912 109.0  50.6 -62.6 -41.8   -1.3    7.5
+			   41.3)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 26 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    27   27   X  H  X S+     0   0  
+			 75     -4,-3.1     4,-2.1     1,-0.2    -1,-0.2   0.943 109.6  50.2 -60.8 -43.0   -0.2   -2.7
+			   50.0)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 80 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    81   81   X  S >  S+     0   0  
+			 30     -8,-0.4     3,-0.7     1,-0.2     4,-0.2   0.936 127.0  46.9 -62.5 -44.5   26.1   -8.7
+			   69.2)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 193 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   194  194   X  H  X S+     0  
+			 0    0     -4,-2.4     4,-2.6    -5,-0.2    -1,-0.2   0.905 114.2  50.4 -64.3 -42.6   19.4
+			  -21.0   32.9)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 119 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   120  120   X  H  X S+     0  
+			 0    5     -4,-3.2     4,-2.5     2,-0.2    -1,-0.2   0.892 114.0  50.8 -68.1 -41.0    2.8
+			  -14.0   42.1)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 180 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   181  181   X  H  <5S+     0  
+			 0   90     -4,-2.8     4,-0.2     4,-0.2    -2,-0.2   0.980 127.5  25.8 -67.3 -55.2   22.7
+			  -21.9   42.8)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 99 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line   100  100   X  H  X S+     0   0  
+			  9     -4,-3.2     4,-2.7     1,-0.2    -1,-0.2   0.903 109.9  49.7 -62.6 -40.0    4.1  -13.2
+			   51.7)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 179 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   180  180   X  H  <>S+     0  
+			 0   28     -4,-2.5     6,-3.0     3,-0.2     5,-0.7   0.933 118.8  42.8 -62.7 -44.7   19.2
+			  -23.4   42.9)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 162 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   163  163   X    >   -     0  
+			 0   58      0, 0.0     3,-1.2     0, 0.0     6,-0.2  -0.484  40.8-102.6 -80.3 159.9    6.5
+			  -19.3   25.4)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 72 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    73   73   X  S    S-     0   0  
+			 51     -2,-0.1     9,-0.4     7,-0.1     8,-0.4  -0.106  81.5-101.9  87.9 171.2   24.7  -15.8
+			   71.5)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 74 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    75   75   X        -     0   0  108
+			     -2,-0.3    -2,-0.0     1,-0.2     8,-0.0  -0.929  13.8-172.0-105.3 120.2   22.6  -10.4
+			   75.2)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 182 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   183  183   X  T  <<S+     0  
+			 0   21     -4,-1.4    -3,-0.2    -5,-0.6    -4,-0.1   0.962 131.7  35.8 -76.9 -51.4   20.0
+			  -21.4   48.2)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 61 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    62   62   X  H  X S+     0   0  
+			 26     -4,-2.5     4,-1.8     1,-0.2    -1,-0.2   0.915 113.9  55.5 -66.2 -41.9   26.7   -6.0
+			   58.5)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 108 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   109  109   X  H 34 S+     0  
+			 0  143     -6,-0.6    -1,-0.2    -5,-0.4    -2,-0.2   0.918 119.6  42.2 -60.5 -41.3   -5.8
+			  -16.9   45.5)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 115 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   116  116   X  H  > S+     0  
+			 0    8      1,-0.2     4,-3.2     2,-0.2     5,-0.3   0.876 111.1  53.5 -67.7 -35.8   -0.4
+			  -13.2   37.2)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 92 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    93   93   X  H  X S+     0   0  
+			 84     -4,-3.1     4,-2.7     1,-0.2    -1,-0.2   0.906 111.3  52.1 -65.4 -39.1   11.8  -10.5
+			   57.7)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 103 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   104  104   X  H  <5S+     0  
+			 0   54     -4,-2.7     5,-0.4    -5,-0.2    -2,-0.2   0.943 123.6  34.9 -66.2 -49.5   -1.2
+			  -15.7   50.4)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 201 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   202  202   X  H >< S+     0  
+			 0  111     -4,-2.6     3,-0.8     1,-0.3    -1,-0.2   0.827 106.9  50.7 -62.4 -35.8   17.0
+			  -17.5   21.6)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 10 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    11   11   X  H  X S+     0   0  
+			 60     -4,-1.9     4,-2.2     1,-0.2    -1,-0.2   0.893 111.5  48.9 -62.8 -40.8    3.9   
+			 6.3   40.8)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 113 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   114  114   X  H  > S+     0  
+			 0   32     -2,-0.3     4,-2.7     1,-0.2     5,-0.2   0.925 104.3  50.8 -63.6 -44.9   -1.8
+			  -17.5   34.1)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 152 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   153  153   X  H  X S+     0  
+			 0  100     -4,-2.2     4,-2.3     1,-0.2     5,-0.3   0.938 115.1  47.8 -63.3 -43.9    4.6
+			  -24.2   40.4)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 189 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   190  190   X  H  X S+     0  
+			 0    0     -4,-2.1     4,-2.4     1,-0.2    -2,-0.2   0.934 112.5  45.8 -62.4 -43.3   21.1
+			  -23.7   38.2)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 225 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   226  226   X  H  X S+     0  
+			 0   45     -4,-2.5     4,-3.0     1,-0.2    -1,-0.2   0.932 110.9  50.3 -63.4 -43.4   25.2
+			  -16.1   35.1)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 207 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   208  208   X    <   -     0  
+			 0   29     -3,-1.8     2,-0.1    -4,-0.3   -42,-0.1  -0.313  62.3-139.7 -63.9 140.4    9.1
+			  -11.2   21.0)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 142 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   143  143   X  H  X S+     0  
+			 0   18     -4,-2.2     4,-2.8     1,-0.2    -1,-0.2   0.949 110.3  47.1 -62.5 -46.6   11.6
+			  -21.6   54.1)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 91 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    92   92   X  H  X S+     0   0  
+			  0     -4,-2.2     4,-2.5     1,-0.2    -2,-0.2   0.935 111.6  46.5 -61.2 -45.9   13.8   -7.5
+			   56.4)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 167 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   168  168   X  H  > S+     0  
+			 0   32      2,-0.2     4,-2.0     1,-0.2     5,-0.1   0.921 111.4  44.1 -66.3 -44.5    7.9
+			  -13.1   33.1)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 48 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    49   49   X  H  X S+     0   0  
+			 59     -4,-2.5     4,-2.8    -5,-0.3    -1,-0.2   0.949 112.4  41.7 -58.1 -45.8   11.8   -5.1
+			   45.7)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 107 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   108  108   X  H >4<S+     0  
+			 0    8     -5,-2.5     3,-0.7     1,-0.2     4,-0.4   0.955 118.3  47.0 -68.1 -44.7   -2.3
+			  -15.7   44.5)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 87 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    88   88   X  H  X S+     0   0  
+			 10     -4,-2.3     4,-2.2     1,-0.2    -2,-0.2   0.914 110.0  56.2 -63.9 -40.1   18.2   -5.2
+			   60.1)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 174 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   175  175   X  H  X S+     0  
+			 0   25     -4,-2.3     4,-2.4     2,-0.2    -1,-0.2   0.862 114.7  53.0 -70.1 -36.9   15.5
+			  -16.2   39.8)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 77 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    78   78   X  S    S-     0   0  
+			 30      1,-0.3    -3,-0.2     0, 0.0     2,-0.1  -0.410 103.2 -49.4-128.9-159.1   21.3   -5.2
+			   75.9)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 214 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   215  215   X  H  > S+     0  
+			 0   94     -4,-0.4     4,-2.4     1,-0.2    -2,-0.2   0.940 115.2  47.1 -64.0 -45.7   13.0
+			   -6.7   28.9)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 133 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   134  134   X  H  < S+     0  
+			 0   10     -4,-1.2    -1,-0.3    -3,-0.4    -2,-0.2   0.634 105.7 144.8 -79.5 -19.6   18.8
+			  -14.7   56.4)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 149 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   150  150   X  H  X S+     0  
+			 0    0     -4,-2.2     4,-2.6     1,-0.2    -1,-0.2   0.937 113.4  48.1 -63.5 -44.9    6.4
+			  -21.7   44.7)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 123 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   124  124   X  H  X S+     0  
+			 0   39     -4,-2.5     4,-2.4     1,-0.2     5,-0.3   0.920 110.3  49.3 -60.4 -42.3    6.4
+			  -15.9   46.6)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 221 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   222  222   X  H  X S+     0  
+			 0   63     -4,-1.9     4,-2.5     2,-0.2    -1,-0.2   0.910 108.3  49.0 -64.1 -39.6   21.5
+			  -12.0   32.7)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 50 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    51   51   X  H  X S+     0   0  
+			 24     -4,-2.7     4,-1.1    -5,-0.2    -2,-0.2   0.955 118.7  38.1 -63.1 -48.7   12.1   -1.8
+			   50.1)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 39 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    40   40   X  H  > S+     0   0  
+			  9      1,-0.2     4,-2.5     2,-0.2    -2,-0.2   0.885 108.8  53.3 -64.9 -38.8   -0.6   -2.3
+			   39.6)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 210 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   211  211   X  T  4 S+     0  
+			 0  143      1,-0.2     4,-0.4     2,-0.1     3,-0.3   0.940 118.3  34.9 -65.0 -48.6    6.9
+			   -4.0   24.2)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 64 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    65   65   X  H  < S+     0   0  104
+			     -4,-2.3    -2,-0.2    -5,-0.2    -3,-0.2   0.986  88.8 153.9 -67.7 -63.3   31.3   -7.7
+			   59.4)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 97 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    98   98   X  H  X S+     0   0  
+			 36     -4,-2.6     4,-2.1     1,-0.2    -1,-0.2   0.953 113.4  42.4 -64.1 -44.9    4.2   -8.7
+			   54.7)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 12 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    13   13   X  H  X>S+     0   0  
+			  0     -4,-2.9     5,-2.6     1,-0.2     4,-1.6   0.903 107.3  55.0 -62.7 -39.9    6.5   
+			 7.9   45.2)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 41 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    42   42   X  H  X S+     0   0  
+			 79     -4,-2.2     4,-2.9     1,-0.2    -1,-0.2   0.896 110.3  51.1 -65.0 -40.4    4.4   -4.0
+			   38.6)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 52 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    53   53   X  H  X S+     0   0  
+			 22     -4,-2.8     4,-2.7    -5,-0.4     5,-0.3   0.884  98.9  54.0 -60.5 -41.3   16.5   -4.6
+			   48.6)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 173 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   174  174   X  H  X S+     0  
+			 0   18     -4,-2.6     4,-1.8     1,-0.2    -1,-0.2   0.942 114.4  39.9 -63.4 -47.8   16.6
+			  -16.4   36.1)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 56 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    57   57   X  H  X S+     0   0  
+			 62     -4,-2.7     4,-1.8     2,-0.2    -1,-0.2   0.953 115.1  44.6 -63.7 -45.3   22.1   -5.0
+			   51.0)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 45 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    46   46   X  H  X S+     0   0  
+			 42     -4,-2.9     4,-2.4     2,-0.2     5,-0.2   0.924 110.9  50.7 -64.0 -42.4    8.9   -2.6
+			   42.3)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 66 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    67   67   X  S    S+     0   0  119
+			      3,-1.1    -1,-0.1    -4,-0.0    16,-0.1  -0.880 119.4  12.5 -81.6 -48.8   30.6   -8.8
+			   66.2)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 19 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    20   20   X  H  > S+     0   0  122
+			      1,-0.2     4,-2.5     2,-0.2    -1,-0.2   0.945 109.9  44.6 -61.4 -42.5    8.3    2.8
+			   51.6)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 54 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    55   55   X  H  X S+     0   0  
+			 46     -4,-1.1     4,-3.1     1,-0.2    -2,-0.2   0.920 111.3  51.5 -66.2 -42.3   17.5   -4.2
+			   53.8)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 70 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    71   71   X        -     0   0  
+			 77     -2,-0.3    11,-0.7     2,-0.2    10,-0.2  -0.988  44.5 -84.0-162.5 167.6   28.0  -12.5
+			   66.9)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 188 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   189  189   X  H  > S+     0  
+			 0   84      2,-0.2     4,-2.6     1,-0.2    -1,-0.2   0.925 114.1  51.7 -67.6 -40.5   20.7
+			  -27.4   38.4)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 68 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    69   69   X  S    S-     0   0  
+			 22      1,-0.3    16,-1.7    14,-0.1    17,-0.4   0.895 140.5 -20.7 -71.4 -50.7   27.6   -6.0
+			   64.1)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 166 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   167  167   X  H  > S+     0  
+			 0   21      0, 0.0     4,-2.5     0, 0.0    -1,-0.2   0.785 101.3  55.8 -62.3 -30.7    9.9
+			  -11.8   30.2)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 1 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line     2    2   X     >  -     0   0  149
+			      1,-0.1     4,-3.3     4,-0.0     5,-0.2  -0.510 360.0-109.1 -89.0 163.8   -9.0    5.8
+			   46.7)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 136 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   137  137   X  S    S-     0  
+			 0   35     -2,-0.2     3,-0.3   -44,-0.0    -1,-0.1   0.147  74.8 -40.4-105.8-135.8   14.7
+			  -18.2   60.3)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 88 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    89   89   X  H  X S+     0   0  
+			 25     -4,-3.5     4,-3.1     1,-0.2    -1,-0.2   0.853 102.0  56.1 -60.9 -38.8   17.1   -8.8
+			   59.8)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 116 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   117  117   X  H  X S+     0  
+			 0   83     -4,-2.2     4,-2.7     2,-0.2     5,-0.2   0.944 112.9  44.1 -63.2 -43.3   -0.3
+			  -16.6   38.8)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 144 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   145  145   X  H  X S+     0  
+			 0   47     -4,-2.1     4,-2.9     1,-0.2    -1,-0.2   0.919 109.7  49.2 -61.3 -42.7   11.1
+			  -25.7   50.7)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 141 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   142  142   X  H  > S+     0  
+			 0  160      2,-0.2     4,-2.7     1,-0.2    -1,-0.2   0.908 109.3  52.5 -66.4 -39.9   11.0
+			  -25.0   55.6)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 30 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    31   31   X  H 3< S+     0   0  
+			 96     -4,-2.1    -1,-0.2     1,-0.3    -2,-0.2   0.718  88.1  72.3 -63.1 -26.0   -5.9   -5.0
+			   50.6)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 100 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   101  101   X  H  X S+     0  
+			 0   35     -4,-2.9     4,-3.4     2,-0.2     5,-0.3   0.903 110.3  49.1 -65.0 -42.2    0.9
+			  -12.5   53.6)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 222 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   223  223   X  H  X S+     0  
+			 0    1     -4,-2.4     4,-2.6     1,-0.2    -1,-0.2   0.956 113.7  47.7 -62.2 -42.4   20.9
+			  -15.7   32.3)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 128 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   129  129   X  H  X S+     0  
+			 0   14     -4,-2.4     4,-1.9    -5,-0.3    -2,-0.2   0.903 106.5  50.4 -62.3 -40.3   14.2
+			  -16.9   49.1)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 25 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    26   26   X  H  X S+     0   0  
+			  0     -4,-2.3     4,-2.3     1,-0.2    -2,-0.2   0.877 109.7  52.7 -63.7 -37.4    0.5   -0.8
+			   46.9)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 28 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    29   29   X  H >X S+     0   0  
+			  1     -4,-2.5     3,-0.7     1,-0.2     4,-0.5   0.898 111.6  51.1 -62.9 -38.3   -4.5   -1.2
+			   46.9)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 120 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   121  121   X  H  X S+     0  
+			 0    6     -4,-2.7     4,-2.3    -5,-0.3    -1,-0.2   0.888 110.3  50.6 -64.2 -38.6    4.2
+			  -17.5   42.6)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 156 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   157  157   X  H  X>S+     0  
+			 0   27     -4,-2.3     4,-3.6     1,-0.2     5,-0.5   0.900 110.7  55.2 -62.9 -41.1    2.6
+			  -22.9   34.6)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 134 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   135  135   X     <  +     0  
+			 0   23     -4,-1.3     2,-0.2    -3,-0.2    -3,-0.0  -0.066  39.5  97.2 -53.3 162.5   17.8
+			  -18.1   57.7)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 40 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    41   41   X  H  X S+     0   0  
+			 15     -4,-2.9     4,-2.4     1,-0.2    -1,-0.2   0.918 110.0  48.3 -61.7 -42.3    1.3   -5.6
+			   39.9)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 75 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    76   76   X  S    S+     0   0  195
+			     -2,-0.6    -1,-0.2     1,-0.1     4,-0.1   0.917  85.4  53.0 -72.4 -42.6   19.6  -10.3
+			   77.4)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 83 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    84   84   X  H <> S+     0   0  121
+			    -16,-0.9     4,-2.3    -3,-0.7    -1,-0.3   0.988 124.5  34.1 -65.5 -47.5   22.6   -4.3
+			   64.3)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 192 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   193  193   X  H  X S+     0  
+			 0   13     -4,-2.6     4,-2.3     1,-0.2    -1,-0.2   0.938 115.4  44.0 -64.3 -45.9   17.8
+			  -24.2   34.2)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 59 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    60   60   X  H  X S+     0   0  101
+			     -4,-2.2     4,-2.4    -5,-0.2    -1,-0.2   0.940 109.4  46.2 -60.8 -46.7   25.0   -8.3
+			   53.8)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 215 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   216  216   X  H  X S+     0  
+			 0    0     -4,-3.2     4,-2.6     1,-0.2    -1,-0.2   0.928 113.3  47.9 -64.0 -43.7   13.3
+			  -10.2   27.5)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 177 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   178  178   X  H  X>S+     0  
+			 0   31     -4,-1.8     4,-3.8     2,-0.2     5,-0.6   0.904 107.5  55.7 -62.9 -39.8   19.7
+			  -18.3   41.3)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 150 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   151  151   X  H  X S+     0  
+			 0    0     -4,-2.3     4,-3.4     1,-0.2    -1,-0.2   0.916 110.1  52.9 -62.3 -42.3    9.1
+			  -21.4   42.0)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 155 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   156  156   X  H  X S+     0  
+			 0   83     -4,-2.6     4,-2.3     1,-0.2    -1,-0.2   0.952 113.2  45.5 -64.4 -47.2    5.4
+			  -25.4   35.5)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 130 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   131  131   X  H  X S+     0  
+			 0   16     -4,-2.2     4,-1.3     1,-0.2     3,-0.4   0.905 107.6  55.9 -62.8 -39.3   14.0
+			  -15.1   54.0)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 217 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   218  218   X  H  X S+     0  
+			 0  103     -4,-2.5     4,-1.9    -5,-0.3    -1,-0.2   0.957 112.3  47.8 -62.5 -44.1   18.1
+			   -8.0   29.0)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 53 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    54   54   X  H  X S+     0   0  
+			 41     -4,-2.1     4,-2.3     1,-0.2    -1,-0.3   0.938 112.0  45.5 -60.7 -42.9   17.7   -1.9
+			   50.9)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 122 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   123  123   X  H  X S+     0  
+			 0    6     -4,-2.0     4,-2.8     1,-0.2     5,-0.2   0.904 108.2  52.1 -62.1 -41.7    7.3
+			  -13.4   43.9)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 143 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   144  144   X  H  X S+     0  
+			 0   33     -4,-2.2     4,-3.1     1,-0.2    -1,-0.2   0.904 111.5  52.1 -61.7 -39.9   13.7
+			  -23.0   51.3)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 205 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   206  206   X  G 3  S+     0  
+			 0  158     -3,-0.3    -1,-0.3     1,-0.3    -2,-0.1   0.821  92.5  66.6 -58.7 -28.4   10.5
+			  -13.8   16.4)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 158 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   159  159   X  H  <5S+     0  
+			 0   79     -4,-2.0    -1,-0.2     2,-0.2    -2,-0.2   0.935 118.8  41.0 -66.5 -42.1    6.2
+			  -23.5   30.5)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 42 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    43   43   X  H  X S+     0   0  
+			 13     -4,-2.2     4,-2.5     2,-0.2    -1,-0.2   0.926 110.5  49.2 -63.5 -42.8    4.1   -1.1
+			   41.0)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 22 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    23   23   X  H  X S+     0   0  
+			  5     -4,-3.3     4,-3.1     1,-0.2     5,-0.2   0.893 107.8  56.7 -64.4 -40.0    4.9   
+			 0.0   49.1)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 219 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   220  220   X  H  X S+     0  
+			 0    8     -4,-2.6     4,-2.3     1,-0.3    -1,-0.3   0.908 107.0  52.0 -60.3 -38.9   18.4
+			  -13.3   28.5)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 46 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    47   47   X  H  X S+     0   0  
+			  0     -4,-2.5     4,-2.7    -5,-0.2   -24,-0.2   0.965 115.0  40.7 -62.8 -50.1    8.1   -1.0
+			   45.6)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 13 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    14   14   X  H  <5S+     0   0  
+			 57     -4,-2.7     3,-0.5     1,-0.2    -1,-0.2   0.939 110.3  44.4 -61.3 -44.2    8.4   
+			 5.8   42.7)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 105 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   106  106   X  T  X5S+     0  
+			 0   44     -4,-1.9     4,-1.9    -5,-0.3    -3,-0.2   0.959 121.6  44.4 -85.3 -63.0   -5.0
+			  -11.6   48.2)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 6 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line     7    7   X  H  X S+     0   0  
+			 27     -4,-2.8     4,-1.9     1,-0.2    -1,-0.2   0.917 112.3  51.7 -63.4 -38.2   -2.0   
+			 4.0   42.4)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 85 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    86   86   X  H  X S+     0   0  
+			 62     -4,-3.4     4,-2.0   -17,-0.4    -1,-0.2   0.900 109.9  50.2 -62.8 -36.6   19.7   -8.8
+			   63.8)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 185 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   186  186   X     >  +     0  
+			 0   30     -6,-3.0     4,-2.1     1,-0.2    -1,-0.2  -0.844  29.9 176.0-122.3  99.3   23.5
+			  -26.7   43.2)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 36 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    37   37   X     >  -     0   0  
+			 44     -2,-0.2     4,-2.9     1,-0.1     5,-0.2  -0.238  31.4-102.7 -74.9 170.9   -3.9   -4.7
+			   37.0)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 3 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line     4    4   X  H  > S+     0   0  
+			 64      1,-0.2     4,-2.4     2,-0.2    -1,-0.2   0.922 115.3  45.9 -63.6 -43.4   -6.9   
+			 5.2   41.7)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 213 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   214  214   X  H  > S+     0  
+			 0  133     -4,-0.5     4,-2.5    -3,-0.3    -1,-0.2   0.950 116.9  45.0 -62.8 -44.4   14.1
+			   -5.0   25.7)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 183 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   184  184   X  T   <S-     0  
+			 0   48     -5,-2.2    -3,-0.2    -6,-0.1    -4,-0.2   0.746  94.9-140.2 -69.8 -30.5   20.2
+			  -25.0   47.0)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 94 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    95   95   X  H  X S+     0   0  
+			 21     -4,-2.7     4,-2.5     2,-0.2     5,-0.2   0.945 112.0  46.6 -62.9 -45.8    8.9   -7.0
+			   54.9)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 146 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   147  147   X  H  X S+     0  
+			 0    0     -4,-2.8     4,-2.3     1,-0.2    -2,-0.2   0.939 112.8  47.3 -63.5 -44.6   10.6
+			  -21.1   48.1)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 51 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    52   52   X  H  X S+     0   0  
+			  0     -4,-3.6     4,-2.7     1,-0.2    -1,-0.2   0.879 111.5  61.6 -67.6 -37.1   13.4   -5.3
+			   50.7)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 9 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    10   10   X  H  X S+     0   0  
+			  0     -4,-2.3     4,-2.7     1,-0.2    -1,-0.2   0.925 106.2  48.7 -59.7 -44.8    2.6   
+			 5.0   44.1)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 111 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   112  112   X        +     0  
+			 0   52     -4,-0.4     2,-0.3     1,-0.1    -1,-0.2   0.017  50.4  92.2  81.2 -35.0   -7.0
+			  -16.6   37.9)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 38 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    39   39   X  H  > S+     0   0  
+			 87      1,-0.2     4,-2.2     2,-0.2    -1,-0.2   0.941 113.0  48.1 -64.2 -42.2    0.5   -1.8
+			   36.0)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 4 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line     5    5   X  H  > S+     0   0  
+			 42      1,-0.2     4,-2.9     2,-0.2    -1,-0.2   0.911 111.9  53.1 -65.8 -38.9   -5.4   
+			 7.9   43.8)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 34 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error: Did
+			 not get solvent exposure fraction for residue X (line    35   35   X        -     0   0  
+			 91     -2,-0.1     2,-0.2     1,-0.1    -1,-0.1  -0.395  46.0-111.7 -65.0 142.8   -7.4   -8.2
+			   41.2)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 169 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   170  170   X  H  X S+     0  
+			 0    0     -4,-2.7     4,-2.6     1,-0.2    -2,-0.2   0.906 110.9  52.2 -65.3 -41.4   12.5
+			  -15.6   31.6)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 164 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   165  165   X  T 3  S+     0  
+			 0    6     35,-0.2    55,-0.1    39,-0.1     5,-0.1   0.659  73.2 115.4 -78.0 -23.1   10.6
+			  -15.3   25.2)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 132 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   133  133   X  H  < S+     0  
+			 0   41     -4,-1.9    -1,-0.3     1,-0.3    -2,-0.2   0.896 112.3  38.5 -59.6 -42.2   19.2
+			  -15.9   52.8)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 196 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   197  197   X  H  X S+     0  
+			 0    1     -4,-2.3     4,-1.9    -5,-0.3    -2,-0.2   0.920 114.0  44.0 -61.1 -44.8   15.7
+			  -21.0   29.4)
+2011-01-30 00:23:37:	 ERROR:  parseDsspResults modbase seq id: 48e177d057c56e9a145fd9baf7409da9MERAEPQS peptide start
+			 postion: 171 model id: 8164dc21e9d4a2320ab610daea6cad26 Skip remaining pipeline: 0 Error:
+			 Did not get solvent exposure fraction for residue X (line   172  172   X  H  X S+     0  
+			 0    4     -4,-2.0     4,-2.8     2,-0.2     5,-0.3   0.927 109.6  49.7 -64.9 -44.3   11.3
+			  -16.7   36.6)
+2011-01-30 00:23:37:	 Done loading DSSP results. Processed 1 sequences, 241 peptides, and 0 peptides found in a model
+			 for which a DSSP file was generated. 225 peptides were in DSSP files which were not correctly
+			 processed.
+2011-01-30 00:23:37:	 Duration of function parseDsspResults: 0 minutes 0 seconds
+2011-01-30 00:23:37:	 Writing results
+2011-01-30 00:23:37:	 Running writeUserResults
+2011-01-30 00:23:37:	 Done writing results. Wrote lines for 1 sequences containing 241 peptides. 225 peptides had
+			 at least one error
+2011-01-30 00:23:37:	 Duration of function writeUserResults: 0 minutes 0 seconds

@@ -1,0 +1,8 @@
+2011-01-14 20:05:39:	 Loading peptides to prepare for benchmarking
+2011-01-14 20:05:39:	 BenchmarkerPipeline: Loaded 51 peptides from 42 sequences with classification positive
+2011-01-14 20:05:39:	 BenchmarkerPipeline: Loaded 372 peptides from 11 sequences with classification negative
+2011-01-14 20:05:39:	 Duration of function loadPeptides: 0 minutes 0 seconds
+2011-01-14 20:05:39:	 Creating model
+2011-01-14 20:05:39:	 training svm with command /netapp/sali/peptide/bin/svm_learn_x64 -t 2 -g 0.01 -c 10 /scratch/peptide//svm_iteration_1/fullTrainingSet
+			 /scratch/peptide//svm_iteration_1/userCreatedSvmModel.txt
+2011-01-14 20:05:39:	 Duration of function createModel: 0 minutes 0 seconds

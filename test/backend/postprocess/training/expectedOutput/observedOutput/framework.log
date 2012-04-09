@@ -1,0 +1,9 @@
+2011-04-09 16:28:18,571 INFO Beginning postprocess() in server mode training and cluster state FEATURES
+2011-04-09 16:28:18,584 INFO Processing peptide job
+2011-04-09 16:28:18,631 INFO Number of peptides processed without errors: 424
+2011-04-09 16:28:18,632 INFO closing user log
+2011-04-09 16:28:18,632 INFO Finished processing peptide features; rescheduling server run to train model
+2011-04-09 16:28:20,150 INFO Beginning postprocess() in server mode training and cluster state SVM
+2011-04-09 16:28:20,160 INFO Read svm results. Processed 5 positives and 326 negatives (reference count, same across all files)
+2011-04-09 16:28:20,163 INFO Completed training model.  Returning to front-end
+2011-04-09 16:28:20,163 INFO closing user log

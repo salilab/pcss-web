@@ -1,0 +1,3 @@
+2011-04-09 16:28:26,473 INFO Beginning preprocess() for job testjob 
+2011-04-09 16:28:26,475 INFO process custom model, not using custom model
+2011-04-09 16:28:26,482 INFO Done preprocess(). Made 1 sequence batch directories for 18 sequences 

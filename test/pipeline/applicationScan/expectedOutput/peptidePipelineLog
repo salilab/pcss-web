@@ -1,0 +1,28 @@
+2011-01-14 20:04:19:	 Pipeline Application Mode; parsing peptides from protein sequences using rules file
+2011-01-14 20:04:19:	 Did not parse peptides from modbase sequence b3ecf800a2700bfb10ff7fbece123153MGPEPLKE
+
+2011-01-14 20:04:19:	 Done loading peptides; loaded 936 peptides from 50 sequences
+2011-01-14 20:04:19:	 Duration of function parsePeptidesFromSequence: 0 minutes 0 seconds
+2011-01-14 20:04:19:	 Getting best models for sequences
+2011-01-14 20:05:39:	 Done getting best models. Processed 50 sequences, found 48 total models in 11 unique sequences,
+			 720 models containing at least one peptide,  and 190 peptides had a best-scoring model according
+			 to criteria nativeOverlap
+2011-01-14 20:05:39:	 Duration of function getBestModels: 1 minutes 20 seconds
+2011-01-14 20:05:39:	 Parsing results of DSSP runs to get structure information from structures and models
+2011-01-14 20:05:40:	 Done loading DSSP results. Processed 50 sequences, 936 peptides, and 190 peptides found in
+			 a model for which a DSSP file was generated. 0 peptides were in DSSP files which were not
+			 correctly processed.
+2011-01-14 20:05:40:	 Duration of function parseDsspResults: 0 minutes 1 seconds
+2011-01-14 20:05:40:	 Running Disopred to get sequence-based disorder predictions
+2011-01-14 20:05:44:	 Done running Disopred. Processed 50 sequences containing 936 peptides. Encountered 0 errors
+			 during this run
+2011-01-14 20:05:44:	 Duration of function runDisopred: 0 minutes 4 seconds
+2011-01-14 20:05:44:	 Running Psipred to get sequence-based secondary structure information
+2011-01-14 20:05:47:	 Done running PsiPred. Processed 50 sequences containing 936 peptides. Encountered 0 errors
+			 during this run
+2011-01-14 20:05:47:	 Duration of function runPsipred: 0 minutes 3 seconds
+2011-01-14 20:05:47:	 Writing results
+2011-01-14 20:05:47:	 Running writeUserResults
+2011-01-14 20:05:47:	 Done writing results. Wrote lines for 50 sequences containing 936 peptides. 0 peptides had
+			 at least one error
+2011-01-14 20:05:47:	 Duration of function writeUserResults: 0 minutes 0 seconds

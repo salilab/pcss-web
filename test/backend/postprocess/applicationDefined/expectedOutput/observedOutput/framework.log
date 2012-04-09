@@ -1,0 +1,61 @@
+2011-04-09 16:28:18,571 INFO Beginning postprocess() in server mode training and cluster state FEATURES
+2011-04-09 16:28:18,584 INFO Processing peptide job
+2011-04-09 16:28:18,631 INFO Number of peptides processed without errors: 424
+2011-04-09 16:28:18,632 INFO closing user log
+2011-04-09 16:28:18,632 INFO Finished processing peptide features; rescheduling server run to train model
+2011-04-09 16:28:20,150 INFO Beginning postprocess() in server mode training and cluster state SVM
+2011-04-09 16:28:20,160 INFO Read svm results. Processed 5 positives and 326 negatives (reference count, same across all files)
+2011-04-09 16:28:20,163 INFO Completed training model.  Returning to front-end
+2011-04-09 16:28:20,163 INFO closing user log
+2011-04-09 16:28:20,700 INFO Beginning postprocess() in server mode training and cluster state SVM
+2011-04-09 16:28:20,700 INFO Writing error output file. Keyword: output_error Message:
+Cluster output file /tmp/tmp-Cd6Oa/svm/svm_iteration_1/modelPipelineResultsOutputError resulted in output error
+2011-04-09 16:28:20,701 INFO closing user log
+2011-04-09 16:28:20,947 INFO Beginning postprocess() in server mode training and cluster state SVM
+2011-04-09 16:28:20,948 INFO Writing error output file. Keyword: file_missing Message:
+Cluster output file /tmp/tmpKgVlwX/svm/svm_iteration_1/modelPipelineResultsGlobalError resulted in global error
+2011-04-09 16:28:20,948 INFO closing user log
+2011-04-09 16:28:21,081 INFO Beginning postprocess() in server mode training and cluster state SVM
+2011-04-09 16:28:21,082 INFO Writing error output file. Keyword: cluster_missing_file Message:
+Did not find expected peptide pipeline results directory after finishing cluster job (searched for /tmp/tmpftuAiz/fake/svm_iteration_1)
+2011-04-09 16:28:21,082 INFO closing user log
+2011-04-09 16:28:21,210 INFO Beginning postprocess() in server mode training and cluster state SVM
+2011-04-09 16:28:21,211 INFO Writing error output file. Keyword: cluster_missing_file Message:
+Did not find expected peptide pipeline results file after finishing cluster job (searched for /tmp/tmp946-AX/svm/svm_iteration_1/fake)
+2011-04-09 16:28:21,212 INFO closing user log
+2011-04-09 16:28:21,340 INFO Beginning postprocess() in server mode training and cluster state SVM
+2011-04-09 16:28:21,347 INFO Writing error output file. Keyword: training_content_error Message:
+Did not increment tp count (3) from previous line (3) in file /tmp/tmpd7LIJn/svm/svm_iteration_1/modelPipelineResultsNotIncremented.txt
+2011-04-09 16:28:21,348 INFO closing user log
+2011-04-09 16:28:21,480 INFO Beginning postprocess() in server mode training and cluster state SVM
+2011-04-09 16:28:21,488 INFO Writing error output file. Keyword: training_content_error Message:
+Did not have consistent number of negative peptides across different svm iterations. File /tmp/tmpRz3Bcn/svm/svm_iteration_2/modelPipelineResultsInvalidNegative.txt had 324 compared to the reference count of 327
+2011-04-09 16:28:21,489 INFO closing user log
+2011-04-09 16:28:21,621 INFO Beginning postprocess() in server mode training and cluster state SVM
+2011-04-09 16:28:21,629 INFO Writing error output file. Keyword: training_content_error Message:
+Did not have consistent number of negative peptides across different svm iterations. File /tmp/tmpzbXrFE/svm/svm_iteration_2/modelPipelineResultsInvalidPositive.txt had 325 compared to the reference count of 326
+2011-04-09 16:28:21,630 INFO closing user log
+2011-04-09 16:28:21,770 INFO Beginning postprocess() in server mode training and cluster state SVM
+2011-04-09 16:28:21,772 INFO Writing error output file. Keyword: cluster_missing_file Message:
+Did not LeaveOneOutBenchmarker results file finishing cluster job (searched for /tmp/tmpadeFis/fake)
+2011-04-09 16:28:21,773 INFO closing user log
+2011-04-09 16:28:21,921 INFO Beginning postprocess() in server mode training and cluster state SVM
+2011-04-09 16:28:21,923 INFO Writing error output file. Keyword: cluster_missing_file Message:
+LeaveOneOut benchmark results file /tmp/tmpAXzUTx/looModelPipelineResultsNoContent.txt did not have any content
+2011-04-09 16:28:21,924 INFO closing user log
+2011-04-09 16:28:22,062 INFO Beginning postprocess() in server mode training and cluster state SVM
+2011-04-09 16:28:22,066 INFO Writing error output file. Keyword: cluster_missing_file Message:
+Did not get user created model after finishing cluster job (searched for /tmp/tmp5pW1tH/fake)
+2011-04-09 16:28:22,067 INFO closing user log
+2011-04-09 16:28:22,220 INFO Beginning postprocess() in server mode training and cluster state SVM
+2011-04-09 16:28:22,229 INFO Writing error output file. Keyword: training_content_error Message:
+User created model is trained on 423 peptides but LeaveOneOut benchmark results indicate 422 peptides were used in the dataset
+2011-04-09 16:28:22,230 INFO closing user log
+2011-04-09 16:28:22,573 INFO Beginning postprocess() in server mode application and cluster state FEATURES
+2011-04-09 16:28:22,613 INFO Processing peptide job
+2011-04-09 16:28:22,832 INFO Number of peptides processed without errors: 2014
+2011-04-09 16:28:22,841 INFO closing user log
+2011-04-09 16:28:24,013 INFO Beginning postprocess() in server mode application and cluster state FEATURES
+2011-04-09 16:28:24,016 INFO Processing peptide job
+2011-04-09 16:28:24,026 INFO Number of peptides processed without errors: 22
+2011-04-09 16:28:24,033 INFO closing user log

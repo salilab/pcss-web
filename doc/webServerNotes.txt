@@ -1,0 +1,684 @@
+CLEANING -- Log, Errors, Test, Developers, Users, 
+ALL: Developers and User documentation, SVN, Make sure all error messages make sense
+Frontend: Review Logging, Review Exceptions on Screen
+Preprocess:  Logging
+Run: Logging
+Postprocess:  Logging, Clean Code, Code Documentation
+Pipeline: None
+SVM Application: Review Code Documenation, Review Logging
+SVM Training:  Logging, 
+
+
+* All frontend / backend logging
+* backend documentation
+* training check peptide job completed
+	 
+
+
+
+ERRORS
+	FRONTEND
+	BACKEND
+*	after testing checkPeptideJobCompleted: make sure svmTraining does all the checks that the frontend does for training and test set ratios (and positives and negatives). If the feature step of the svm pipeline has a problem with missing sequences, it could affect these ratios. On this note, see what happens in peptidePipelineResults to cause a missing sequence in the backend -- what if sequence is there and peptides aren't? how would svmTraining handle that?
+	Have logger write different level for error than it does for everything, if that is a logging feature
+	Reinstitute method dependencies  (can do this both for PeptidePipeline and ApplicationPipeline if so inclined)
+	consider method dependencies for SvmModel loading (i.e. ensure createPeptideFeatures() has been called after loading. In fact
+		 the model could do this itself instead of having other methods call it
+*	if there is a sequence change in Uniprot, then the precalculated sequence based secondary structure prediction methods 
+	   won't work.  if there is a mismatch, the first thing we should do in the Peptide Pipeline is recalculate. Think this is true for models too.
+
+	if something fails, it appears to just say it hasn't completed yet on the status web page -- should say it failed; look into it.
+	
+
+
+LOGGING
+todo:
+	FRONTEND
+*		log parameters that are of interest to the user	
+	 	rules file logging: specify which residues were excluded at which positions, in plain english -- really necessary? user should know if they created rules file, can't think of how I would log this without just repeating the file
+
+		
+	BACKEND
+*?		Error log messages: feature errors should break down into different categories (according to feature types: disorder, sequence-based secondary structure, etc.) and the user should get a run down of the errors for each type. This should read the error codes. Error codes could thus be separate file that is read in so that it can be referenced across multiple sections.
+*A		more training user log notes, esp if there is a problem, make sure the log file says what the problem is (eg when induced file missing error in processSvmResults, there was nothing in the user log report about it)
+*		log job name if not done already
+
+DOCUMENTATION
+Todo:
+* svmTraining test brief documentation
+* training test backend brief documenation
+	BOTH
+*		note in server documenation about making examples specific to the training models (eg, not having asp in the fourth position will still have good score)
+		Have every step say whether it expects and output base 0 vs base 1 sequence positions (they all expect base 0 peptide positions, models are base-1. Input does conversion 
+		     user-specified. Should still note this in documentation
+*		mention that descriptions will probably not be available for non-human organsims (although consider putting them in eventually, maybe for a dozen organisms?).
+	FRONTEND
+*		Make sure validation steps all have an explanation in the documentation
+		Developer guide: what each script or step expects as input (format of all files that are used as input for each step)		
+*               Update HTML guide
+*		Helpful hints for best performance
+			NEW -- break up large application sets into smaller ones for speed / file size
+			NEW -- peptides that are too small won't be useful in training
+			change logging to tell user that they could have off-by-one error, make sure it is base-1 in input
+			long peptides
+			decent training / test set size
+			rescoring your training set after creating a model is stupid
+			how to create negatives
+		Put ROC curve into Excel
+*		Link to paper
+
+	BACKEND
+		list of pre-calculated data that needs to be updated as it becomes available (so far: new human model table, new dssp results)
+		how errors work
+		what needs to be changed if we add new models to human_model_table (or replace it)
+		Document runPsipred and runDispred scripts
+PARAMETERS
+        
+todo:
+*	Allow comments in parameter file
+*	sort parameters in file by type
+	handle runInfo mass parameters
+	handle Disopred / Psipred mass parameters (want to dynamically create disopred shell script)
+*?	parameterize mismatches.fasta (was going to do this but want to parameterize multiple things at once to minimize test recreation)
+		     see how much it will take to do this as I start adding new parameters
+
+STRUCTURE
+
+  BACKEND and FRONTEND:
+Consider using eval block in JackknifeBenchmarker->processResults() to catch any errors that might occur during processing (eg divide by 0)
+	 was there any thought to doing this in ApplicationPipeline?
+*    	Training mode results file -- put column headers through all columns, extend the first line (0 0) through all columns
+*     Output file for all features for training peptides
+* currently have final output file where lines are currently 0\t0 and 1\1 have four columns for stdev, score. When I do this, take out the logic in backend_test that checks for two columns in checkNormalPostprocessCompletion()         
+* All "TODOs"	
+     Put all of my classes into one module
+*     make sure that benchmark score file has all lines that are not actually benchmark scores begin with # (check training code that generates benchmark file)
+     change "test_set_percentage" to be "jackknife_fraction" to be consistent with what user sees      
+     consider switching fpr and tpr columns in svmTraining part (tpr is first when it is second in the final results)
+*     consider not copying svm model, test set, etc (maybe only copy for one iteration) -- takes up a lot of space
+
+*	clean all directories and files, servers, etc. maybe have list of where all the data sits that was used in different aspects of project 
+	      (ms vs server, etc.)
+
+*     Allow inputSequences.fasta download (will have to convert back to base-1 when I do this)
+
+      Do mapping of secondary uniprot accessions to primary one (from flat file downloaded after searching for taxonomy 9606). That way we are more likely
+      	 to get a description for a uniprot accession, because only primary ones are in the protein names file
+
+     Change parameter "head_node_preprocess_directory" to something that is not specific to preprocess since other states use it
+*     Put columns like loop length and other protease similarity into feature internal only until I am ready to deal with them. Update documenation for theses.
+	 
+
+  FRONTEND:
+    consider maximum number of sequences that can be processed at once -- do this after seeing how much space things take up in larger modes, and also after making sure
+    large files aren't copied
+    have minimum peptide length requirement, probably 4.  Should have note to user that even 4 is probably too small info-content wise -- actually I think this is ok, just note in documentation
+    
+
+  BACKEND:
+    parameterize "positive" "negative" "application" keywords instead of hardcoding
+    If make other models, will have to abstract methods out from SvmModel.  eg, addResultsToPeptideInfo is only available from SvmModel
+        Should probably do that anyway even if I don't make other models
+    parameters in db instead of files
+    collapse runMethod method into Pipeline.pm (also decide whether to keep it?)
+    in Pipeline, change hashes to methods (ie $self->{ColumnInfo} should be $self->getColumnInfo())
+    getBestModels could be sped up by only reading through model file once and checking for each sequence whether it is one of our sequences.
+    	not too much to store
+    Consider putting initialize() in Pipeline.pm class instead of application/benchmarker classes, they do the same thing
+    PeptidePipeline should have $runInfo stuff all changed variable names to show that it is for modpipe runs (not our pipeline run)
+    
+*    Consider allowing user to specify max FPR they want to return for peptides in rules file mode?
+
+
+    Run styles:
+    Test run styles to make sure those work. Right now human2008 works but not sure about the others.
+     note: think old style will fail because offset subtracts one, and then dssp method adds one -- not sure if I have correct index after getModelPeptideRange())
+
+
+
+  SERVER CONTROL FLOW
+    Keep an eye on what we get when we do copy * back from cluster to home sequence dir; might want to do this copy individually (eg parameters)
+    	 is this already being done?
+    determine good way to clean up disk space for completed jobs
+    	  after we decide the things to keep, use error handling to make sure they are there as sanity checks (in retrospect not sure what this means)
+
+
+SAVE MODEL
+ideas:
+     best way to handle training new models -- have a bunch of new fields in db for letting user describe the model, have the 
+     	  server populate the description including being writing the model file location.  Then can query the db later (I think!) and get the list.
+     Also have the 'model publically available option' and if set will write to the front-end -- only issue is people over training. 
+     	  maybe something like 'if this is the first time you are using this or you don't anticipate this model will be the final option you use, 
+	  please don't check this box'
+     Look at CGI code (dbali, salign) to see how to handle multiple pages.
+
+
+CONTENT
+*			make sure it works in training mode if peptides are of length other than 8
+*	make sure average critical fpr, tpr is reported in results (or however I do it) -- see if taking the average of all critical tps / critical fps is the same as doing it strictly speaking from the final fprates at each tp, and which is a better one to use
+	leaveOneOut for true benchmarking TPRs and FPRs 	
+        Decide whether or not to skip sequence based methods if already had model; don't include both in final output? 	
+*?	Make final caspase and Grb models that will be used for application. have policy for how to update these with new training data
+	Link To Grbah and maintain?
+	sampling different SVM parameters
+*	multiple output files, muliple input pages
+	test set / training set ratio -- additions
+	On demand basis for other models
+	could make HMM too if people just want to do positives?
+	Train on positives only (still need negatives in test set)
+	genbank seq identifiers instead?
+	Put loop length back in
+	Make more random set of negatives (currently just taking first n that appear in the training set, and dropping the rest
+	to create a truncated input file.  Would probably benefit if this was a more random sampling of proteins/peptides)
+
+OUTPUT
+
+	FRONTEND
+*	File for which no sequences were found -- have better formatted input (right now only one long sequence)
+*	In application defined mode, make sure all output files for training are also available
+	footer
+*	better formatting of result page
+*	make the front page look nice
+*	make sure email is not optional -- take away (optional) from web page, and validate with frontend.
+
+	go through Andrej's suggestions for front page.  Might have to update documentation and validation terminology accordingly
+	make sure there's clean output when perl pre/postprocess scripts return their output to back-end	
+
+	Things to put back in: Name
+	Fixed width font for fasta sequences
+
+*	Choose name for the service
+		After name is chosen for the service, update it from Peptide Specifier in the postprocess perl script where necessary 
+
+	OUTPUT FILE
+*	Output original fasta sequence file and positions of all peptides, if job completed, to show user where any mismatches might have been
+	Output cleavage sequence similarity to template
+*	trim down long floating point numbers
+*	maybe change "target start" to "model start"
+
+
+MISC:
+	make sure this is addressed(?)
+
+        note the following rule somewhere -- if features fail (disopred, psipred, dssp) then we will not have any value in the 
+           column that PeptidePipeline prints for these values (the one that the SVM would normally take as input).  however a separate 
+           column (the one that the user would normally read for these values -- DDDOOOD column) will have a keyword error that will
+           indicate to the backend that the job failed.  This way the SVM will just ignore the missing features instead of choking on it.
+           This logic should be tested as sanity check.
+	   additionally -- we are saying if there is one residue mismatch between the disopred file and the cleavage sequence, the whole score
+	   and disorder call is not written as a feature (same with psipred).
+
+
+
+
+
+BACKEND - NORMAL FUNCTIONALITY
+List files that could throw I/O error that are not checked for by the cluster. Maybe list which tests handle which file openings
+Make parameter that has all global errors in it, separated by commas. This could also be error codes from before. This will require adjusting code that handles global errors
+review logs that Ursula sent
+should a cluster state error put the job in a FAILED state? This might prevent the log from being written. Probably doesn't matter either way.
+
+
+SVM APPLICATION SCAN - NORMAL FUNCTIONALITY
+Make sure if there is a feature error, the field for that feature is empty and that this doesn't break anything (see below)
+consider making $currentSeqInfo->{featureName} more rigorous, right now all keyed on strings
+parameterize other types of errors (at least global errors)
+have ApplicationPipeline validate error codes the same way PeptidePipeline does
+
+TEST PIPELINE - Normal functionality
+* Update some DSSP error messages to print the peptide start position in the original peptide
+       (currently printing the erroneous peptide as it exists in the DSSP file, which may have been affected by the offset) -- same with psipred, disopred
+Make sure if there is a feature error, the field for that feature is empty
+
+
+TEST
+
+
+Have sys admins make table with fake data so things don't change to mismatch expected output
+Frontend:
+tests to make sure mismatches (both missing uniprot and peptide sequence mismatches) print for training / test set invalid ratios and has only mismatches 
+probably broke frontend tests by putting those in there
+
+	BACKEND:
+*	write tests for checkPeptideJobCompleted in training mode
+	      include featureError, missingSequence tests
+*	Do some file size checks for different cases, especially large runs
+
+
+tests below here : * doesn't mean priority
+TEST BACKEND - POSTPROCESS
+*Fix error that causes fake ValueError when writing to log (http://bugs.python.org/issue6333)
+*Create test for Application Defined Mode
+*Any remaining documentation
+*Have test to check if there is a result file and it has the column headers but nothing else (thus it should probably have error message but is missing it)
+_*have example where there are two error lines in the peptide results file, make sure email is only sent in one of those (check logs for this)
+
+
+PIPELINE - Test
+
+*get protein name file missing
+*Write code that counts number of sequencs and then makes sure that those were printed in the log file statistics message
+?*See why getting different disopred results in test vs in real server -- test is running on modbase so maybe it is architecture issue?
+*Make sure that an error in the test itself (a die if the file couldn't be open) actually ends the test, maybe print something 
+*test other best model criterias, make sure we grab the right one (for all criteria)
+*clean testing script
+*Clean input and expectedOutput directories to be symmetrical -- either both have all info in sequenceBatches/seq_batch_1 or just in top level directories. Update documenation and 
+ rerunning pipeline notes above when done
+*Quick testing script documentation
+test errors that are thrown if alignment file not found (after parameterizing run info)
+Make sure columns are output correctly given runMethod and mode specificiations for each column (right now I am assuming they work fine, but will be updating runMethod and mode functionality)
+Test no peptides parsed for an indvidual sequence, after putting it in. Maybe just put this in errors test, because that is a better place for the 'restrictive rules' file to go then in normal processing
+
+
+
+SVM APPLICATION SCAN - Testing
+*Create test for application defined mode
+*Make sure that an error in the test itself (a die if the file couldn't be open) actually ends the test, maybe print something 
+*Test no peptides parsed for an indvidual sequence, after putting it in
+?*Add to regression test to account for this error: $self->writeError(... "Did not get expected line format for peptide id (expected 'seq_id start_position classification'; got $input");
+?*could have all errors in the regression tests that are not tested (these are all commented; search in code for 'regression') be tested by just calling the individual method rather
+than running the whole pipeline
+?*think about: any way to test to make sure the order of $testSetLines is the same as what we're getting from the score?
+*maybe test {Classification} result is something expected when loading peptides  -- do this after parmeterizing these keywords
+Create the following test for feature errors (best to do when creating input/output for testing all pipeline stages)
+Make sure if there is a feature error then nothing is written in PeptidePipeline to the output location that would normally have the value read by SVM
+if that is the case, then ApplicationPipeline shouldn't have to change anything, will just have values of 0
+should have tests where we have one error for each feature (forces empty output; don't need to test more than one error type for a feature). Then make sure SVM doesn't choke 
+if it gets that. Could conceivably have output file to compare it to (maybe just a file representing a line that would be written to SVM input file?)
+
+
+
+
+
+
+
+
+SPECIFIC IDEAS AND PHILOSOPHY
+
+Notes on adding new functionality:
+1. Add code
+2. Make sure it works with all cases
+3. Make sure all other tests still work
+4. Write a test for new code
+5. Rerun full test suite if necessary
+
+
+DOWNLOAD YOUR OWN MODEL
+See which task number I am.
+If I am 1 (or 0, whichever is first)
+    Take everything and output a final model
+    	 name will be parameterized
+    copy that model explicitly to headnode
+
+
+FPRS AND TPRS
+
+Think it is valid to get them from a LeaveOneOut Benchmark approach.  Not exact, but close.
+For now I will just get them from the results of Jackknifing, but have to make sure it gets better, jackknifing isn't valid.
+Could probably make the ROC curve from leave one out available to the user.  
+Leave one out and jackknifing should have the same output for FPR, TPR -- maybe just three columns (score, FPR, TPR) that will be saved
+in the job's run directory (where the model will also be saved for future use)
+
+Notes on FPR/TPR data file:
+    --Averaged one has too few data points for my liking.  Will grab loo, fine for now.
+    --got it from /trombone1/home/dbarkan/Protease/Model/runs/caspaseLooSevenToOne, renaming it to caspaseBenchmarkResults and truncate
+    --also got GrB /trombone1/home/dbarkan/Protease/Model/runs/benchmarkGrb
+    --only first three columns in the file are necessary
+
+
+Loo seems a bit outdated.  Try:
+1. upload training set, run training mode
+2. download provided file
+3. put provided file in data directory
+4. use that to rescore training set
+5. create benchmark score file from there
+
+Did that: when you rescore the training set, you really do get way too much overtraining -- almost complete fpr / tpr separation.  New plan:
+
+Doesn't make sense to integrate LOO into the server framework until we have the 'make your own model' capability
+1. Going to manually run LOO one more time with the same (truncated) training set.
+2. Will use the results of that as the benchmark score file
+   Important -- think about the range of scores I'm getting with LOO. Should take some peptides that weren't in either model and score with a LOO model that is missing a positive, and a complete model that has all peptides in training set
+3. Maybe try repeating with different negative sets to see how the scores vary
+4. whatever I get there will be the final tpr / fpr for both grb and caspase
+5. Be sure to create new model that scores everything, using the final best parameters of gamma and c, and put it into the server.
+
+
+
+Results of this:
+1. ran server in training mode with /trombone1/home/dbarkan/server/ms/data/caspaseServerTrainingInputTruncated
+2. grabbed inputSequences.fasta from job directory after it had completed
+3. used this as input to LeaveOneOutBenchmarker which I ran on the cluster (1 job only, but better than running on baton2).  
+/netapp/sali/dbarkan/protease/LeaveOneOut/caspaseLeaveOneOut/
+4. This returned successfully and I took modelPipelineResults.txt and moved it to /netapp/sali/peptide/data/caspaseBenchmarkScores_20100527
+5. I compared the scores we get when we take random sequences and apply a model created with all sequences in the training set to a model created
+with all but one sequence (I got that from the last trainingModel used by the LeaveOneOut run). The reason for doing this is that if we
+are using a different model in the benchmark set vs what is being used in application mode, then the scores could vary, and TPRs/FPRs output
+by the server could be different than what they really are in the benchmark. There was an observed difference. TPRs didn't vary too much but
+fprs did. The results of this comparison are in /trombone1/home/dbarkan/server/tprs/modelDifference/benchmarkDifference.txt.
+
+Ways to address this: 
+1. could have the final training model from the LeaveOneOut run be the actual model I use in application mode.
+2. Can focus more on TPRs which really don't vary too much, these might be a better metric for deciding whether something is real anyway.
+   (in that case just keep what I have already).
+3. Should also check to make LOO ran OK which I will do if/when it is integrated into the framework
+4, Think about it more, for now don't think it's a huge deal.  Scores obtained look fine.
+
+
+Also, created final SVM model with run caspaseFinalTraining_937350 and put it in data dir.
+
+next:
+
+apply my grb model to a couple test proteins (make sure some positives included) and see what the scores are, whether they're in range of benchmark set and not all underestimated tprs
+      if they are all way too low, consider putting LOO into it -- but shouldn't be hopefully, since this is the same thing I did in the paper
+      actually double check to make sure it is the same thing as in the paper
+      --followup: they are pretty close -- probably same difference as the paper --  but should do LOO later to get more accurate.
+finalize tpr, fpr printing
+
+prepare for proteome run -- maybe add a little more logging to the post-process side, check what it is for the cluster right now
+
+
+
+TRAINING VS TEST SET RATIO
+	What I had defined before but now have to think about:
+	Training set ratio: ratio of negatives to positives in training set.  
+	Test set ratio: ratio of negatives to positives in test set
+	Test set percentage: percent of peptides to leave out and test on -- before this was for positives only and then negatives were determined by test s et ratio
+	but -- everyone wants to predict positives, so can still say jackknife based on positives.  And then testing can be pretty arbitrary.
+
+define: jackknife, test set ratio
+we will train on all negatives you provide that aren't in the test set.  So to specify the number of negatives in the training set, set the appropriate test set ratio
+so if you want to train on 1:1 and test on 1:1, and have 100 P and 100 N
+
+jackknife = .1
+test set ratio: 1
+= 90 p in training -> 10 p in test -> 10 n in test -> 90 N in training
+
+jackknife = .1
+test set ratio = 5
+= 90 p in training -> 10 p in test -> 50 n in test -> 50 N in training
+
+include guidelines: if you want to test on more than 1:1, it is a really good idea to provide many more negatives in training
+
+100 P 500 N
+jackknife = .1
+test set ratio: 1
+= 90 p in training, 10 p in test, 50 n in test, 450 n in trainig
+
+other option:
+make it positive - centric, say train on same number of negatives as are in your positives, jackknife -- takes out your specified number of positives, AND equal number of negatives, tests on those -- any extra negatives go away (they are used in other pools). -- means you need negatives > positives
+
+OR:
+
+maybe for now the best default option (easiest to recode)
+train on same number of positives as negatives, jackknife specifies number of positives to train on, and then just test on the remaining negatives that weren't in training.
+
+for now we'll check to see if test set ratio is -1, if it is then do this last option, that way we won't have to rewrite everything
+maybe process remaining negatives can help, might only be LOO mode though
+
+New ideas:
+Checks we'll have to make sure pass:
+       there are more negatives than positives total (>=) (if not, then just tell the user to switch the classification)
+       there is at least one positive in training set after rounding down
+could also have user explicitly define raw counts       
+
+
+
+
+QUESTIONS
+
+If I have 'check optional email' set, even if I provide a valid email it doesn't work -- find out why
+   --ben working on it
+
+archived jobs appear to go into preprocessing directory
+   --I should update location; ben will update default
+
+Some of the input validation errors appear to keep the job in the incoming directory -- is that correct behavior?
+   --ben working on it
+
+is there any way to keep parameter data structure in job for postprocess?
+   --can now do DB
+
+
+
+
+Questions for Ben:
+	what happens if the user submits something to the server but then hits stop before it gets to the submit confirmation page?
+
+Questions for Ursula:
+
+
+What is the best way to retrieve seq_id and sequence for a given uniprot accession?  i.e., still a good idea to use u.current = 1 and nr, uniprot_taxonomy?
+     Also -- is it OK to just take the first result given that query?
+     Also -- previously we were sorting s.run = 'human_2008' DESC.  How often will we find more than one seq_id for a single n.database_id that current = 1?  
+             If it is often, how do we decide which one to take?  (for example, what if one is modeled and one isn't?  Or one is modeled in a certain run and one isn't?
+	     That is why I was sorting on human_2008 before but in the webserver, I don't think we should prioritize one dataset over another).
+
+
+ask ursula the exact policy of uniprot accessions, etc, and mapping to modbase
+
+Ask ursula if all modbase sequence ids have a protein sequence, and if not, handle that in code
+
+maybe ask if I SanityError should really be redefined
+
+
+
+HOMOLOGY STUFF FOR VALIDATION
+
+E-value
+1. make sure the evalue is being printed from SVM result
+2. see what the range of evalues wrt FPR, TPR
+3. play with training, test set sizes and see how e-value changes
+4. see what the e-value is for our predictions
+5. read how SVM e-value is calculated
+
+
+
+using testing system
+	      ok ()  -- evaluate expression in OK
+	      is()  -- evaluate expression eq
+	      isnt() -- evaluate expression ne
+	      like () -- match against regular expression
+	      unlike() -- not match against regular expression 
+	      cmp_ok() -- compare w/ binary operator
+	      can_ok() -- if an object is able to perform defined methods
+	      isa_ok() -- if an object is something (either class or refernce, eg ARRAY)	
+	      use_ok() -- if a module is able to load
+	      diag() -- prints diagnostic message -- eg what the user should look for
+
+	 best way to do this --
+	      should test that normal input returns expected output (maybe multiple files) in all modes, and exceptions throw properly.
+
+	      have one input file for each error case? or can just pass in string? Maybe as long as it loads a file normally it is OK, then 
+	      can do the rest 
+
+	      talk to ben about more testing philosophy
+	      Would be best to have a predictions output file that I have gone through very carefully (monitored all steps) to make sure it worked.
+	      for training set, this won't be possible (non-deterministic) but could have some other things.
+
+
+PeptidePipeline Output Errors:
+Types:
+1. Global error. EG could not find input file, rules file, etc. Shut the whole thing down.
+Write output file, does not have column headers. Copy to output directory. Server job is failure, tell user.
+
+2. Sequence error. Something is wrong with the entire sequence. 
+Write output file, does not have column headers. Copy to output directory. Server job is failure, tell user.
+*think about this, see where it is an issue. Still fairly extreme reaction.
+
+3. Feature error. Other features work fine but one doesn't. Pipeline continues.
+Write output file, has column headers. Leave feature with error blank. 
+Don't encode feature with error in SVM (think this will be automatic). Report to user. Send me email.
+
+4. Meta-error: problem with writeUserResults or writeError methods.
+Write output file, does not have column headers. Copy to output directory. Server job is failure, tell user
+(think these are all internal errors so should be OK)
+
+
+
+
+
+
+       
+
+
+COLUMNS
+
+	ideas:
+	advantages of columns:
+	
+	    1. Easily lets us match column header names with the values.
+	    2. Easily lets us change column order around without tracking position numbers.
+
+	TODO (low priority)
+
+	
+	have PeptidePipeline do a check to make sure internal id is an OK columnShortName before adding something to (or accessing from) seqInfo
+		SvmModel not fully incorporated; it reads column headers from input file instead of global file (although they'll be the same) -- think this ok though, nothing really uses column info to read, only to write -- maybe this is the best policy because you don't have to coordinate modes as much
+		Add real descriptions for user output instead of Temp (or remove these completely)
+		document all over
+		add option for default values if not populated
+
+
+
+	
+InternalErrors:
+didn't get expected string out of qv (eg, 'training' 'test')
+couldn't open file for reading or writing
+tried to set param that has already been set OR retrieve param that is not there
+stats don't add up in getSequencesFromModbase
+use substring on modbase AA sequence but return empty sequence
+
+
+cases for backend input:
+application scan: normal fasta file. 
+rules file can be empty (has ###) or have rules in it.  Actually - change plan, stupid to have empty rules file, just won't copy it with to the cluster (although need to think about if it is peptide scan, but no rules file)
+ hopefully only need to test one set of rules.  Maybe can count Asps in input to quickly get an expected peptide count?
+
+application user: normal fasta file with parsing.
+if we keep mismatches, account for them as possible input
+
+training:
+normal fasta file
+if we keep mismatches, account for them as possible input
+
+
+Parameters file:
+training specific:
+server_mode = training
+test_set_percentage (user)
+iteration_count (user)
+
+
+application specific:
+server_mode = application
+svm_application_model (grb model)
+benchmark_score_file (grb benchmark)
+application_specification(scan vs spec)
+
+
+
+Policies for interesting cases
+In application scan mode, application user mode, training mode if accession not found, it isn't included in input fasta
+application user mode, training mode, if there is mismatch, included in fasta as 'mismatch' instead of sequence (this might change).
+				      if there are only mismatches in a sequence, it's not included at all
+
+
+Initially - run server once for both application scan and application mode. Keep both directories and copy their results to expected output in each step as appropriate 
+
+Rerunning benchmark test journal.
+0. Change globalPeptideParameters seqs_in_batch_count to 50. #note -- this is untenable due to it being live server, so should incorporate the test server here somehow
+1. Ran all tests, all completed successfully (or were changed if they didn't)
+Frontend:
+ApplicationScan:
+2. Run Server in ApplicationScan mode. Current input file is testApplicationScanFileInput (in serverProjects on laptop) and rules file is GrB rules file
+3. After it completes, copy the whole directory to ~/newTestOutput/. Then copy top-level files in that directory (i.e., everything not seqBatch) to applicationScan expected output
+   Remove files that the frontend doesn't generate (applicationFinalResults, cluster script, etc.). Keep user.log and framework.log (or touch new ones)
+4. Remove the head_node_preprocess_directory and seq_batch_count parameter lines
+5. If using a different input file, need to copy that to application scan input directory, and name it testApplicationFileInput. Also will have to adjust log messages for counts
+6. Run test and change either content code or test code to account for results
+
+ApplicationDefined:
+7. Run server in application defined mode. Current input is testApplicationDefinedFileInput (in server projects on laptop) 
+8. Repeat 4, 5, 6
+
+Backend:
+Preprocess
+ApplicationScan
+0. Run backend tests to make sure it is working
+1. Copy all of frontend's applicationScan expectedOutput into backend application scan's input
+2. Copy results of server run into backend application scan expected output directory. Go into sequenceBatch directories and remove everything except for inputSequences.fasta
+3. Run Test and either change content code or testing code to account for results
+
+ApplicationDefined
+Same as Application Scan. Will be different number of seq_batch directories but that's fine
+
+Run:
+0. Run backend tests to make sure it is working (should have completed during run)
+1. Copy ApplicationScan/expectedOutput to runDirectory input
+2. Copy ApplicationScan/expectedOutput to runDirectory expectedOutput
+3. Grab the sge cluster script from the output created by the server and move it to expected output dir
+4. Run test
+
+Repeat for application defined
+
+Pipeline:
+ApplicationScan
+0. Run backend tests to make sure it is working.
+1. Get expected output generated from run, and copy sequence batch directory to input (don't think we need anything else in job directory)
+   Also copy seq_batch_1/parameters.txt and seq_batch_1/peptideRulesFIle from results of whole server run to this input directory (cluster copies those file so it is not in run expectedOUtput)
+   (Right now restrictive rules file is in that dir but think I will move that to errors dir. sequence batch directory should only have seq_batch_1 in it
+   Check to make sure that there is a sequence in seq_batch_1 that has a model in it
+2. Copy full webserver iteration seq_batch_1/* to applicationScan expected output. Remove everything to do with modelPipeline (model*, svm*)
+   Note that input is in input/sequenceBatches/seq_batch_1 but output is in expectedOutput/ (no seq batch definition; could clean this up)
+
+ 
+
+AppplicationDefined
+Same as application scan, except in appropriate directory and peptide rules file doesn't need to be copied to input.
+
+SVM_application / Postprocess -- same format as the others, no special cases to account for
+
+
+
+
+
+output cases:
+Normal output
+1. PeptidePipelineResults file_missing global error
+2. PeptidePipelineResults invalid_model global error
+3. "internal_error" -- global error with writeError if missing error codes (should only have one line but could have many "internal_error, internal_error" in it) -- can just get the first
+4. no_peptides_parsed
+output error
+feature errors:
+incorrect_template_position_in_alignment
+unexpected_pdb_code_in_alignment
+no_dssp_structure_info
+modpipe_run_info_error
+dssp_format_error
+internal_error
+(check others)
+
+
+
+handle errors:
+Global errors: includes output and global. Global is broken down into file_missing, internal_error, invalid_model. These are really all internal errors that the user
+shouldn't care about. I guess we could use them somehow but the error should have been logged and the user doesn't need to know what the error was. It is sort of nice though
+to have the keywords there just so we have an idea about what it was rather than making it 'global error'. 
+
+Regardless, the flow is:
+1. Encounter error.
+2. Create exception, give it the error keyword (keyword only relevant for global error at this point).
+3. Raise exception.
+4. Backend catches exception, writes file with error keyword.
+5. Backend writes to user log that an error occurred, maybe give some information (nothing that would give away too much)
+6. Frontend checks for error file. If exists, read keyword. Write message to screen and give link to log.
+
+Errors effects on the server
+Frontend internal error: exception message  gets printed to screen, I get an email saying "fatal error, should be fixed", but server does not shut down. Incoming job stays in incoming and must be removed before I can build again. (Sort of weird that this is the case, exception was thrown, so how was job submitted and went to incoming?)
+
+Frontend input validation error: validation error gets printed to screen, job not even submitted
+
+Backend uncaught exception (including File I/O, Sanity Error): I get email that says shutdown with fatal error, user doesn't really get anything
+
+

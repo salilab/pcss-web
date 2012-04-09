@@ -1,0 +1,18 @@
+2011-01-14 20:05:47:	 ApplicationPipeline: loading peptides
+2011-01-14 20:05:47:	 ApplicationPipeline: Loaded 936 peptides from 49 sequences with classification Application
+			
+2011-01-14 20:05:47:	 Duration of function loadPeptides: 0 minutes 0 seconds
+2011-01-14 20:05:47:	 Creating application set to be processed in this pipeline run
+2011-01-14 20:05:47:	 Duration of function createApplicationSet: 0 minutes 0 seconds
+2011-01-14 20:05:47:	 Applying model
+2011-01-14 20:05:47:	 writing peptides to SVM application file /scratch/peptide//seq_batch_1/svmApplicationSet
+2011-01-14 20:05:47:	 applying svm to application set with command /netapp/sali/peptide/bin/svm_classify_x64 /scratch/peptide//seq_batch_1/svmApplicationSet
+			 /netapp/sali/peptide/data/grbSvmModel_20100310.txt /scratch/peptide//seq_batch_1/svmScoreFile
+			
+2011-01-14 20:05:49:	 Duration of function applyModel: 0 minutes 2 seconds
+2011-01-14 20:05:49:	 Processing model application results
+2011-01-14 20:05:49:	 reading /scratch/peptide//seq_batch_1/svmScoreFile
+2011-01-14 20:05:56:	 Duration of function processResults: 0 minutes 7 seconds
+2011-01-14 20:05:56:	 Writing ApplicationPipeline results
+2011-01-14 20:05:56:	 1 sequences had no peptides parsed in the feature pipeline; writing those to output
+2011-01-14 20:05:56:	 Duration of function writeResults: 0 minutes 0 seconds

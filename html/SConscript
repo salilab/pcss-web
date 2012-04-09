@@ -1,0 +1,7 @@
+Import('env')
+
+env.InstallHTML('PCSS_Documentation.pdf', 'doc')
+
+env.InstallHTML('caspase_proteome_results.zip', 'doc')
+
+env.InstallHTML('grb_proteome_results.zip', 'doc')

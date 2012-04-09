@@ -1,0 +1,27 @@
+#keep track of file names here, eventually in config file
+
+parameters.txt: name for global job parameters and for peptide pipeline parameters.  The latter is copied to cluster
+svm_train_parameters.txt: name for svm parameters in training mode (second cluster run in job)
+
+trainingInputSequences.txt: peptide training sequences (separated by "|")  created in peptide.pm, used in preprocess.  
+     NOW HAS FASTA FORMAT, modbase|uniprot|start_sequence_classification|.... sequence on new line
+    A new file with the same name is created in each three letter directory by preprocess; has the same format.  copied to cluster
+
+peptideRulesFile.txt: direct copy of the input file the user provided in application mode
+
+inputSequences.fasta: fasta format for application mode.  Also created for training mode so the job can read the list of sequences (and maybe needed later).  used by preprocess to create three letter directories.  
+
+sequence.fasta:  fasta format in application mode for one sequence, goes into three letter directories
+
+
+$modbaseSeqId_peptide_out.txt: output file for peptide run in both modes
+
+$modbaseSeqId_svm_out.txt: output file for svm run in applciation mode
+
+peptide_results_file: parameter name that application SVM looks for (set to pipeline_user table)
+
+peptide_fasta_file: parameter name that training SVM looks for (set to inputSequences.fasta)
+
+svm_single_run:  run name for svm on cluster 
+
+modelPipelineResults_$runName.txt: results file name of model pipeline

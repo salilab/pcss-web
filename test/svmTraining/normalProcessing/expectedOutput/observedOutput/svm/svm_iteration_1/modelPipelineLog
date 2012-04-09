@@ -1,0 +1,26 @@
+2010-09-19 00:20:39:	 Loading peptides to prepare for benchmarking
+2010-09-19 00:20:39:	 BenchmarkerPipeline: Loaded 52 peptides from 43 sequences with classification positive
+2010-09-19 00:20:39:	 BenchmarkerPipeline: Loaded 372 peptides from 11 sequences with classification negative
+2010-09-19 00:20:39:	 Duration of function loadPeptides: 0 minutes 0 seconds
+2010-09-19 00:20:39 (Model):	Creating test set
+2010-09-19 00:20:39 (Model):	Benchmark statistics: 52 total positives (47 training peptides and 5 test peptides
+2010-09-19 00:20:39 (Model):	372 total negatives (47 training peptides and 5 test peptides
+2010-09-19 00:20:39 (Model):	Duration of function writeTestSet: 0 minutes 0 seconds
+2010-09-19 00:20:39 (Model):	Creating Training Set
+2010-09-19 00:20:39:	 ERROR: SvmModel method createTrainingSet Error: Calculations do not add up after compiling
+			 all benchmark sets. Observed counts: 52 positives ( training and 5 test); 372 negatives (
+			 training and 325 test)
+2010-09-19 00:20:39 (Model):	Done creating training set
+2010-09-19 00:20:39 (Model):	Duration of function writeTrainingSet: 0 minutes 0 seconds
+2010-09-19 00:20:39 (Model):	Training model
+2010-09-19 00:20:39:	 training svm with command /netapp/sali/peptide/bin/svm_learn_x64 -t 2 -g 0.01 -c 10 /scratch/peptide//svm_iteration_1/svmTrainingSet
+			 /scratch/peptide//svm_iteration_1/trainingModel
+2010-09-19 00:20:40 (Model):	Duration of function trainModel: 0 minutes 1 seconds
+2010-09-19 00:20:40 (Model):	Testing model
+2010-09-19 00:20:40:	 writing peptides to SVM application file /scratch/peptide//svm_iteration_1/svmTestSet
+2010-09-19 00:20:40:	 applying svm to application set with command /netapp/sali/peptide/bin/svm_classify_x64 /scratch/peptide//svm_iteration_1/svmTestSet
+			 /scratch/peptide//svm_iteration_1/trainingModel /scratch/peptide//svm_iteration_1/svmScoreFile
+			
+2010-09-19 00:20:40 (Model):	Duration of function trainModel: 0 minutes 0 seconds
+2010-09-19 00:20:40:	 BenchmarkerPipeline: No results will be output (reason: invalid_benchmark_ratio). Writing results
+			 file indicating this.

@@ -1,0 +1,4 @@
+2011-04-09 16:28:22,220 INFO Beginning postprocess() in server mode training and cluster state SVM
+2011-04-09 16:28:22,229 INFO Writing error output file. Keyword: training_content_error Message:
+User created model is trained on 423 peptides but LeaveOneOut benchmark results indicate 422 peptides were used in the dataset
+2011-04-09 16:28:22,230 INFO closing user log

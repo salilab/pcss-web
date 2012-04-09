@@ -1,0 +1,26 @@
+2011-04-09 16:59:36:	 Loading peptides to prepare for benchmarking
+2011-04-09 16:59:36:	 BenchmarkerPipeline: Loaded 51 peptides from 42 sequences with classification positive
+2011-04-09 16:59:36:	 BenchmarkerPipeline: Loaded 372 peptides from 11 sequences with classification negative
+2011-04-09 16:59:36:	 Duration of function loadPeptides: 0 minutes 0 seconds
+2011-04-09 16:59:36:	 BenchmarkerPipeline: running 1 iterations
+2011-04-09 16:59:36 (Model):	Creating test set
+2011-04-09 16:59:36 (Model):	Benchmark statistics: 51 total positives (46 training peptides and 5 test peptides)
+2011-04-09 16:59:36 (Model):	372 total negatives (46 training peptides and 326 test peptides)
+2011-04-09 16:59:36 (Model):	Benchmarker: count = 5
+2011-04-09 16:59:36 (Model):	Benchmarker: count = 326
+2011-04-09 16:59:36 (Model):	Duration of function writeTestSet: 0 minutes 0 seconds
+2011-04-09 16:59:36 (Model):	Creating Training Set
+2011-04-09 16:59:36 (Model):	Done creating training set
+2011-04-09 16:59:36 (Model):	Duration of function writeTrainingSet: 0 minutes 0 seconds
+2011-04-09 16:59:36 (Model):	Training model
+2011-04-09 16:59:36:	 training svm with command /netapp/sali/peptide/bin/svm_learn_x64 -t 2 -g 0.01 -c 10 /tmp/Wv581tk3xH/testing_run/svmTrainingSet
+			 /tmp/Wv581tk3xH/testing_run/trainingModel
+2011-04-09 16:59:36 (Model):	Duration of function trainModel: 0 minutes 0 seconds
+2011-04-09 16:59:36 (Model):	Testing model
+2011-04-09 16:59:36:	 writing peptides to SVM application file /tmp/Wv581tk3xH/testing_run/svmTestSet
+2011-04-09 16:59:36:	 applying svm to application set with command /netapp/sali/peptide/bin/svm_classify_x64 /tmp/Wv581tk3xH/testing_run/svmTestSet
+			 /tmp/Wv581tk3xH/testing_run/trainingModel /tmp/Wv581tk3xH/testing_run/svmScoreFile
+2011-04-09 16:59:36 (Model):	Duration of function trainModel: 0 minutes 0 seconds
+2011-04-09 16:59:36 (Model):	Processing Results
+2011-04-09 16:59:36:	 reading /tmp/Wv581tk3xH/testing_run/svmScoreFile
+2011-04-09 16:59:36 (Model):	Duration of function processResults: 0 minutes 0 seconds

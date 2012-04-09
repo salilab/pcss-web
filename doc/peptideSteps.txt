@@ -1,0 +1,120 @@
+"Lab Journal" for adding new functionality to the peptide server.
+
+1/14/2011
+
+Updating automatic creation of server test. I think the last time I was working on this, I was interrupted and was caught in the middle of developing the script
+(/modbase5/home/dbarkan/serverTesting/bin/makeNewTests.pl). I think the new policy is to have everything fully automated for test input creation, including
+every error file. So now working on that.
+
+I also cleaned up /modbase5/home/dbarkan directory a ton. Test input creation and archiving is now all in dbarkan/serverTesting (although the test is still run in peptide).
+
+1/15
+Added automatic input file generation for all application and training postprocess tests. Everything works for testing postprocess. Need to uncomment code that 
+stops two tests from running in application errors (the two that I have to manually change the files for). Now going to test other parts and see how they're doing.
+
+Also now need to uncomment code in pipeline_test.pl that blocks sequence based methods and he 'no rules' tests (which needs to be rerun somehow through the frontend).
+
+1/17
+All tests are now working, and in the process I figured out a few things that would be good to update in test input generation. In addition to numbers, decided 
+to work on those now. 
+
+The main issue is copying files from one step to the next, especially parameter files. This policy needs to be defined and consistent in makeNewTests.pl
+    --I think the policy is that the input for one step gets copied from the expected output from the previous step. The expected output for each step needs
+    to get copied from the new test job run. The only problem with this is that it necessitates changing the 'test_mode' flag at each step in the parameters file
+    (since that is set to 'no' in the live run). I think this is OK as long as there aren't other things we have to change. If the test parameter file is updated
+    to reflect the live parameter file, I think that everything else will work out.
+
+    --the exception is for some of the training steps, since we're not testing these all the way through (they would just be the same tests as for application defined),
+    then we don't have expectedOutput directories for run and pipeline steps. Therefore, just take the input files for svmTraining straight from the new test job run.
+    It's all the same anyway...
+
+Found a case where the data in modbase changed to mess up the tests. Apparently the uniprot accession P02751 used to be in uniprot_taxonomy, but isn't any more. This means
+that the log message output to '2 were missed' instead of 1. This is good because it is expected behavior but emphasizes the need for my own table of data that doesn't change.
+I emailed Ursula to see what the exact policy is.
+
+Input files:
+Input files for testing (the ones that are uploaded to the server to create new jobs) need to stay consistent across 3 places: the input directory for the tests themselves
+(~/peptide/test/frontend/testType/input/) and the locations on both the mac and the desktop which are used to run the server. I guess I could state that they are only
+run from either the desktop or the Mac but this doesn't always seem feasible. Probably should try to run from the mac at all times just in case. Added file that says this
+in relevant directory on the desktop.
+
+In working on automatic generation of error input file, it seems that some are useful to generate automatically (esp parameter files and input sequences) and some aren't
+('errorColumnInfo.txt', the input for the pipeline test that makes sure the pipeline correctly throws an error when it gets a bad column). I guess the ones that are obvious
+I will copy over automatically, and the ones that aren't I will just find out as I go along. One interesting one will be any erroneous results files that have a set layout of 
+columns -- I think that the columns won't matter in most cases.
+
+1/29
+Back at it again. 
+
+Added comments that allows us to group parameters together in the parameter file. Did that for both the global parameter file and the test parameter file (the only difference
+between the two is 'test_mode'). Also took out the parameters that were calling the perl scripts that previously did the pre and post-processing. Tested that, and it worked (after
+changing the 'expected output' parameter files in the front end to account for the ones I took out. Look a LOT nicer.
+
+Changed 'pipeline_directory' to 'cluster_pipeline_directory' -- slightly cracker induced. I think it will break most of the tests, but anything it breaks, it will destroy, so I can
+make new test input and will know right away if it's broken or not (the numbers that are hardcoded into the tests are awesome there are awesome).
+
+Changed the 'modpipe_run_name' from human_2008 to 'pcss_modpipe_runs' -- to reflect the fact that the human_2008 data is on park2, and in the pcss data directory I have all the runs
+I've done so far for PCSS. Same deal with testing as above.
+
+I added a way to write the user input to a file so we can get it later (much needed). After that I decided I had done enough to create a new test, and ran into trouble, because my 
+actual pipeline didn't work. I think it will be easier to fix the tests first if I break one while coding than it would be to create a whole new test, because with those tests
+I can see what exactly broke, which will probably need updating anyway. Otherwise I am testing new changes by running the server, which has NO guarantee of working.
+
+The disadvantage is that this can be a pain, especially with parameter files changing. Here is a handy command to update all parameters in the test directory:
+
+find . -name "parameters.txt" -exec sed -i 's/pipeline_directory/cluster_pipeline_directory/g' {} \;
+
+Here is a way to append a parameter to all param files; this makes adding them really easy (note the space and 'a' after $)
+find . -name "parameters.txt" -exec sed -i '$ a saved_input_file_name\tuserInputFile.txt' {} \;
+
+I tried updating the tests, and it worked pretty well. They are all passing now, and could be reloaded at any time (although I don't see a huge need for that right now, as long as they're
+passing). I had to comment out some tests in frontend_test.pl because they had trouble handling the new saved_input_file parameter. I think when I refactor the frontend_test.pl
+script, this will go away; this is on the list. Uncomment them then.
+
+Accidentally ran a command 
+find . -name "parameters.txt" -exec sed -i '$ a mismatch_file_name\tmismatches.fasta' {} \;
+on dbarkan home directory on modbase. It probably hit a lot of parameters files (old server testing). I don't think it is a problem because it is just a new parameter, but it should be noted.
+
+The updating the test strategy is indeed the best. So the new procedure for testing something is:
+
+1. Old test works.
+2. Add new code.
+3. Run tests to make sure expected behavior.
+4. If expected behavior, but test broken (eg, added new param line), then change tests, esp with handy commands above.
+5. Add new tests to account for any change in code, if necessary
+6. Add to script that automatically generates test input and expected output from results of live run.
+7. Rerun live runs to get new input and expected output (this doesn't have to be done for a while).
+
+
+2/19
+Finished a ton of small things. Refactored frontend test, backend tests, copied only small files back from cluster, and a lot of other small things.
+Tests are killing it, save so much time and sanity.
+
+
+3/4
+Working with upload your own model, have been the past couple weeks.
+The first thing is to run the "leaveOneOutBenchmarker" to create benchmark scores for the user to compare their application set to. This has taken a fair amount of time in testing
+but seems to be working.
+
+One big thing is that this seems like a much better benchmarker than the jackknife in general, maybe in the VERY long run, consider using this as the benchmark set. A couple ok reasons
+to keep jackknife for now (different kind of test set, comparing peptides trained with the exact same training set instead of many different training sets) but who knows.
+
+Caused some issues with the loo pipeline needing its own log file name, results file name. I hardcoded those into __init__.py for now, they should be parameterized (sort of weird though
+since that pipeline gets its own parameter file name, and need to copy parameter values from the original param file into the loo param file in the makeLooParameterFile method 
+Seems like a ton of overkill but I guess OK when I get around to parameterizing it. Don't want to do it now because I am on too much of a roll and it might take a while.
+
+running tally of changes to global peptide parameter file before going live:
+add loo_parameter_file_name param
+
+4/9
+Decided it is officially OK not to have all peptides be the same length. Here is how the 'peptide_length' parameter is set:
+training: set as the length of the longest peptide in the uploaded set
+application: upload your own model: read from the model file
+application: previously generated model: set to 8 (length of previous models)
+
+In application defined mode, it is ok to upload a peptide that is of different length than the peptides that the model was trained on (will output a warning). 
+In application scan mode, will still parse peptides of the length assigned to the model
+
+To handle this, changed SvmModel to use the peptide length as the basis for how to process peptides. If it is processing a peptide that is longer than the peptide length (eg, if the user
+trains a model on peptides of length 8 and then applies it to a peptide of length 10), then it stops calculating features at the max peptide length. Otherwise it would increment the feature number
+too high based on one type of feature, and the next feature would have overlapping feature numbers.

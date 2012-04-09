@@ -1,0 +1,134 @@
+[?1049h[?12;25h[?1h=[61;1H[?25l[7m----:---F1  [0m[39;49m[27m[7m[1m*scratch*   [0m[39;49m[27m[7m      (Fundamental)--L1--All-------------------------------------------------------------------------------------------------------------------------------------------------[0m[39;49m[27m
+[A[H[?12l[?25h[?12;25h[62d[?25lLoading disp-table...[K[H[?12l[?25h[?12;25h[62;22H[?25ldone[H[?12l[?25h[?12;25h[H[2J[62d[?25lLoading /usr/share/emacs/site-lisp/site-start.d/igrep-init.el (source)...[K[H
+[?12l[?25h[?12;25h[62;74H[?25ldone[H
+[?12l[?25h[?12;25h[62;49H[?25llang-coding-systems-init.el (source)...[H
+[?12l[?25h[?12;25h[H[2J[62d[?25lLoading encoded-kb...[K[H
+[?12l[?25h[?12;25h[62;22H[?25ldone[H
+[?12l[?25h[?12;25h[62d[K[?1l>[?12l[?25h[?1049l[39;49m[?1049h[?12;25h[?1h=[62;1H[?25lLoading /usr/share/emacs/site-lisp/site-start.d/lang-coding-systems-init.el (source)...done[K[H
+[?12l[?25h[?12;25h[62;49H[?25lphp-mode-init.el (source)...[K[H
+[?12l[?25h[?12;25h[62;77H[?25ldone[H
+[?12l[?25h[?12;25h[62;50H[?25lo-mode-init.el (source)...[K[H
+[?12l[?25h[?12;25h[62;76H[?25ldone[H
+[?12l[?25h[?12;25h[62;50H[?25lython-mode-init.el (source)...[H
+[?12l[?25h[?12;25h[62;80H[?25ldone[H
+[?12l[?25h[?12;25h[62;49H[?25lrpm-spec-mode-init.el (source)...[K[H
+[?12l[?25h[?12;25h[62;82H[?25ldone[H
+[?12l[?25h[?12;25h[62;49H[?25ltramp-init.el (source)...[K[H
+[?12l[?25h[?12;25h[62;74H[?25ldone[H
+[?12l[?25h[?12;25h[62;9H[?25lfont-lock...[K[H
+[?12l[?25h[?12;25h[62d[?25lLoading regexp-opt...[K[H
+[?12l[?25h[?12;25h[62;22H[?25ldone[H
+[?12l[?25h[?12;25h[62;9H[?25lfont-lock...done[K[H
+[?12l[?25h[?12;25h[62;9H[?25ljka-compr...[K[H
+[?12l[?25h[?12;25h[62;21H[?25ldone[H
+[?12l[?25h[?12;25h[62d[?25lFor information about the GNU Project and its goals, type C-h C-p.[H
+[?12l[?25h[?12;25h[62d[?25lFor information about the GNU Project and its goals, type C-h C-p.[K[H[7mFile Edit Options Buffers Tools Help                                                                                                                                                                 [0m[39;49m[27m
+[A
+Uniprot Accession       Classification  Peptide Sequence        Peptide Start   Peptide End     Peptide Secondary Structure Type        Peptide Accessibility Prediction        Disopred Prediction \
+[A
+    PSIPRED Prediction      Model URL       Total Models For Sequence       Models Containing Peptide       Dataset Target Start    Target End      Model Score     Dope Score      TSVMod Native Ov\
+[A
+erlap   TSVMod Method   Template Sequence Identity      Model Coverage  Loop Length     Template PDB ID Peptide Similarity To Template  Corresponding Sequence in Template      Peptide Structure Va\
+[A
+lues        Peptide Predicted Accessibility Fraction        Disopred Scores PSIPRED Scores  Alignment File Path     Sequence ID     Model ID        Protein Name    Errors[K
+Q04917  Application     GDYYRYLA        127     134     AAAAAAAA        NNNNNNNN        OOOOOOOO        LLAAAAAL        http://salilab.org/modbase/search?modelID=64d783d68c23c383c61f6555e6f4082e&d\
+[A
+isplaymode=moddetail        3       3               3       235     1.00    -1.33   0.996886        NO3.5S  77.00   0.94    Loop not counted        1qja                    2,2,2,2,2,2,2,2 0,0.0567\
+[A
+10775047259,0.0211148648648649,0.164695945945946,0.05078125,0.00422297297297297,0.0310719834282755,0.0423370025402202   0.001,0.001,0.001,0.001,0.001,0.001,0.001,0.002 0.636,0.613,0.185,0.124,0.12\
+[A
+7,0.136,0.309,0.411 /netapp/sali/peptide/data/landing/alignments/f0c/f0ca768e1872663333edabb95b42593fMGDRGEGN/alignments/58f5dee600191c11ce16b15bd18b3baf.ali       f0ca768e1872663333edabb95b42593f\
+[A
+MGDRGEGN        64d783d68c23c383c61f6555e6f4082e                no_cluster_errors[K
+Q04917  Application     LNEPLSNE        32      39      LLLLLLAA        AAAANAAA        OOOOOOOO        LLLLLLAA        http://salilab.org/modbase/search?modelID=64d783d68c23c383c61f6555e6f4082e&d\
+[A
+isplaymode=moddetail        3       3               3       235     1.00    -1.33   0.996886        NO3.5S  77.00   0.94    Loop not counted        1qja                    1,1,1,1,1,1,2,2 0.362506\
+[A
+473329881,0.598187311178248,0.56390977443609,0.456403269754768,0.108751941998964,0.431432973805855,0.410876132930514,0.488721804511278  0.084,0.129,0.261,0.253,0.157,0.146,0.089,0.117 0.803,0.907,\
+[A
+0.966,0.930,0.944,0.919,0.049,0.041 /netapp/sali/peptide/data/landing/alignments/f0c/f0ca768e1872663333edabb95b42593fMGDRGEGN/alignments/58f5dee600191c11ce16b15bd18b3baf.ali       f0ca768e18726633\
+[A
+33edabb95b42593fMGDRGEGN        64d783d68c23c383c61f6555e6f4082e                no_cluster_errors[K
+Q04917  Application     KELETVCN        90      97      AAAAAAAA        ANNNANNA        OOOOOOOO        AAAAAAAA        http://salilab.org/modbase/search?modelID=64d783d68c23c383c61f6555e6f4082e&d\
+[A
+isplaymode=moddetail        3       3               3       235     1.00    -1.33   0.996886        NO3.5S  77.00   0.94    Loop not counted        1qja                    2,2,2,2,2,2,2,2 0.602302\
+[A
+922940655,0.316863587540279,0,0.241675617615467,0.459016393442623,0.121580547112462,0,0.404833836858006 0.018,0.012,0.019,0.014,0.021,0.019,0.008,0.011 0.004,0.005,0.006,0.013,0.040,0.071,0.137,0.\
+[A
+478 /netapp/sali/peptide/data/landing/alignments/f0c/f0ca768e1872663333edabb95b42593fMGDRGEGN/alignments/58f5dee600191c11ce16b15bd18b3baf.ali       f0ca768e1872663333edabb95b42593fMGDRGEGN        \
+[A
+64d783d68c23c383c61f6555e6f4082e                no_cluster_errors[K
+Q04917  Application     ELDTLNED        206     213     LAAALLLL        NAAANAAA        OOOOOOOO        AALLLLLA        http://salilab.org/modbase/search?modelID=64d783d68c23c383c61f6555e6f4082e&d\
+[A
+isplaymode=moddetail        3       3               3       235     1.00    -1.33   0.996886        NO3.5S  77.00   0.94    Loop not counted        1qja                    1,2,2,2,1,1,1,1 0.236305\
+[A
+048335124,0.419471776281719,0.901071203528671,0.340983606557377,0.191610564474366,0.622356495468278,0.778732545649839,0.806553245116572 0.053,0.054,0.080,0.090,0.145,0.118,0.178,0.212 0.196,0.457,\
+[A
+0.507,0.704,0.894,0.897,0.468,0.525 /netapp/sali/peptide/data/landing/alignments/f0c/f0ca768e1872663333edabb95b42593fMGDRGEGN/alignments/58f5dee600191c11ce16b15bd18b3baf.ali       f0ca768e18726633\
+[A
+33edabb95b42593fMGDRGEGN        64d783d68c23c383c61f6555e6f4082e                no_cluster_errors[K
+Q04917  Application     SKVFYLKM        118     125     AAAAAAAA        NNNNNNNN        OOOOOOOO        LBBBBBBL        http://salilab.org/modbase/search?modelID=64d783d68c23c383c61f6555e6f4082e&d\
+[A
+isplaymode=moddetail        3       3               3       235     1.00    -1.33   0.996886        NO3.5S  77.00   0.94    Loop not counted        1qja                    2,2,2,2,2,2,2,2 0.069337\
+[A
+4422187981,0.0797165633303809,0,0.0897666068222621,0.0211148648648649,0.00517866390471258,0.163861824623561,0.00983284169124877 0.013,0.008,0.004,0.002,0.002,0.001,0.001,0.001 0.371,0.145,0.029,0.\
+[A
+019,0.019,0.035,0.153,0.398 /netapp/sali/peptide/data/landing/alignments/f0c/f0ca768e1872663333edabb95b42593fMGDRGEGN/alignments/58f5dee600191c11ce16b15bd18b3baf.ali       f0ca768e1872663333edabb9\
+[A
+5b42593fMGDRGEGN        64d783d68c23c383c61f6555e6f4082e                no_cluster_errors[K
+[7m-uu-:---F1  [0m[39;49m[27m[7m[1mpeptidePipelineResults.txt[0m[39;49m[27m[7m      (Text)--L1--Top------------------------------------------------------------------------------------------------------------------------------------------[0m[39;49m[27m
+[A
+Uniprot Accession       Classification  Peptide Sequence        Peptide Start   Peptide End     Peptide Secondary Structure Type        Peptide Accessibility Prediction        Disopred Prediction \
+[A
+    PSIPRED Prediction      Model URL       Total Models For Sequence       Models Containing Peptide       Dataset Target Start    Target End      Model Score     Dope Score      TSVMod Native Ov\
+[A
+erlap   TSVMod Method   Template Sequence Identity      Model Coverage  Loop Length     Template PDB ID Peptide Similarity To Template  Corresponding Sequence in Template      Peptide Structure Va\
+[A
+lues        Peptide Predicted Accessibility Fraction        Disopred Scores PSIPRED Scores  Alignment File Path     Sequence ID     Model ID        Protein Name    Errors[K
+Q04917  Application     GDYYRYLA        127     134     AAAAAAAA        NNNNNNNN        OOOOOOOO        LLAAAAAL        http://salilab.org/modbase/search?modelID=64d783d68c23c383c61f6555e6f4082e&d\
+[A
+isplaymode=moddetail        3       3               3       235     1.00    -1.33   0.996886        NO3.5S  77.00   0.94    Loop not counted        1qja                    2,2,2,2,2,2,2,2 0,0.0567\
+[A
+10775047259,0.0211148648648649,0.164695945945946,0.05078125,0.00422297297297297,0.0310719834282755,0.0423370025402202   0.001,0.001,0.001,0.001,0.001,0.001,0.001,0.002 0.636,0.613,0.185,0.124,0.12\
+[A
+7,0.136,0.309,0.411 /netapp/sali/peptide/data/landing/alignments/f0c/f0ca768e1872663333edabb95b42593fMGDRGEGN/alignments/58f5dee600191c11ce16b15bd18b3baf.ali       f0ca768e1872663333edabb95b42593f\
+[A
+MGDRGEGN        64d783d68c23c383c61f6555e6f4082e        14-3-3 protein eta; Protein AS1;        no_cluster_errors[K
+Q04917  Application     LNEPLSNE        32      39      LLLLLLAA        AAAANAAA        OOOOOOOO        LLLLLLAA        http://salilab.org/modbase/search?modelID=64d783d68c23c383c61f6555e6f4082e&d\
+[A
+isplaymode=moddetail        3       3               3       235     1.00    -1.33   0.996886        NO3.5S  77.00   0.94    Loop not counted        1qja                    1,1,1,1,1,1,2,2 0.362506\
+[A
+473329881,0.598187311178248,0.56390977443609,0.456403269754768,0.108751941998964,0.431432973805855,0.410876132930514,0.488721804511278  0.084,0.129,0.261,0.253,0.157,0.146,0.089,0.117 0.803,0.907,\
+[A
+0.966,0.930,0.944,0.919,0.049,0.041 /netapp/sali/peptide/data/landing/alignments/f0c/f0ca768e1872663333edabb95b42593fMGDRGEGN/alignments/58f5dee600191c11ce16b15bd18b3baf.ali       f0ca768e18726633\
+[A
+33edabb95b42593fMGDRGEGN        64d783d68c23c383c61f6555e6f4082e        14-3-3 protein eta; Protein AS1;        no_cluster_errors[K
+Q04917  Application     KELETVCN        90      97      AAAAAAAA        ANNNANNA        OOOOOOOO        AAAAAAAA        http://salilab.org/modbase/search?modelID=64d783d68c23c383c61f6555e6f4082e&d\
+[A
+isplaymode=moddetail        3       3               3       235     1.00    -1.33   0.996886        NO3.5S  77.00   0.94    Loop not counted        1qja                    2,2,2,2,2,2,2,2 0.602302\
+[A
+922940655,0.316863587540279,0,0.241675617615467,0.459016393442623,0.121580547112462,0,0.404833836858006 0.018,0.012,0.019,0.014,0.021,0.019,0.008,0.011 0.004,0.005,0.006,0.013,0.040,0.071,0.137,0.\
+[A
+478 /netapp/sali/peptide/data/landing/alignments/f0c/f0ca768e1872663333edabb95b42593fMGDRGEGN/alignments/58f5dee600191c11ce16b15bd18b3baf.ali       f0ca768e1872663333edabb95b42593fMGDRGEGN        \
+[A
+64d783d68c23c383c61f6555e6f4082e        14-3-3 protein eta; Protein AS1;        no_cluster_errors[K
+Q04917  Application     ELDTLNED        206     213     LAAALLLL        NAAANAAA        OOOOOOOO        AALLLLLA        http://salilab.org/modbase/search?modelID=64d783d68c23c383c61f6555e6f4082e&d\
+[A
+isplaymode=moddetail        3       3               3       235     1.00    -1.33   0.996886        NO3.5S  77.00   0.94    Loop not counted        1qja                    1,2,2,2,1,1,1,1 0.236305\
+[A
+048335124,0.419471776281719,0.901071203528671,0.340983606557377,0.191610564474366,0.622356495468278,0.778732545649839,0.806553245116572 0.053,0.054,0.080,0.090,0.145,0.118,0.178,0.212 0.196,0.457,\
+[A
+0.507,0.704,0.894,0.897,0.468,0.525 /netapp/sali/peptide/data/landing/alignments/f0c/f0ca768e1872663333edabb95b42593fMGDRGEGN/alignments/58f5dee600191c11ce16b15bd18b3baf.ali       f0ca768e18726633\
+[A
+33edabb95b42593fMGDRGEGN        64d783d68c23c383c61f6555e6f4082e        14-3-3 protein eta; Protein AS1;        no_cluster_errors[K
+Q04917  Application     SKVFYLKM        118     125     AAAAAAAA        NNNNNNNN        OOOOOOOO        LBBBBBBL        http://salilab.org/modbase/search?modelID=64d783d68c23c383c61f6555e6f4082e&d\
+[A
+isplaymode=moddetail        3       3               3       235     1.00    -1.33   0.996886        NO3.5S  77.00   0.94    Loop not counted        1qja                    2,2,2,2,2,2,2,2 0.069337\
+[A
+4422187981,0.0797165633303809,0,0.0897666068222621,0.0211148648648649,0.00517866390471258,0.163861824623561,0.00983284169124877 0.013,0.008,0.004,0.002,0.002,0.001,0.001,0.001 0.371,0.145,0.029,0.\
+[A
+019,0.019,0.035,0.153,0.398 /netapp/sali/peptide/data/landing/alignments/f0c/f0ca768e1872663333edabb95b42593fMGDRGEGN/alignments/58f5dee600191c11ce16b15bd18b3baf.ali       f0ca768e1872663333edabb9\
+[A
+5b42593fMGDRGEGN        64d783d68c23c383c61f6555e6f4082e        14-3-3 protein eta; Protein AS1;        no_cluster_errors[K
+[7m-uu-:---F1  [0m[39;49m[27m[7m[1mpeptidePipelineResults.txt<2>[0m[39;49m[27m[7m      (Text)--L1--Top---------------------------------------------------------------------------------------------------------------------------------------[0m[39;49m[27m
+[A[32d[?12l[?25h[?12;25h[62d[K[32d[62d[?25l(No files need saving)[32;1H[?12l[?25h[?12;25h[62d[K[?1l>[?12l[?25h[?1049l[39;49m

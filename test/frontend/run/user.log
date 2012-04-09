@@ -1,0 +1,12 @@
+2011-02-02 21:26:43:	 Starting run of peptide server in training mode. Options set for this run:
+2011-02-02 21:26:43:	 job_name:	peptide_server_test
+2011-02-02 21:26:43:	 email:	dbarkan@salilab.org
+2011-02-02 21:26:43:	 best_model_criteria:	nativeOverlap
+2011-02-02 21:26:43:	 server_mode:	training
+2011-02-02 21:26:43:	 error_handling:	I
+2011-02-02 21:26:43:	 test_set_percentage:	0.1
+2011-02-02 21:26:43:	 iteration_count:	10
+2011-02-02 21:26:43:	 peptide_length:	8
+
+2011-02-02 21:26:43:	 Retrieving amino acid residue sequences from ModBase for 1 provided UniProt accessions
+2011-02-02 21:26:43:	 Uniprot accession BARKAN was not found in ModBase

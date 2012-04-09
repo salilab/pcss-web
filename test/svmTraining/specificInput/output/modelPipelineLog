@@ -1,0 +1,23 @@
+2012-01-03 16:50:34:	 Loading peptides to prepare for benchmarking
+2012-01-03 16:50:35:	 BenchmarkerPipeline: Loaded 336 peptides from 257 sequences with classification positive
+2012-01-03 16:50:35:	 BenchmarkerPipeline: Loaded 390 peptides from 179 sequences with classification negative
+2012-01-03 16:50:35:	 Duration of function loadPeptides: 0 minutes 1 seconds
+2012-01-03 16:50:35:	 BenchmarkerPipeline: running 1 iterations
+2012-01-03 16:50:35 (Model):	Creating test set
+2012-01-03 16:50:35 (Model):	Benchmark statistics: 336 total positives (303 training peptides and 33 test peptides)
+2012-01-03 16:50:35 (Model):	390 total negatives (303 training peptides and 87 test peptides)
+2012-01-03 16:50:35 (Model):	Benchmarker: count = 33
+2012-01-03 16:50:35 (Model):	Benchmarker: count = 87
+2012-01-03 16:50:35 (Model):	Duration of function writeTestSet: 0 minutes 0 seconds
+2012-01-03 16:50:35 (Model):	Creating Training Set
+2012-01-03 16:50:35 (Model):	examined 331 peptides in the pool; added 298 to remaining peptide set and excluded 33
+2012-01-03 16:50:35 (Model):	examined 390 peptides in the pool; added 303 to remaining peptide set and excluded 87
+2012-01-03 16:50:35:	 ERROR: SvmModel method createTrainingSet Error: Calculations do not add up after compiling
+			 all benchmark sets. Observed counts: 336 positives (298 training and 33 test); 390 negatives
+			 (303 training and 87 test)
+2012-01-03 16:50:35 (Model):	Done creating training set
+2012-01-03 16:50:35 (Model):	Duration of function writeTrainingSet: 0 minutes 0 seconds
+2012-01-03 16:50:35 (Model):	Training model
+2012-01-03 16:50:35 (Model):	Testing model
+2012-01-03 16:50:35:	 BenchmarkerPipeline: No results will be output (reason: invalid_benchmark_ratio). Writing results
+			 file indicating this.

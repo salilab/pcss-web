@@ -1,0 +1,33 @@
+2011-04-09 17:01:29:	 Loading peptides to prepare for benchmarking
+2011-04-09 17:01:29:	 BenchmarkerPipeline: Loaded 49 peptides from 40 sequences with classification positive
+2011-04-09 17:01:29:	 BenchmarkerPipeline: Loaded 329 peptides from 10 sequences with classification negative
+2011-04-09 17:01:29:	 Duration of function loadPeptides: 0 minutes 0 seconds
+2011-04-09 17:01:29:	 BenchmarkerPipeline: running 1 iterations
+2011-04-09 17:01:29 (Model):	Creating test set
+2011-04-09 17:01:29 (Model):	Benchmark statistics: 49 total positives (45 training peptides and 4 test peptides)
+2011-04-09 17:01:29 (Model):	329 total negatives (45 training peptides and 284 test peptides)
+2011-04-09 17:01:29 (Model):	Benchmarker: count = 4
+2011-04-09 17:01:29 (Model):	Benchmarker: count = 284
+2011-04-09 17:01:29 (Model):	Duration of function writeTestSet: 0 minutes 0 seconds
+2011-04-09 17:01:29 (Model):	Creating Training Set
+2011-04-09 17:01:29 (Model):	Done creating training set
+2011-04-09 17:01:29 (Model):	Duration of function writeTrainingSet: 0 minutes 0 seconds
+2011-04-09 17:01:29 (Model):	Training model
+2011-04-09 17:01:29:	 training svm with command /netapp/sali/peptide/bin/svm_learn_x64 -t 2 -g 0.01 -c 10 /tmp/Dfma7jBxbp/testing_run/svmTrainingSet
+			 /tmp/Dfma7jBxbp/testing_run/trainingModel
+2011-04-09 17:01:29 (Model):	Duration of function trainModel: 0 minutes 0 seconds
+2011-04-09 17:01:29 (Model):	Testing model
+2011-04-09 17:01:29:	 writing peptides to SVM application file /tmp/Dfma7jBxbp/testing_run/svmTestSet
+2011-04-09 17:01:29:	 applying svm to application set with command /netapp/sali/peptide/bin/svm_classify_x64 /tmp/Dfma7jBxbp/testing_run/svmTestSet
+			 /tmp/Dfma7jBxbp/testing_run/trainingModel /tmp/Dfma7jBxbp/testing_run//fake/fakeScoreFile
+			
+2011-04-09 17:01:29:	 ERROR: SvmModel method testSvm Error: SVM application command /netapp/sali/peptide/bin/svm_classify_x64
+			 /tmp/Dfma7jBxbp/testing_run/svmTestSet /tmp/Dfma7jBxbp/testing_run/trainingModel /tmp/Dfma7jBxbp/testing_run//fake/fakeScoreFile
+			 exited with non-zero exit code (256)
+2011-04-09 17:01:29:	 output of SVM cmd: Reading model...OK. (66 support vectors read)
+Classifying test examples../tmp/Dfma7jBxbp/testing_run//fake/fakeScoreFile:
+			 No such file or directory
+
+2011-04-09 17:01:29 (Model):	Duration of function trainModel: 0 minutes 0 seconds
+2011-04-09 17:01:29:	 BenchmarkerPipeline: No results will be output (reason: svm_failure). Writing results file
+			 indicating this.

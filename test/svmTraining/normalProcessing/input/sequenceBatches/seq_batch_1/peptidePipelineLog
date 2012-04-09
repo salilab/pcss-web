@@ -1,0 +1,26 @@
+2011-01-14 20:02:58:	 Pipeline Training Mode; reading input file to retrieve user-specified peptides
+2011-01-14 20:02:58:	 Done loading peptides; loaded 401 peptides from 50 sequences
+2011-01-14 20:02:58:	 Duration of function readPeptideInputFile: 0 minutes 0 seconds
+2011-01-14 20:02:58:	 Getting best models for sequences
+2011-01-14 20:03:59:	 Done getting best models. Processed 49 sequences, found 223 total models in 29 unique sequences,
+			 461 models containing at least one peptide,  and 179 peptides had a best-scoring model according
+			 to criteria nativeOverlap
+2011-01-14 20:03:59:	 Duration of function getBestModels: 1 minutes 1 seconds
+2011-01-14 20:03:59:	 Parsing results of DSSP runs to get structure information from structures and models
+2011-01-14 20:04:02:	 Done loading DSSP results. Processed 49 sequences, 378 peptides, and 179 peptides found in
+			 a model for which a DSSP file was generated. 0 peptides were in DSSP files which were not
+			 correctly processed.
+2011-01-14 20:04:02:	 Duration of function parseDsspResults: 0 minutes 3 seconds
+2011-01-14 20:04:02:	 Running Disopred to get sequence-based disorder predictions
+2011-01-14 20:04:05:	 Done running Disopred. Processed 49 sequences containing 378 peptides. Encountered 0 errors
+			 during this run
+2011-01-14 20:04:05:	 Duration of function runDisopred: 0 minutes 3 seconds
+2011-01-14 20:04:05:	 Running Psipred to get sequence-based secondary structure information
+2011-01-14 20:04:08:	 Done running PsiPred. Processed 49 sequences containing 378 peptides. Encountered 0 errors
+			 during this run
+2011-01-14 20:04:08:	 Duration of function runPsipred: 0 minutes 3 seconds
+2011-01-14 20:04:08:	 Writing results
+2011-01-14 20:04:08:	 Running writeUserResults
+2011-01-14 20:04:08:	 Done writing results. Wrote lines for 49 sequences containing 378 peptides. 0 peptides had
+			 at least one error
+2011-01-14 20:04:08:	 Duration of function writeUserResults: 0 minutes 0 seconds

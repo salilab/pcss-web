@@ -1,0 +1,111 @@
+2011-01-14 20:02:26:	 Starting run of peptide server in training mode. Options set for this run:
+2011-01-14 20:02:26:	 job_name:			nextNewTrainingTest
+2011-01-14 20:02:26:	 email:			dbarkan@salilab.org
+2011-01-14 20:02:26:	 best_model_criteria:			nativeOverlap
+2011-01-14 20:02:26:	 server_mode:			training
+2011-01-14 20:02:26:	 error_handling:			I
+2011-01-14 20:02:26:	 test_set_percentage:			0.1
+2011-01-14 20:02:26:	 iteration_count:			10
+2011-01-14 20:02:26:	 Validated peptide set input file format
+2011-01-14 20:02:26:	 peptide_length:			8
+2011-01-14 20:02:26:	 Retrieving amino acid residue sequences from ModBase for 56 provided UniProt accessions
+2011-01-14 20:02:27:	 Uniprot accession BARKAN was not found in ModBase
+2011-01-14 20:02:28:	 Uniprot accession P02751 was not found in ModBase
+2011-01-14 20:02:28:	 Searched ModBase for 56 Uniprot accessions.  54 were found and 2 were missed. The ones that
+			 were not found are noted in this log file
+
+2011-01-14 20:02:28:	 The following mismatches were found between sequences read from the input file and what is
+			 stored in modbase.
+2011-01-14 20:02:28:	 Note that "[overrun - ##]" means that the specified start position, plus the length of the
+			 peptide, was greater than the length of the protein found in modbase, and thus no peptide
+			 was found at this position (here, ## is the length of the protein in ModBase, for reference)
+			
+2011-01-14 20:02:28:	 Accession: Q76N46	Start Position: 145	Input: MDEDELEM	Modbase: DEDELEML
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 660	Input: YMTDGMLL	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 428	Input: KVDDEEDE	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 455	Input: QSMDMSPI	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 336	Input: KDVDQETG	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 1026	Input: ALADQKKA	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 244	Input: RNLDRWRD	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 433	Input: EDEDLEIE	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 869	Input: TGIDQLVV	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 647	Input: RFEDCTSP	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 1020	Input: RPKDKQAL	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 161	Input: KQRDAEHR	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 334	Input: SMKDVDQE	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 512	Input: PLPDAEGR	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 182	Input: RNRDRDRD	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 194	Input: RDRDHKRR	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 752	Input: PETDYLDA	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 231	Input: PPKDRKDR	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 846	Input: LTIDGIYY	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 415	Input: EFPDFDEE	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 718	Input: ATLDAVKF	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 1182	Input: KVSDPTKL	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 342	Input: TGEDLNPN	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 936	Input: GINDLLSF	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 263	Input: TIGDIYNG	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 670	Input: CLIDPDLT	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 692	Input: IHTDVLFG	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 672	Input: IDPDLTQY	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 707	Input: KRQDMKLI	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 508	Input: HWVDPLPD	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 123	Input: CQPDNPSV	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 853	Input: YVVDPGFV	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 1089	Input: HKLDVVSC	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 417	Input: PDFDEETG	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 431	Input: DEEDEDLE	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 784	Input: EEIDTACE	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 393	Input: RISDPEKW	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 1126	Input: TLIDQQVV	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 1116	Input: AKKDPQEG	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 823	Input: RIFDPAPP	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 365	Input: RNPDRPTH	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 1084	Input: GIMDRHKL	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 1074	Input: RAQDIRKQ	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 682	Input: IMLDEAHE	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 427	Input: PKVDDEED	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 166	Input: EHRDRTKK	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 944	Input: DFMDAPPM	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 186	Input: RDRDRERN	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 907	Input: AYRDEMLT	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 380	Input: EVEDDSLE	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 965	Input: GALDDEGL	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 966	Input: ALDDEGLL	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 252	Input: KHVDRPPP	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 466	Input: KNPDGSLS	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 134	Input: LDEDDVKV	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 192	Input: RNRDRDHK	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 381	Input: VEDDSLER	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 800	Input: LGPDVPEL	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 236	Input: KDRDKYGE	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 531	Input: MPNDIPEW	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 135	Input: DEDDVKVA	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 184	Input: RDRDRDRE	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 308	Input: NVADVVSK	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 178	Input: RSRDRNRD	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 496	Input: AEMDSIPM	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 772	Input: PPGDILVF	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 1038	Input: TEGDHLTL	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 234	Input: DRKDRDKY	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 755	Input: DYLDASLI	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 941	Input: LSFDFMDA	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 1166	Input: TTIDPRWL	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 577	Input: AVHDNQIL	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 248	Input: RWRDKHVD	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: Q05CV4	Start Position: 132	Input: TMLDEDDV	Modbase: [overrun -- 119]
+2011-01-14 20:02:28:	 Accession: O76094	Start Position: 571	Input: VTPDPERW	Modbase: TPDPERWL
+
+2011-01-14 20:02:28:	 None of the provided peptides for Uniprot Accession O76094 in the input file was found in the
+			 specified position in ModBase.  This protein will not be considered in any analysis
+2011-01-14 20:02:28:	 Validated input peptide file against modbase sequences.  Found 54 accessions in ModBase. These
+			 contained 521 peptides (52 positive peptides and 469 negative peptides.) 75 of these peptides,
+			 in 3 unique proteins, were not found in the expected locations in ModBase sequences. These
+			 have been noted in the log file. 446 peptides were found in the expected locations in ModBase
+			 sequences (51 positive peptides and 395 negative peptides)
+2011-01-14 20:02:28:	 Finished processing user input for job name nextNewTrainingTest; results will be found at http://modbase.compbio.ucsf.edu/peptide/results.cgi/nextNewTrainingTest?passwd=OMQqLMKyEo
+			
+2011-01-14 20:04:27,236: Completed applying model to input sequences; returning to frontend.
+		Processed 53 total sequences. 53 completed normally.
+		No errors occurred calculating individual structure features.
+		All sequences that were found in ModBase were accounted for and evaluated correctly.

@@ -1,0 +1,395 @@
+2010-09-19 00:19:35:	 Starting run of peptide server in training mode. Options set for this run:
+2010-09-19 00:19:35:	 job_name:			biggerTraining
+2010-09-19 00:19:35:	 email:			dbarkan@salilab.org
+2010-09-19 00:19:35:	 best_model_criteria:			nativeOverlap
+2010-09-19 00:19:35:	 server_mode:			training
+2010-09-19 00:19:35:	 error_handling:			I
+2010-09-19 00:19:35:	 test_set_percentage:			.1
+2010-09-19 00:19:35:	 iteration_count:			10
+2010-09-19 00:19:35:	 Validated peptide set input file format
+2010-09-19 00:19:35:	 peptide_length:			8
+2010-09-19 00:19:35:	 Retrieving amino acid residue sequences from ModBase for 56 provided UniProt accessions
+2010-09-19 00:19:35:	 Uniprot accession BARKAN was not found in ModBase
+2010-09-19 00:19:35:	 Searched ModBase for 56 Uniprot accessions.  55 were found and 1 were missed. The ones that
+			 were not found are noted in this log file
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession O76094,
+			 peptide start position 571, the sequence included in the input file was VTPDPERW; in ModBase
+			 the peptide found at this start position was:  TPDPERWL
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 660, the sequence included in the input file was YMTDGMLL; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (660), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 428, the sequence included in the input file was KVDDEEDE; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (428), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 455, the sequence included in the input file was QSMDMSPI; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (455), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 336, the sequence included in the input file was KDVDQETG; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (336), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 1026, the sequence included in the input file was ALADQKKA; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (1026), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 244, the sequence included in the input file was RNLDRWRD; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (244), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 433, the sequence included in the input file was EDEDLEIE; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (433), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 869, the sequence included in the input file was TGIDQLVV; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (869), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 647, the sequence included in the input file was RFEDCTSP; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (647), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 1020, the sequence included in the input file was RPKDKQAL; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (1020), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 161, the sequence included in the input file was KQRDAEHR; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (161), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 334, the sequence included in the input file was SMKDVDQE; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (334), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 512, the sequence included in the input file was PLPDAEGR; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (512), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 182, the sequence included in the input file was RNRDRDRD; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (182), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 194, the sequence included in the input file was RDRDHKRR; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (194), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 752, the sequence included in the input file was PETDYLDA; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (752), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 231, the sequence included in the input file was PPKDRKDR; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (231), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 846, the sequence included in the input file was LTIDGIYY; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (846), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 415, the sequence included in the input file was EFPDFDEE; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (415), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 718, the sequence included in the input file was ATLDAVKF; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (718), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 1182, the sequence included in the input file was KVSDPTKL; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (1182), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 342, the sequence included in the input file was TGEDLNPN; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (342), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 936, the sequence included in the input file was GINDLLSF; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (936), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 263, the sequence included in the input file was TIGDIYNG; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (263), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 670, the sequence included in the input file was CLIDPDLT; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (670), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 692, the sequence included in the input file was IHTDVLFG; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (692), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 672, the sequence included in the input file was IDPDLTQY; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (672), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 707, the sequence included in the input file was KRQDMKLI; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (707), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 508, the sequence included in the input file was HWVDPLPD; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (508), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 123, the sequence included in the input file was CQPDNPSV; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (123), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 853, the sequence included in the input file was YVVDPGFV; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (853), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 1089, the sequence included in the input file was HKLDVVSC; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (1089), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 417, the sequence included in the input file was PDFDEETG; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (417), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 431, the sequence included in the input file was DEEDEDLE; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (431), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 784, the sequence included in the input file was EEIDTACE; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (784), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 1126, the sequence included in the input file was TLIDQQVV; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (1126), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 393, the sequence included in the input file was RISDPEKW; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (393), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 823, the sequence included in the input file was RIFDPAPP; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (823), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 1116, the sequence included in the input file was AKKDPQEG; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (1116), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 365, the sequence included in the input file was RNPDRPTH; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (365), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 1084, the sequence included in the input file was GIMDRHKL; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (1084), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 1074, the sequence included in the input file was RAQDIRKQ; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (1074), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 682, the sequence included in the input file was IMLDEAHE; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (682), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 427, the sequence included in the input file was PKVDDEED; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (427), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 166, the sequence included in the input file was EHRDRTKK; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (166), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 944, the sequence included in the input file was DFMDAPPM; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (944), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 186, the sequence included in the input file was RDRDRERN; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (186), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 907, the sequence included in the input file was AYRDEMLT; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (907), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 380, the sequence included in the input file was EVEDDSLE; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (380), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 965, the sequence included in the input file was GALDDEGL; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (965), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 966, the sequence included in the input file was ALDDEGLL; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (966), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 252, the sequence included in the input file was KHVDRPPP; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (252), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 466, the sequence included in the input file was KNPDGSLS; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (466), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 134, the sequence included in the input file was LDEDDVKV; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (134), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 192, the sequence included in the input file was RNRDRDHK; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (192), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 381, the sequence included in the input file was VEDDSLER; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (381), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 800, the sequence included in the input file was LGPDVPEL; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (800), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 236, the sequence included in the input file was KDRDKYGE; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (236), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 531, the sequence included in the input file was MPNDIPEW; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (531), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 135, the sequence included in the input file was DEDDVKVA; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (135), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 184, the sequence included in the input file was RDRDRDRE; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (184), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 308, the sequence included in the input file was NVADVVSK; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (308), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 178, the sequence included in the input file was RSRDRNRD; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (178), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 496, the sequence included in the input file was AEMDSIPM; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (496), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 772, the sequence included in the input file was PPGDILVF; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (772), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 1038, the sequence included in the input file was TEGDHLTL; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (1038), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 234, the sequence included in the input file was DRKDRDKY; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (234), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 755, the sequence included in the input file was DYLDASLI; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (755), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 941, the sequence included in the input file was LSFDFMDA; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (941), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 1166, the sequence included in the input file was TTIDPRWL; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (1166), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 577, the sequence included in the input file was AVHDNQIL; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (577), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 248, the sequence included in the input file was RWRDKHVD; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (248), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q05CV4,
+			 peptide start position 132, the sequence included in the input file was TMLDEDDV; in ModBase
+			 the peptide found at this start position was:  (Nothing -- the specified peptide start position
+			 (132), plus the length of the peptide itself (8), was greater than the length of the protein
+			 (119)
+2010-09-19 00:19:35:	 Found a mismatch in submitted sequence read from input file. For uniprot accession Q76N46,
+			 peptide start position 145, the sequence included in the input file was MDEDELEM; in ModBase
+			 the peptide found at this start position was:  DEDELEML
+2010-09-19 00:19:35:	 None of the provided peptides for Uniprot Accession O76094 in the input file was found in the
+			 specified position in ModBase.  This protein will not be considered in any analysis
+2010-09-19 00:19:35:	 Validated input peptide file against modbase sequences.  Found 55 accessions in ModBase. These
+			 contained 522 peptides (53 positive peptides and 469 negative peptides.) 75 of these peptides,
+			 in 3 unique proteins, were not found in the expected locations in ModBase sequences. These
+			 have been noted in the log file. 447 peptides were found in the expected locations in ModBase
+			 sequences (52 positive peptides and 395 negative peptides)
+2010-09-19 00:19:35:	 Finished processing user input for job name biggerTraining_103790; results will be found at
+			 http://modbase.compbio.ucsf.edu/peptide/results.cgi/biggerTraining_103790?passwd=TpXLX9VLE0
+			

@@ -1,0 +1,227 @@
+Update dynamic test generation
+	Frontent refactor	
+	training run (peptide mode)
+	training run (svm mode)
+	training postprocess (leaveoneout)
+
+Other:
+	make sure commented out tests work now (backend)
+	frontend: optional email, add '>' to qr to make sure fasta is written in mismatches
+	other errors mentioned in peptide.pm in processUserModel
+
+	document upload your own model frontend
+
+
+
+
+tests:
+frontend: validate model specified error
+backend: using_custom_model set correctly (this should happen in frontend but I guess fine to validate it here)
+backend: model file locations set correctly (everything in processCustomModel())
+backend: custom model file (with length, etc.) is output correctly
+
+
+documentation: note that it is highly recommended to have length be the same (maybe have warning in code)
+
+
+
+
+
+
+
+
+BIG THINGS
+Check to see if I am only including structure info in the SVM if TSVMod score is > 0.8, or whatever cutoff I want -- should be the case if not
+
+All Backend Documentation, refactoring, cleaning, logging
+after testing checkPeptideJobCompleted: make sure svmTraining does all the checks that the frontend does for training and test set ratios (and positives and negatives). If the 
+	feature step of the svm pipeline has a problem with missing sequences, it could affect these ratios. On this note, see what happens in peptidePipelineResults to 
+	cause a missing sequence in the backend -- what if sequence is there and peptides aren't? how would svmTraining handle that?
+	if there is a sequence change in Uniprot, then the precalculated sequence based secondary structure prediction methods 
+	   won't work.  if there is a mismatch, the first thing we should do in the Peptide Pipeline is recalculate. Think this is true for models too. 
+Redo Error handling system, or at least have quick way to add new errors
+
+list of pre-calculated data that needs to be updated as it becomes available (so far: new human model table, new dssp results)
+what needs to be changed if we add new models to human_model_table (or replace it)
+All "TODOs"	
+
+clean all directories and files, servers, etc. maybe have list of where all the data sits that was used in different aspects of project       (ms vs server, etc.)
+Allow inputSequences.fasta download (will have to convert back to base-1 when I do this)
+Consider allowing user to specify max FPR they want to return for peptides in rules file mode?
+make sure average critical fpr, tpr is reported in results (or however I do it) -- see if taking the average of all critical tps / critical fps is the same as doing it strictly speaking from the final fprates at each tp, and which is a better one to use
+	also, log this in log file
+Link To Grbah and maintain? -- have policy how to maintain grbah and also how to update the models
+Output original fasta sequence file and positions of all peptides, if job completed, to show user where any mismatches might have bee
+review logs that Ursula sent
+Have sys admins make table with fake data so things don't change to mismatch expected output
+Right now training on positive:negative 1 to 1. Consider having more negatives allowed, or even user choose -- if there are a small number of positives, then there'll be
+	a small number of negatives too, and that doesn't seem like it would help. The problem is the validation might be messy.
+Allow to train on mass spec peptides of different length
+
+Handle long disopred, psipred runs (changed the cluster run time to 72 hours so this might be enough)
+
+xx_have STDDEV for FPR and TPR -- don't think TPR should have STDDEV, it is constant
+xx_consider not copying svm model, test set, etc (maybe only copy for one iteration) -- takes up a lot of space
+xx_New Frontend Test -- when testing, numbers are important. If the test breaks due to number difference, should see why.
+	Think an old note was to have defined datasets and numbers in log files and check to make sure they are the same from test to test, that is probably a good idea
+
+
+
+SMALL THINGS
+
+make sure CreationPipeline is using every peptide -- output says there are 424 peptides that processed successfully, but there are 423 'training documents' in the SVM model 
+(although this might be expected depending on how SVM does its thing)
+
+Backend Logging -- esp processSvmResults, write to user log (check what's in there now) -- also report on total seqs / peptides processed regardless of error
+
+more training user log notes, esp if there is a problem, make sure the log file says what the problem is (eg when induced file missing error in processSvmResults, 
+	there was nothing in the user log report about it)
+take out 'peptide_length' log message after putting in peptides of different sizes in small peptide mode. 
+	also, update test if necessary to not test for errors if peptides are of different lengths -- will need to have policy
+	Also, make sure the log name for "svm_model_name" in application mode makes sense after allowing 'update your own model'
+
+see if there is log file for creation class pipeline, and if so, copy it over (if not should make one)
+
+if don't find model file or other results file, send email automatically
+better formatting of result page
+have ApplicationPipeline validate error codes the same way PeptidePipeline does
+Update some DSSP error messages to print the peptide start position in the original peptide
+       (currently printing the erroneous peptide as it exists in the DSSP file, which may have been affected by the offset) -- same with psipred, disopred
+Make sure if there is a feature error, the field for that feature is empty
+Have error check that makes sure peptides aren't at position 0 doesn't begin with 0
+Have a check for application mode, user specified peptides, that the peptide length provided by the user matches up to that for the model
+check to make sure not plain text
+
+currently if there is an error in column names, getResultField will output a long message for each peptide in the input file (eg, see output file for svmApplication test
+	script for testing this error.) Maybe if it happens once, then bail and output just once?
+maybe try submission from different platforms to make sure characters always get stripped
+
+have error check to make sure the same peptide is not added twice (esp once positive and once negative)
+training tests -- if have error, is expected behavior to have the first row TP Count, FP Count, etc, and the second row the name of the error? I guess JackknifeBenchmarker
+doesn't have too many errors (and none are in official test). Just make sure postprocess code handles that format (looks to be the case)
+
+consider test in LeaveOneOutBenchmarker for incrementing counts in each line (would be different than other incrementing though)	
+
+in postprocess test, add stats test for 'feature error' counts
+change 'applicationFinalResults' file name in training mode to 'peptide features' or something
+
+stats: in my phospho script, I had these stats:  phosphoPositive_911050
+frontend
+2011-04-09 20:09:24:	 Number of user-specified peptides supplied in modbase proteins: 19721
+2011-04-09 20:09:24:	 User-specified peptides matching modbase protein sequences: 19711
+2011-04-09 20:09:24:	 Peptides not matching the modbase sequence at the user-supplied position: 10
+
+backend
+2011-04-09 20:11:53: Number of peptides processed without errors: 19733
+
+looks like accounting issue, the backend has more peptides than the frontend had to start with
+
+
+
+xx_make sure that training mode looks for postprocessErrors to see if something completed or not (currently doesn't!!) -- done, needs testing
+xx)parameterize looModelLogFileName, looModelResultsFileName (write now appear twice each in backend.py)
+
+
+xx_change frontend_test.pl to have same directory structure as the other tests (right now doesn't have observed output)
+xx_uncomment the commented out tests that are in frontend_test.pl after refactoring it
+xx_have a flag in testing for long and short tests (allows us to eliminate the ones that take too long)
+xx_backend refactoring, try to clean it up a little, too many data structures flying around
+
+xx_make new GrB model - right now it says 'userCreatedSvmModel' which is NOT a good name. Actually, changing it now to 'grbSvmModel' but still suspect -- 
+	update, didn't make it, but should have policy for how to update these things
+xx_log parameters that are of interest to the user	
+xx_Check what "modpipe_run_name" param does -- set to human_2008, does this exclude anything in other runs?
+xx_change 'pipeline directory' to 'cluster_pipeline_directory' (param name)
+xx_allow comments in param file names
+xx_change all strings to be %s instead of str()
+xx_sort parameters in file by type
+xx_parameterize mismatches.fasta
+xx_log job name if not done already
+xx_Save input file to directory so I can easily get it again if I need it
+xx_why so many application model names? have both svm_application_model and svm_complete_model_name
+xx_In log messages, change 'sequence' to 'protein'
+xx_Try to get final log message to line up with the others in user.log (decided against it, although I did give them the same date formatting
+
+xx_Log file -- just have summary of stats instead of sentences
+xx_in application scan mode, have user be told how many peptides are processed using rules file somewhere (in backend)
+
+xx_Log file -- where it says "Note that "[overrun -- ##]" means..." -- should change that to say something like "if it appears" -- because if it doesn't appear,
+	then that message doesn't make sense. Maybe put it after the mismatch list
+xx_Log file -- in framework.log, looks like I'm printing a lot of extra stuff (fasta sequence, etc.)
+xx_Training mode results file -- put column headers through all columns, extend the first line (0 0) through all columns
+xx_currently have final output file where lines are currently 0\t0 and 1\1 have four columns for stdev, score. 
+	xx_When I do this, take out the logic in backend_test that checks for two columns in checkNormalPostprocessCompletion()         
+xx_make sure it works in training mode if peptides are of length other than 8
+xx_File for which no sequences were found -- have better formatted input (right now only one long sequence)
+xx_In application defined mode, make sure all output files for training are also available
+	-->update, not sure which files I was referring to, but probably the mismatch file is the main one.
+xx_make sure that benchmark score file has all lines that are not actually benchmark scores begin with # (check training code that generates benchmark file)
+	update: not sure which benchmark score file this is referring to? and not sure why I put that there. Checked three of them and none had a # next to it. I guess if we have tests,
+	then it will break them
+
+
+
+
+
+
+
+
+
+DOCUMENTATION
+Backend code documentation
+svmTraining test brief documentation
+training test backend brief documenation
+
+		note in server documenation about making examples specific to the training models (eg, not having asp in the fourth position will still have good score)
+		mention that descriptions will probably not be available for non-human organsims (although consider putting them in eventually, maybe for a dozen organisms?).
+		Make sure validation steps all have an explanation in the documentation
+                Update HTML guide
+		Helpful hints for best performance
+			NEW -- break up large application sets into smaller ones for speed / file size
+			NEW -- peptides that are too small won't be useful in training
+			change logging to tell user that they could have off-by-one error, make sure it is base-1 in input
+			long peptides
+			decent training / test set size
+			rescoring your training set after creating a model is stupid
+			how to create negatives
+			Put ROC curve into Excel
+		Link to paper
+Document runPsipred and runDispred scripts
+
+
+
+NEXT
+Output file for all features for training peptides -- handle Trindidad's stuff?
+get info for small peptides only
+xxleaveOneOut for true benchmarking TPRs and FPRs 		
+sampling different SVM parameters
+multiple output files, muliple input pages
+xxoutput model for download
+xxallow user upload of model
+
+
+
+
+
+
+MISC:
+        note the following rule somewhere -- if features fail (disopred, psipred, dssp) then we will not have any value in the 
+           column that PeptidePipeline prints for these values (the one that the SVM would normally take as input).  however a separate 
+           column (the one that the user would normally read for these values -- DDDOOOD column) will have a keyword error that will
+           indicate to the backend that the job failed.  This way the SVM will just ignore the missing features instead of choking on it.
+           This logic should be tested as sanity check.
+	   additionally -- we are saying if there is one residue mismatch between the disopred file and the cleavage sequence, the whole score
+	   and disorder call is not written as a feature (same with psipred).
+
+
+
+
+
+
+
+
+
+
+
+
+

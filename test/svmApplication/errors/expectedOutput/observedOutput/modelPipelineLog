@@ -1,0 +1,16 @@
+2011-04-09 17:02:01:	 ApplicationPipeline: loading peptides
+2011-04-09 17:02:01:	 ApplicationPipeline: Loaded 968 peptides from 50 sequences with classification Application
+			
+2011-04-09 17:02:01:	 Duration of function loadPeptides: 0 minutes 0 seconds
+2011-04-09 17:02:01:	 Creating application set to be processed in this pipeline run
+2011-04-09 17:02:01:	 Duration of function createApplicationSet: 0 minutes 0 seconds
+2011-04-09 17:02:01:	 Applying model
+2011-04-09 17:02:01:	 writing peptides to SVM application file /tmp/UJdpI8JpRT/testing_run/svmApplicationSet
+2011-04-09 17:02:01:	 ERROR: SvmModel method testSvm Error: File fake_file does not exist
+2011-04-09 17:02:01:	 Duration of function applyModel: 0 minutes 0 seconds
+2011-04-09 17:02:01:	 Processing model application results
+2011-04-09 17:02:01:	 Writing ApplicationPipeline results
+2011-04-09 17:02:01:	 ApplicationPipeline: No results will be output (reason: file_missing). Writing results file
+			 indicating this.
+2011-04-09 17:02:01:	 Wrote results for 0 sequences containing 0 total peptides
+2011-04-09 17:02:01:	 Duration of function writeResults: 0 minutes 0 seconds
