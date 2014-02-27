@@ -426,7 +426,7 @@ sub get_navigation_links {
 
 sub get_project_menu {
     my ($self) = @_;
-
+    my $htmlroot = $self->htmlroot;
     return <<MENU;
 	<p>&nbsp;</p>
 <h4><small>Full PCSS Documentation</small></h4>
@@ -443,7 +443,7 @@ Ben Webb<br />
 Charles Craik<br />
 
 <p><font color=FIREBRICK>Download Granzyme B and Caspase predicted cleavage sites generated from study in Barkan, Hostetter, <i>et al</i>, <i>Bioinformatics</i>, 2010</font><p>
-<p><a href="html/doc/caspase_proteome_results.zip">Caspase</a> <a href="html/doc/grb_proteome_results.zip">Granzyme B</a>
+<p><a href="$htmlroot/doc/caspase_proteome_results.zip">Caspase</a> <a href="$htmlroot/doc/grb_proteome_results.zip">Granzyme B</a>
 
 MENU
 
