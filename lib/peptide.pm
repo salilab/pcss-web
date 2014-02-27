@@ -430,20 +430,20 @@ sub get_project_menu {
     return <<MENU;
 	<p>&nbsp;</p>
 <h4><small>Full PCSS Documentation</small></h4>
-<p><a href="html/doc/PCSS_Documentation.pdf">Download</a>
+<p><a href="html/doc/PCSS_Documentation.pdf">Download</a></p>
 <h4><small>Lead Authors:</small></h4>
 <p>Dave Barkan<br />
 Dan Hostetter<br />
-<br />
+</p>
 <h4><small>Web Developers:</small></h4>
 <p>Dave Barkan<br />
-Ben Webb<br />
+Ben Webb</p>
 <h4><small>Corresponding Authors:</small></h4>
 <p>Andrej Sali<br />
-Charles Craik<br />
+Charles Craik</p>
 
-<p><font color=FIREBRICK>Download Granzyme B and Caspase predicted cleavage sites generated from study in Barkan, Hostetter, <i>et al</i>, <i>Bioinformatics</i>, 2010</font><p>
-<p><a href="${htmlroot}doc/caspase_proteome_results.zip">Caspase</a> <a href="${htmlroot}doc/grb_proteome_results.zip">Granzyme B</a>
+<p><font color="FIREBRICK">Download Granzyme B and Caspase predicted cleavage sites generated from study in Barkan, Hostetter, <i>et al</i>, <i>Bioinformatics</i>, 2010</font><p>
+<p><a href="${htmlroot}doc/caspase_proteome_results.zip">Caspase</a> <a href="${htmlroot}doc/grb_proteome_results.zip">Granzyme B</a></p>
 
 MENU
 
@@ -452,7 +452,7 @@ MENU
 
 sub get_footer {
     my ($self) = @_;
-    return "&nbsp";
+    return "&nbsp;";
 }
 
 
