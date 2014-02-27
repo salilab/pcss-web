@@ -66,14 +66,14 @@ sub get_index_page {
 								      -size=>"9"}))) .
 				      
 					 $q->Tr($q->td("Best Protein Structure Model Criteria",
-						       $self->help_link("best_model"),
-						       $q->td($q->popup_menu("best_model", $bestModelValues, "nativeOverlap", $bestModelLabels)))) . 
+						       $self->help_link("best_model")),
+						       $q->td($q->popup_menu("best_model", $bestModelValues, "nativeOverlap", $bestModelLabels))) . 
 
 					 $q->Tr($q->td("Select error handling mode",
-						       $self->help_link("error_handling"),
-						       $q->td($q->radio_group("error_handling", $errorHandlingValues, "I", 0, $errorHandlingLabels)))) .
+						       $self->help_link("error_handling")),
+						       $q->td($q->radio_group("error_handling", $errorHandlingValues, "I", 0, $errorHandlingLabels))) .
 
-					 $q->Tr($q->td("<br>")) . 
+					 $q->Tr($q->td("<br />")) . 
 
 					 $q->Tr($q->td("<u><b>Set these options when TRAINING a new model</b></u>")) .
 					 
@@ -91,7 +91,7 @@ sub get_index_page {
 						       $q->td($q->textfield({-name=>"jackknife_fraction",
 									    -maxlength=>"4", -size=>"5"}))) .
 
-					 $q->Tr($q->td("<br>")) . 
+					 $q->Tr($q->td("<br />")) . 
 
 					 $q->Tr($q->td("<u><b>Set these options when APPLYING an existing model</b></u>")) .
 
@@ -668,7 +668,7 @@ sub validatePeptideSequenceInfo{
 		#Quit
 		if ($errorHandling eq "Q"){  
 		    my $formattedSeqString = $self->formatProteinSequence($sequence);
-		    throw saliweb::frontend::InputValidationError("Error: the provided peptide sequence $peptideSequence was not found at position $peptideStartPosition for uniprot accession $uniprotAccession.  The following sequence was found instead: $modbaseSubstring. <br><br>. You may need to check that you have correctly specified the start position in the input file.  There could also be a discrepancy with how the sequence is stored in ModBase.  Since the error handling option was set to 'Quit', this job will now quit.  <br><br>If you are submitting a large number of proteins, consider setting error handling to 'Ignore' to continue processing the remaining proteins.  For more information as to why this accession was not found, refer to the help section by clicking on the above link.  We apologize for the inconvenience. <br><br> For reference, the residue sequence for $uniprotAccession in ModBase is the following: $formattedSeqString");
+		    throw saliweb::frontend::InputValidationError("Error: the provided peptide sequence $peptideSequence was not found at position $peptideStartPosition for uniprot accession $uniprotAccession.  The following sequence was found instead: $modbaseSubstring. <br /><br />. You may need to check that you have correctly specified the start position in the input file.  There could also be a discrepancy with how the sequence is stored in ModBase.  Since the error handling option was set to 'Quit', this job will now quit.  <br /><br />If you are submitting a large number of proteins, consider setting error handling to 'Ignore' to continue processing the remaining proteins.  For more information as to why this accession was not found, refer to the help section by clicking on the above link.  We apologize for the inconvenience. <br /><br /> For reference, the residue sequence for $uniprotAccession in ModBase is the following: $formattedSeqString");
 		}
 		#Ignore
 		elsif ($errorHandling eq "I"){ #don't add to list of peptides to be processed; log and continue
@@ -794,10 +794,10 @@ sub writePeptideInfo{
     #Check to make sure one sequence was written; if not, output error
     if ($sequenceCount == 0){   
 
-	my $msg = "Error: No input matched anything in ModBase. This could be either due to not finding Uniprot Accessions in Modbase, or because peptides provided did not match peptide sequence for the proteins in modbase. The following Uniprot accessions were not found in ModBase:<br><br>";
+	my $msg = "Error: No input matched anything in ModBase. This could be either due to not finding Uniprot Accessions in Modbase, or because peptides provided did not match peptide sequence for the proteins in modbase. The following Uniprot accessions were not found in ModBase:<br /><br />";
 	my $noUniprot = $self->makeMissingUniprotString();
 	$msg .= $noUniprot;
-	$msg .= "<br><br>The amino acid sequences of accessions that were found in Modbase, but were not found in your input, are shown here. Make sure your numbering system starts with 1 (i.e., that a peptide starting at the 56th residue in the protein is listed in your input file as 56).<br><br>";
+	$msg .= "<br /><br />The amino acid sequences of accessions that were found in Modbase, but were not found in your input, are shown here. Make sure your numbering system starts with 1 (i.e., that a peptide starting at the 56th residue in the protein is listed in your input file as 56).<br /><br />";
 
 	my $mismatchFileName = $self->getParam("mismatch_file_name");
 	my $mismatchFastaString = $self->makeMismatchFastaString("$directory/$mismatchFileName");
@@ -1340,7 +1340,7 @@ sub validateModelSpecified{
 
 ##############################################################################################################################################
 # formatProteinSequence
-# Takes a protein sequence represented by one string and inserts <br> every sixty residues.  This allows cleaner html output when the sequence 
+# Takes a protein sequence represented by one string and inserts <br /> every sixty residues.  This allows cleaner html output when the sequence 
 # needs to be displayed to the user.
 # PARAM  $proteinSequence: The sequence to be formatted.
 # RETURN The resulting string.
@@ -1355,7 +1355,7 @@ sub formatProteinSequence{
     while ($counter < $length){
 	if ($counter % 60 == 0){
 	    $output .= $currentSection;
-	    $currentSection = "<br>";
+	    $currentSection = "<br />";
 	}
 	my $nextCharacter = $seqArray[$counter];
 	$currentSection .= $nextCharacter;
@@ -1390,11 +1390,11 @@ sub validateTrainingAndTestRatios{
 	my $message = "Please change the number of negative peptides in your input file to be greater than or equal to the number of positive peptides.\n";
 	$message .= "The number of negatives provided was $negativeCount and the number of positives was $positiveCount.\n";
 	$message .= "Note that the number of each found in ModBase might be fewer than how many were provided in the input file.\n";
-	$message .= "Please examine these lists to see if that is the case <br><br>";
-	$message .= "The following Uniprot accessions were not found in ModBase:<br><br>";
+	$message .= "Please examine these lists to see if that is the case <br /><br />";
+	$message .= "The following Uniprot accessions were not found in ModBase:<br /><br />";
 	my $noUniprot = $self->makeMissingUniprotString();
 	$message .= $noUniprot;
-	$message .= "<br><br>The amino acid sequences of accessions that were found in Modbase, but were not found in your input, are shown here. Make sure your numbering system starts with 1 (i.e., that a peptide starting at the 56th residue in the protein is listed in your input file as 56).<br><br>";
+	$message .= "<br /><br />The amino acid sequences of accessions that were found in Modbase, but were not found in your input, are shown here. Make sure your numbering system starts with 1 (i.e., that a peptide starting at the 56th residue in the protein is listed in your input file as 56).<br /><br />";
 
 	my $mismatchFileName = $self->getParam("mismatch_file_name");
 	my $mismatchFastaString = $self->makeMismatchFastaString("$directory/$mismatchFileName");
@@ -1411,11 +1411,11 @@ sub validateTrainingAndTestRatios{
 	my $message = "Please change the number of positives in your input file to ensure that there is at least one peptide left for testing when the jackknife fraction is applied (rounded down).\n";
 	$message .= "The number of positives provided was $positiveCount which results in $testSetPositiveCount allowed in the test set when the fraction $testSetPercentage is applied.\n";
 	$message .= "Note that the number of each found in ModBase might be fewer than how many were provided in the input file\n";
-	$message .= "Please examine these lists to see if that is the case <br><br>";
-	$message .= "The following Uniprot accessions were not found in ModBase:<br><br>";
+	$message .= "Please examine these lists to see if that is the case <br /><br />";
+	$message .= "The following Uniprot accessions were not found in ModBase:<br /><br />";
 	my $noUniprot = $self->makeMissingUniprotString();
 	$message .= $noUniprot;
-	$message .= "<br><br>The amino acid sequences of accessions that were found in Modbase, but were not found in your input, are shown here. Make sure your numbering system starts with 1 (i.e., that a peptide starting at the 56th residue in the protein is listed in your input file as 56).<br><br>";
+	$message .= "<br /><br />The amino acid sequences of accessions that were found in Modbase, but were not found in your input, are shown here. Make sure your numbering system starts with 1 (i.e., that a peptide starting at the 56th residue in the protein is listed in your input file as 56).<br /><br />";
 
 
 	my $mismatchFileName = $self->getParam("mismatch_file_name");
@@ -1447,14 +1447,14 @@ sub makeMismatchFastaString{
 	my $line = $_;
 	$line =~ s/[\r\n]//g; 
 	if ($line =~ /^\>/){
-	    $msg .= $line . "<br>";
+	    $msg .= $line . "<br />";
 	}
 	else {
 	    my $fastaLines = $self->getFormattedLines($line, 40, 1);	    
 	    foreach my $line (@$fastaLines){
-		$msg .= $line . "<br>";
+		$msg .= $line . "<br />";
 	    }
-	    $msg .= "<br>";
+	    $msg .= "<br />";
 	}
     }
         
@@ -1746,7 +1746,7 @@ sub getMissingUniprotAccessions{
 
 ############################################################################################
 # makeMissingUniprotString
-# For all uniprot accessions that weren't found, return them in a string, separated by <br>
+# For all uniprot accessions that weren't found, return them in a string, separated by <br />
 #
 # RETURN missing uniprot string
 ############################################################################################
@@ -1755,7 +1755,7 @@ sub makeMissingUniprotString{
     my $accessions = $self->{MissingUniprot};
     my $string = "";
     foreach my $accession (keys %$accessions){
-	$string .= $accession . "<br>";
+	$string .= $accession . "<br />";
     }
     return $string;
 }
