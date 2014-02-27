@@ -442,7 +442,7 @@ Ben Webb</p>
 <p>Andrej Sali<br />
 Charles Craik</p>
 
-<p><font color="FIREBRICK">Download Granzyme B and Caspase predicted cleavage sites generated from study in Barkan, Hostetter, <i>et al</i>, <i>Bioinformatics</i>, 2010</font><p>
+<p><font color="FIREBRICK">Download Granzyme B and Caspase predicted cleavage sites generated from study in Barkan, Hostetter, <i>et al</i>, <i>Bioinformatics</i>, 2010</font></p>
 <p><a href="${htmlroot}doc/caspase_proteome_results.zip">Caspase</a> <a href="${htmlroot}doc/grb_proteome_results.zip">Granzyme B</a></p>
 
 MENU
