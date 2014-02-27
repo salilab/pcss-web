@@ -22,6 +22,7 @@ class UserLogger(object):
     def __del__(self):
         self.hdlr.flush()
         self.hdlr.close()
+        self.log.removeHandler(self.hdlr)
 
     def info(self, msg):
         return self.log.info(msg)
