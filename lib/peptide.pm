@@ -50,11 +50,11 @@ sub get_index_page {
 	       $q->start_form({-name=>"peptideform", -method=>"post",
 			       -action=>$self->submit_url}) .
 			       $q->table(
-					 $q->Tr($q->td("<u><b>Global options for running the PCSS Server<b></u>")) . 
+					 $q->Tr($q->td("<u><b>Global options for running the PCSS Server</b></u>")) . 
 
 					 $q->Tr($q->td("Select PCSS Server Mode",
-						       $self->help_link("server_mode"),
-						       $q->td($q->radio_group("server_mode", $serverModeValues, "training", 0, $serverModeLabels)))) . 
+						       $self->help_link("server_mode")),
+						       $q->td($q->radio_group("server_mode", $serverModeValues, "training", 0, $serverModeLabels))) . 
 
 					 $q->Tr($q->td("Email address"),
 						$q->td($q->textfield({-name=>"email",
