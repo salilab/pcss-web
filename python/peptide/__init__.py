@@ -179,7 +179,7 @@ class Job(saliweb.backend.Job):
 
         #submit script
         r = self.runnercls(script, interpreter='/bin/tcsh')
-        r.set_sge_options(" -o output.txt -e error.txt -l netappsali=1G,database=1G,scratch=1G -l arch=lx24-amd64 "
+        r.set_sge_options(" -o output.txt -e error.txt -l netappsali=1G,database=1G,scratch=1G -l arch=linux-x64 "
                                                     "-r y -j y  -l mem_free=1G -l h_rt=72:00:00 -p 0 -t 1-%s" % taskCount)
         self.logger.info("Submitting job to cluster; %s tasks will be run" % taskCount)
         return r
