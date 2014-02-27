@@ -100,8 +100,8 @@ sub get_index_page {
 						$q->td($q->filefield({-name=>"application_file"}))) .
 
 					 $q->Tr($q->td("Select Application Peptide Specification Method",
-						       $self->help_link("application_specification"),
-						       $q->td($q->radio_group("application_specification", $applicationSpecificationValues, "D", 0, $applicationSpecificationLabels)))) . 
+						       $self->help_link("application_specification")),
+						       $q->td($q->radio_group("application_specification", $applicationSpecificationValues, "D", 0, $applicationSpecificationLabels))) . 
 
 					 $q->Tr($q->td("Upload Peptide Specifier File (Optional)",
 						       $self->help_link("rules_file"), $q->br),
@@ -112,8 +112,8 @@ sub get_index_page {
 						$q->td($q->filefield({-name=>"svm_custom_model"}))) .
 						
 					 $q->Tr($q->td("OR use a pre-generated model for a specific system",
-						       $self->help_link("svm_model"),
-						       $q->td($q->popup_menu("svm_model", $svmModelValues, "none", $svmModelLabels)))) . 
+						       $self->help_link("svm_model")),
+						       $q->td($q->popup_menu("svm_model", $svmModelValues, "none", $svmModelLabels))) . 
 					 
 					 $q->Tr($q->td({-colspan=>"2"},
 						       "<center>" .
