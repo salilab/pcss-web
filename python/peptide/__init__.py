@@ -6,6 +6,30 @@ import re
 import copy
 import math 
 
+class UserLogger(object):
+    """Simple wrapper around a Logger object; closes the file when the
+       object goes out of scope."""
+    def __init__(self, job):
+        logFileName = job.getParam("user_log_file_name")
+        fullLogFileName = os.path.join(job.directory, logFileName)
+        self.hdlr = logging.FileHandler(fullLogFileName)
+        self.formatter = logging.Formatter('%(asctime)s: %(message)s')
+        self.formatter.datefmt = '%Y-%m-%d %H:%M:%S'
+        self.hdlr.setFormatter(self.formatter)
+        self.log = logging.getLogger("userLog")
+        self.log.addHandler(self.hdlr)
+
+    def __del__(self):
+        self.hdlr.flush()
+        self.hdlr.close()
+
+    def info(self, msg):
+        return self.log.info(msg)
+
+    def setLevel(self, lvl):
+        return self.log.setLevel(lvl)
+
+
 class InvalidParamError(Exception):
     """Exception raised for parameter name that was not found in the list of Job's valid parameter names when retrieved, or one that already existed when set"""
     pass
@@ -173,49 +197,50 @@ class Job(saliweb.backend.Job):
         
         clusterState = self.getParamState(self.directory, "cluster_state")
         self.logger.info("Beginning postprocess() in server mode %s and cluster state %s" % (self.serverMode, clusterState))
-        self.loadUserLog()
-        self.userLogger.setLevel(logging.INFO)
-
-        if (clusterState == "FEATURES"):   #first cluster run completed; features have been assigned to peptides
-
-            seqBatchCount = self.getParam("seq_batch_count")
-            self.featureErrorEmailSent = 0
-            self.missingSequenceEmailSent = 0
-            seqBatchList = self.makeSeqBatchList(seqBatchCount)
-
-            try:
-                #validate job ran correctly; process results and write to file
-                self.checkPeptideJobCompleted(seqBatchList)
-                self.processPeptideJob(seqBatchList)
-                #self.validateFinalFeatureFiles()
-            except ClusterJobError,  e:
-                self.handleClusterError(e)
-                return
-
-            self.closeUserLog()                
-            if (self.serverMode == "training"):
-                #prepare to use peptide features to train a new model
-                self.setParamState(self.directory, "cluster_state", "SVM")
-                self.logger.info("Finished processing peptide features; rescheduling server run to train model")
-                testMode = self.getParam("test_mode")
-                if (testMode == "no"):
-                    self.reschedule_run()
-        elif (clusterState == "SVM"):
-            try:
-                #validate job ran correctly; process results and write to file
-                self.checkTrainingJobCompleted()
-                self.processSvmResults()
-                self.makeUserCreatedModelPackage()
-                #self.validateFinalSvmFiles()
-            except (ClusterJobError, TrainingContentError), e:
-                
-                self.handleClusterError(e)
-                return
-            self.logger.info("Completed training model.  Returning to front-end")
-            self.closeUserLog()
-        else:
-            #close user log?
-            raise SanityError("Did not get expected cluster state parameter value of either 'FEATURES' or 'SVM' (value obtained: %s)" %clusterState)
+        self.userLogger = UserLogger(self)
+        try:
+            self.userLogger.setLevel(logging.INFO)
+    
+            if (clusterState == "FEATURES"):   #first cluster run completed; features have been assigned to peptides
+    
+                seqBatchCount = self.getParam("seq_batch_count")
+                self.featureErrorEmailSent = 0
+                self.missingSequenceEmailSent = 0
+                seqBatchList = self.makeSeqBatchList(seqBatchCount)
+    
+                try:
+                    #validate job ran correctly; process results and write to file
+                    self.checkPeptideJobCompleted(seqBatchList)
+                    self.processPeptideJob(seqBatchList)
+                    #self.validateFinalFeatureFiles()
+                except ClusterJobError,  e:
+                    self.handleClusterError(e)
+                    return
+    
+                if (self.serverMode == "training"):
+                    #prepare to use peptide features to train a new model
+                    self.setParamState(self.directory, "cluster_state", "SVM")
+                    self.logger.info("Finished processing peptide features; rescheduling server run to train model")
+                    testMode = self.getParam("test_mode")
+                    if (testMode == "no"):
+                        self.reschedule_run()
+            elif (clusterState == "SVM"):
+                try:
+                    #validate job ran correctly; process results and write to file
+                    self.checkTrainingJobCompleted()
+                    self.processSvmResults()
+                    self.makeUserCreatedModelPackage()
+                    #self.validateFinalSvmFiles()
+                except (ClusterJobError, TrainingContentError), e:
+                    
+                    self.handleClusterError(e)
+                    return
+                self.logger.info("Completed training model.  Returning to front-end")
+            else:
+                #close user log?
+                raise SanityError("Did not get expected cluster state parameter value of either 'FEATURES' or 'SVM' (value obtained: %s)" %clusterState)
+        finally:
+            del self.userLogger
 
     def makeUserCreatedModelPackage(self):
         separator = self.getParam("user_separator_line")
@@ -569,7 +594,6 @@ class Job(saliweb.backend.Job):
         testMode = self.getParam("test_mode")
         if (testMode == "no"):
             self._db.config.send_admin_email("Global peptide server error for job %s error in job %s with keyword %s" %(self.name, self.name, keyword), msg)
-        self.closeUserLog()
 
         
     def makeColumnHeaderString(self, columnInfo, columnOrderList, columnDisplayOrder):
@@ -617,24 +641,6 @@ class Job(saliweb.backend.Job):
         errorFh = open(errorFile, "w")
         errorFh.write(keyword)
         errorFh.close()
-
-    def closeUserLog(self):
-        self.logger.info("closing user log")
-        self.userHdlr.close()
-
-    def loadUserLog(self):
-        logFileName = self.getParam("user_log_file_name")
-        fullLogFileName = os.path.join(self.directory, logFileName)
-
-        hdlr = logging.FileHandler(fullLogFileName)
-        formatter = logging.Formatter('%(asctime)s: %(message)s')
-        formatter.datefmt = '%Y-%m-%d %H:%M:%S'
-        hdlr.setFormatter(formatter)
-
-        self.userLogger = logging.getLogger("userLog")
-        self.userLogger.addHandler(hdlr)
-        self.userHdlr = hdlr
-
 
     def getSeqBatchCount(self, headerList):
         """
