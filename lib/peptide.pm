@@ -56,7 +56,7 @@ sub get_index_page {
 						       $self->help_link("server_mode")),
 						       $q->td($q->radio_group("server_mode", $serverModeValues, "training", 0, $serverModeLabels))) . 
 
-					 $q->Tr($q->td("Email address"),
+					 $q->Tr($q->td("Email address (optional)"),
 						$q->td($q->textfield({-name=>"email",
 								      -value=>$self->email,
 								      -size=>"25"}))) .
@@ -204,7 +204,7 @@ sub process_user_input {
 
     $self->validateJobName($name);
 
-    &check_required_email($email); 
+    &check_optional_email($email); 
 
     #Initialize logging
     $self->getUserLogFile($directory);
