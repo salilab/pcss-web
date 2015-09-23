@@ -160,7 +160,7 @@ sub get_submit_page {
 	my $applicationSpecification = $q->param('application_specification');  $userInput->{"application_specification"} = $applicationSpecification;
     }
     else {
-	throw saliweb::frontend::InputValidationError("Did not get expected server mode (expect 'training' or 'application'; instead got $serverMode)");
+	throw saliweb::frontend::InputValidationError("Did not get expected server mode (expect 'training' or 'application'; instead got " . $q->escapeHTML($serverMode) . ")");
     }
 
     #perform all validation and create files
