@@ -373,7 +373,7 @@ class Job(saliweb.backend.Job):
             if (sequencesToResults.has_key(sequenceId) == 0):
                 seqMsg = "Peptide webserver job %s, Didn't find result for sequence %s" %(self.name, sequenceId)
                 accession = modbaseToAccession[sequenceId]
-                userMsg = "Accession %s was not processed at all due to an error" % accesssion
+                userMsg = "Accession %s was not processed at all due to an error" % accession
                 self.userLogger.info(userMsg)
                 missingSequenceCount += 1
                     
