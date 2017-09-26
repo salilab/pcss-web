@@ -7,7 +7,7 @@ use POSIX qw(ceil floor);
 
 
 sub new {
-    return saliweb::frontend::new(@_, @CONFIG@);
+    return saliweb::frontend::new(@_, "##CONFIG##");
 }
 
 sub get_index_page {
