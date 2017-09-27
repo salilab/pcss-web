@@ -8,8 +8,12 @@ import subprocess
 import logging
 import time
 
+TESTDIR = os.path.abspath(os.path.dirname(__file__))
+
 class JobTests(saliweb.test.TestCase):
 
+    def get_test_directory(self, subdir):
+        return os.path.join(TESTDIR, subdir)
 
 
     """
@@ -26,12 +30,14 @@ class JobTests(saliweb.test.TestCase):
     def test_preprocess(self):
 
         print "Testing Preprocess Application Scan"
-        applicationScanDirectory = "/modbase5/home/dbarkan/peptide/test/backend/preprocess/applicationScan/"
+        applicationScanDirectory = self.get_test_directory(
+                                      "preprocess/applicationScan/")
         self.runPreprocess(applicationScanDirectory, 3, 102)
 
         print "Testing Preprocess Application Defined"
 
-        applicationDefinedDirectory = "/modbase5/home/dbarkan/peptide/test/backend/preprocess/applicationDefined/"
+        applicationDefinedDirectory = self.get_test_directory(
+                                         "preprocess/applicationDefined/")
         self.runPreprocess(applicationDefinedDirectory, 1, 18)
 
     def runPreprocess(self, preprocessDir, seqBatchCount, totalSeqCount):
@@ -114,16 +120,18 @@ class JobTests(saliweb.test.TestCase):
 
         print "Testing Run Application Scan"
 
-        applicationScanDirectory = "/modbase5/home/dbarkan/peptide/test/backend/run/applicationScan/"
+        applicationScanDirectory = self.get_test_directory(
+                                                "run/applicationScan/")
         self.runRunTest(applicationScanDirectory, 3)
 
         print "Testing Run Application Defined"
 
-        applicationDefinedDirectory = "/modbase5/home/dbarkan/peptide/test/backend/run/applicationDefined/"
+        applicationDefinedDirectory = self.get_test_directory(
+                                                 "run/applicationDefined/")
         self.runRunTest(applicationDefinedDirectory, 1)
 
         print "Testing Run Training"
-        trainingDirectory= "/modbase5/home/dbarkan/peptide/test/backend/run/training/"
+        trainingDirectory= self.get_test_directory("run/training/")
         self.runTrainingRunSvmTest(trainingDirectory, 10)  #test training run in SVM mode (second call to run() over the course of processing a server job)
 
 
@@ -213,13 +221,18 @@ class JobTests(saliweb.test.TestCase):
     def test_postprocess(self):
 
 
-        applicationScanDir = "/modbase5/home/dbarkan/peptide/test/backend/postprocess/applicationScan"
-        applicationDefinedDir = "/modbase5/home/dbarkan/peptide/test/backend/postprocess/applicationDefined"
+        applicationScanDir = self.get_test_directory(
+                                         "postprocess/applicationScan")
+        applicationDefinedDir = self.get_test_directory(
+                                         "postprocess/applicationDefined")
 
-        trainingDir = "/modbase5/home/dbarkan/peptide/test/backend/postprocess/training"
-        trainingFeaturesDir = "/modbase5/home/dbarkan/peptide/test/backend/postprocess/trainingFeatures"
-        applicationErrorPostprocessDir = "/modbase5/home/dbarkan/peptide/test/backend/postprocess/applicationErrors"
-        trainingErrorPostprocessDir = "/modbase5/home/dbarkan/peptide/test/backend/postprocess/trainingErrors"
+        trainingDir = self.get_test_directory("postprocess/training")
+        trainingFeaturesDir = self.get_test_directory(
+                                           "postprocess/trainingFeatures")
+        applicationErrorPostprocessDir = self.get_test_directory(
+                                           "postprocess/applicationErrors")
+        trainingErrorPostprocessDir = self.get_test_directory(
+                                           "postprocess/trainingErrors")
 
         j = self.createRunningJobDirectory()
 
