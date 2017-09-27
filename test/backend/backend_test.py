@@ -747,6 +747,8 @@ class JobTests(saliweb.test.TestCase):
         self.copyFiles(inputDir, j.directory, files)
 
     def copyFiles(self, sourceDirectory, destinationDirectory, files):
+        if not os.path.exists(destinationDirectory):
+            os.makedirs(destinationDirectory)
         for file in files:
             fullFile = sourceDirectory + "/" + file
 
