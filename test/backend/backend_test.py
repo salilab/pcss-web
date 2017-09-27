@@ -55,7 +55,6 @@ class JobTests(saliweb.test.TestCase):
         #copy output
         expectedOutputDir = preprocessDir + "/expectedOutput"
         files = ["cluster_state", "framework.log", "inputSequences.fasta",  "parameters.txt", "sequenceBatches"]
-        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput", files)
 
         #check results match expected
         self.processSeqBatchAndParams(j, preprocessDir, expectedOutputDir)
@@ -159,7 +158,6 @@ class JobTests(saliweb.test.TestCase):
         #copy files
         expectedOutputDir = trainingDir + "/expectedOutput/"
         outputFiles = ["sge-script.sh", "framework.log", "leaveOneOutParams.txt"]
-        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
 
         #compare sge script to expected
         sgeTestSkip = ["set\sHOME\_RUN\_DIR"]
@@ -202,7 +200,6 @@ class JobTests(saliweb.test.TestCase):
         #copy files
         expectedOutputDir = runDir + "/expectedOutput/"
         outputFiles = ["sge-script.sh", "framework.log"]
-        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
 
         #compare sge script to expected
         sgeTestSkip = ["set\sHOME\_RUN\_DIR"]
@@ -263,7 +260,6 @@ class JobTests(saliweb.test.TestCase):
 
         expectedOutputDir = postprocessDir + "/expectedOutput"
         outputFiles = ["applicationFinalResults.txt", "framework.log", "user.log"]
-        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput", outputFiles)
 
         expectedResultsFile = expectedOutputDir + "/applicationFinalResults.txt"
         observedResultsFile = j.directory + "/applicationFinalResults.txt"
@@ -284,7 +280,6 @@ class JobTests(saliweb.test.TestCase):
 
         expectedOutputDir = postprocessDir + "/expectedOutput"
         outputFiles = ["svmTrainingFinalResults.txt", "framework.log", "user.log", "userCreatedSvmModel.txt"]
-        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
 
         self.checkNormalPostprocessCompletion(j, expectedOutputDir)
         self.checkLogMessageWritten(j, "Processed 5 positives and 326 negatives") #stats
@@ -327,10 +322,6 @@ class JobTests(saliweb.test.TestCase):
         self.checkErrorFileWritten(j, "training_content_error")
         self.checkErrorMessageWritten(j)
 
-        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
-
-
-
     def runPostprocessMissingLooFile(self, inputDir, expectedOutputDir):
         print "Testing training error thrown when leave one out result file not written"
 
@@ -346,8 +337,6 @@ class JobTests(saliweb.test.TestCase):
 
         self.checkErrorFileWritten(j, "cluster_missing_file")
         self.checkErrorMessageWritten(j)
-
-        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
 
     def runPostprocessLooNoContent(self, inputDir, expectedOutputDir):
         print "Testing training error thrown when leave one out result file has no content"
@@ -366,9 +355,6 @@ class JobTests(saliweb.test.TestCase):
         self.checkErrorFileWritten(j, "cluster_missing_file")
         self.checkErrorMessageWritten(j)
 
-        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
-
-
     def runPostprocessMissingUserModel(self, inputDir, expectedOutputDir):
         print "Testing training error thrown when user-created model file not found"
 
@@ -385,9 +371,6 @@ class JobTests(saliweb.test.TestCase):
         self.checkErrorFileWritten(j, "cluster_missing_file")
         self.checkErrorMessageWritten(j)
 
-        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
-
-
     def runPostprocessTrainingResultsNotIncremented(self, inputDir, expectedOutputDir):
 
         print "testing training error thrown when counts in result file are not greater with each successive line"
@@ -402,7 +385,6 @@ class JobTests(saliweb.test.TestCase):
         j.postprocess()
 
         outputFiles = ["postprocessErrors", "framework.log", "user.log", "svm", "parameters.txt"]
-        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
         self.checkErrorFileWritten(j, "training_content_error")
         self.checkErrorMessageWritten(j)
 
@@ -420,7 +402,6 @@ class JobTests(saliweb.test.TestCase):
         j.postprocess()
 
         outputFiles = ["postprocessErrors", "framework.log", "user.log", "svm", "parameters.txt"]
-        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
         self.checkErrorFileWritten(j, "training_content_error")
         self.checkErrorMessageWritten(j)
 
@@ -438,7 +419,6 @@ class JobTests(saliweb.test.TestCase):
         j.postprocess()
 
         outputFiles = ["postprocessErrors", "framework.log", "user.log", "svm", "parameters.txt"]
-        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
         self.checkErrorFileWritten(j, "training_content_error")
         self.checkErrorMessageWritten(j)
 
@@ -462,8 +442,6 @@ class JobTests(saliweb.test.TestCase):
         self.checkErrorMessageWritten(j)
         self.checkLogMessageWritten(j, "Sending webserver feature error email")
 
-        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
-
     def runPostprocessTrainingMissingResultFileError(self, inputDir, expectedOutputDir):
 
         print "Testing training error thrown when a result file was not written for a sequence batch"
@@ -480,8 +458,6 @@ class JobTests(saliweb.test.TestCase):
 
         self.checkErrorFileWritten(j, "cluster_missing_file")
         self.checkErrorMessageWritten(j)
-
-        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
 
     def runPostprocessTrainingGlobalError(self, inputDir, expectedOutputDir):
 
@@ -500,8 +476,6 @@ class JobTests(saliweb.test.TestCase):
         self.checkErrorFileWritten(j, "file_missing")
         self.checkErrorMessageWritten(j)
 
-        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
-
     def runPostprocessMissingSvmDirError(self, inputDir, expectedOutputDir):
         print "Testing error thrown when svm directory didn't return from cluster"
 
@@ -518,9 +492,6 @@ class JobTests(saliweb.test.TestCase):
         self.checkErrorFileWritten(j, "cluster_missing_file")
         self.checkErrorMessageWritten(j)
 
-        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
-
-
     def runPostprocessTrainingOutputError(self, inputDir, expectedOutputDir):
         print "Testing training error thrown when cluster had an error writing to a result file, but still returned it"
 
@@ -533,8 +504,6 @@ class JobTests(saliweb.test.TestCase):
         j.postprocess()
 
         outputFiles = ["postprocessErrors", "framework.log", "user.log", "parameters.txt", "svm"]
-        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
-
         self.checkErrorFileWritten(j, "output_error")
         self.checkErrorMessageWritten(j)
 
@@ -590,8 +559,6 @@ class JobTests(saliweb.test.TestCase):
         self.checkErrorFileWritten(j, "cluster_missing_file")
         self.checkErrorMessageWritten(j)
 
-        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
-
     def runPostprocessApplicationMissingSequenceError(self, inputDir, expectedOutputDir):
 
         print "Testing log message written when a sequence wasn't processed"
@@ -604,7 +571,6 @@ class JobTests(saliweb.test.TestCase):
         j.postprocess()
 
         outputFiles = [ "framework.log", "user.log"]
-        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
         self.checkLogMessageWritten(j, "Didn't find result")
         self.checkLogMessageWritten(j, "Sending missing sequence email")
 
@@ -626,9 +592,6 @@ class JobTests(saliweb.test.TestCase):
 
         self.checkLogMessageWritten(j, "Sending webserver feature error email")
 
-        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
-
-
     def runPostprocessApplicationEmptyResultFileError(self, inputDir, expectedOutputDir):
 
         print "Testing error thrown when a result file was empty for a sequence batch"
@@ -645,8 +608,6 @@ class JobTests(saliweb.test.TestCase):
 
         self.checkErrorFileWritten(j, "cluster_missing_file")
         self.checkErrorMessageWritten(j)
-
-        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
 
     def runPostprocessApplicationMissingResultFileError(self, inputDir, expectedOutputDir):
 
@@ -665,9 +626,6 @@ class JobTests(saliweb.test.TestCase):
         self.checkErrorFileWritten(j, "cluster_missing_file")
         self.checkErrorMessageWritten(j)
 
-        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
-
-
     def runPostprocessApplicationGlobalError(self, inputDir, expectedOutputDir):
 
         print "Testing error thrown when cluster had an internal error, but still returned a result file"
@@ -685,9 +643,6 @@ class JobTests(saliweb.test.TestCase):
         self.checkErrorFileWritten(j, "file_missing")
         self.checkErrorMessageWritten(j)
 
-        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
-
-
     def runPostprocessApplicationOutputError(self, inputDir, expectedOutputDir):
 
         print "Testing error thrown when cluster had an error writing to a result file, but still returned it"
@@ -704,8 +659,6 @@ class JobTests(saliweb.test.TestCase):
 
         self.checkErrorFileWritten(j, "output_error")
         self.checkErrorMessageWritten(j)
-
-        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
 
     def checkErrorMessageWritten(self, j):
 
@@ -747,8 +700,6 @@ class JobTests(saliweb.test.TestCase):
         self.copyFiles(inputDir, j.directory, files)
 
     def copyFiles(self, sourceDirectory, destinationDirectory, files):
-        if not os.path.exists(destinationDirectory):
-            os.makedirs(destinationDirectory)
         for file in files:
             fullFile = sourceDirectory + "/" + file
 
