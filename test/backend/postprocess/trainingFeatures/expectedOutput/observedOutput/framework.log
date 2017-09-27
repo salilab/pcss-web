@@ -1,5 +1,0 @@
-2011-04-09 16:28:18,571 INFO Beginning postprocess() in server mode training and cluster state FEATURES
-2011-04-09 16:28:18,584 INFO Processing peptide job
-2011-04-09 16:28:18,631 INFO Number of peptides processed without errors: 424
-2011-04-09 16:28:18,632 INFO closing user log
-2011-04-09 16:28:18,632 INFO Finished processing peptide features; rescheduling server run to train model

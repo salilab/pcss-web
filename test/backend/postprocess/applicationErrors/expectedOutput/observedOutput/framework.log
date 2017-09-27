@@ -1,4 +1,0 @@
-2011-04-09 16:28:25,279 INFO Beginning postprocess() in server mode application and cluster state FEATURES
-2011-04-09 16:28:25,281 INFO Writing error output file. Keyword: cluster_missing_file Message:
-Cluster output file /tmp/tmpQf7qWa/sequenceBatches/seq_batch_1/modelPipelineResultsEmptyFile did not have any content
-2011-04-09 16:28:25,283 INFO closing user log
