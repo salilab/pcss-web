@@ -18,5 +18,5 @@ SConscript('html/SConscript')
 #SConscript('test/svmApplication/SConscript')
 #SConscript('test/pipeline/SConscript')
 #SConscript('test/svmTraining/SConscript')
-#SConscript('test/backend/SConscript')
+SConscript('test/backend/SConscript')
 
