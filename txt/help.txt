@@ -2,7 +2,7 @@
 
 <p><b>Please note: This server is undergoing minor modifications to the documentation and layout, in order to match the
 <a href="https://www.ncbi.nlm.nih.gov/pubmed/20505003">publication which describes it.</a>
-Please feel free to <a href="http://modbase.compbio.ucsf.edu/peptide/help.cgi?type=contact">contact us</a> with any questions or concerns
+Please feel free to <a href="//modbase.compbio.ucsf.edu/peptide/help.cgi?type=contact">contact us</a> with any questions or concerns
 until we finalize the server.  Thank you for your patience!</b></p>
 
 <ul>
@@ -31,10 +31,10 @@ when the job has completed.</p>
 to evaluate secondary structure and solvent accessiblity for a peptide in a protein.  Often there will be more than one model generated
 for the protein, but only one is used to evaluate these structure features, chosen according to these criteria.  The following options
 are available:<br /><br />
-<b>Model Score:</b> A general score for the reliability of a model, as described in the <a href="http://modbase.compbio.ucsf.edu/modbase-cgi/display.cgi?type=help&amp;server=modbase#mpqs">ModBase documentation</a>. <br /><br />
+<b>Model Score:</b> A general score for the reliability of a model, as described in the <a href="//modbase.compbio.ucsf.edu/modbase-cgi/display.cgi?type=help&amp;server=modbase#mpqs">ModBase documentation</a>. <br /><br />
 <b>Model coverage:</b> Fraction of the target protein sequence for which a comparative model was generated.<br /><br />
 <b>Predicted Native Overlap:</b> Fraction of alpha carbons in the model that are predicted to be within 3.5 angstroms of the native state.</p><br />
-<p>The algorithm for predicting the native overlap is described in <a href="http://salilab.org/pdf/Eramian_ProteinSci_2008.pdf">this study</a>. It was shown 
+<p>The algorithm for predicting the native overlap is described in <a href="//salilab.org/pdf/Eramian_ProteinSci_2008.pdf">this study</a>. It was shown 
 to outperform the Model Score metric in evaluating comparative model quality, but the two are generally correlated, and users who are familiar with 
 ModBase may wish to use Model Score.  Model coverage is a useful evaluation metric when a user wishes to evaluate a model that has a larger fraction of the
 target included, for example when only a small portion of the target is included in the model but it receives a very high score.  </p>
@@ -66,7 +66,7 @@ known <b>not</b> to be cleaved (the negatives). The file can include multiple pe
 <b>Sequence</b>:        The amino acid residue sequence of the peptide<br /><br />
 <b>Classification</b>:  This should be set to "Positive" or "Negative", reflecting whether the peptide is a positive or negative example of specificity </p>
 
-<p>Entries on each line are separated by a space or tab. UniProt accessions are mapped to IDs in <a href="http://modbase.compbio.ucsf.edu/modbase-cgi/index.cgi">ModBase</a>, a database of 
+<p>Entries on each line are separated by a space or tab. UniProt accessions are mapped to IDs in <a href="//modbase.compbio.ucsf.edu/modbase-cgi/index.cgi">ModBase</a>, a database of 
 comparative protein structure models.  ModBase continually updates this mapping.  Occasionally a UniProt accession will not be found in ModBase.  This could be due to
 ModBase not having processed this sequence yet in its mapping, or that the accession is outdated or not the primary
 accession for the protein.  Note that accessions in UniProt contain six characters and are distinct from UniProt entry 
@@ -113,7 +113,7 @@ in the test set, and 110 negatives in the test set. </p>
 <p>In application mode, the uploaded file is a list of UniProt accessions, one per line.  The predictive model will
 search for high scoring peptides in the protein sequences for these accessions.</p>
 <br />
-<p> These accessions are mapped to IDs in <a href="http://modbase.compbio.ucsf.edu/modbase-cgi/index.cgi">ModBase</a>, a database of 
+<p> These accessions are mapped to IDs in <a href="//modbase.compbio.ucsf.edu/modbase-cgi/index.cgi">ModBase</a>, a database of 
 comparative protein structure models.  ModBase continually updates this mapping.  Occasionally a UniProt accession will not be found in ModBase.  This could be due to
 ModBase not having processed this sequence yet in its mapping, or that the accession is outdated or not the primary
 accession for the protein.  Note that accessions in UniProt contain six characters and are distinct from UniProt entry 
