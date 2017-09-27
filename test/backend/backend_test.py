@@ -698,6 +698,17 @@ class JobTests(saliweb.test.TestCase):
         #copy input
         files = ["cluster_state",   "inputSequences.fasta",  "parameters.txt",  "sequenceBatches"]
         self.copyFiles(inputDir, j.directory, files)
+        # parameters.txt refers to a column info file on a Sali lab disk -
+        # replace this with a copy in the repository
+        column_file = self.get_test_directory('postprocess/columnInfo.txt')
+        with open(os.path.join(inputDir, 'parameters.txt')) as fh_in:
+            with open(os.path.join(j.directory, 'parameters.txt'),
+                      'w') as fh_out:
+                for line in fh_in:
+                    if line.startswith('column_info_file'):
+                        fh_out.write('column_info_file\t%s\n' % column_file)
+                    else:
+                        fh_out.write(line)
 
     def copyFiles(self, sourceDirectory, destinationDirectory, files):
         for file in files:
