@@ -37,12 +37,12 @@ class JobTests(saliweb.test.TestCase):
     def runPreprocess(self, preprocessDir, seqBatchCount, totalSeqCount):
 
         j = self.createPreprocessingJobDirectory()
-        
+
         #copy input
         inputDirectory = preprocessDir + "/input/"
         files = ["parameters.txt", "inputSequences.fasta"]
         self.copyFiles(inputDirectory, j.directory, files)
-        
+
         #run preprocess
         j.preprocess()
 
@@ -53,7 +53,7 @@ class JobTests(saliweb.test.TestCase):
 
         #check results match expected
         self.processSeqBatchAndParams(j, preprocessDir, expectedOutputDir)
-        
+
         #correct number of sequences and seq batch directories written
         logMessage = "Made %s sequence batch directories for %s sequences" % (seqBatchCount, totalSeqCount)
         self.checkLogMessageWritten(j, logMessage) #stats
@@ -69,16 +69,16 @@ class JobTests(saliweb.test.TestCase):
         allSeqBatchSeqIds = {}
         inputFastaSeqIds = {}
         self.getSequenceIdsFromFasta(j.directory + "/inputSequences.fasta", inputFastaSeqIds)
-        
+
         #Go through all sequence batch directories
         prefixDirs = os.listdir(seqBatchExpectedOutputDir)
         for prefixDir in prefixDirs:
-            
+
             dotFile = dotRegex.search(prefixDir)
             tildaFile = tildaRegex.search(prefixDir)
             if (dotFile or tildaFile):
                 continue
-            
+
             #check fasta file exists
             expectedFastaFile = seqBatchExpectedOutputDir + "/" + prefixDir + "/inputSequences.fasta"
             observedFastaFile = j.directory + "/sequenceBatches/" + prefixDir +  "/inputSequences.fasta"
@@ -100,7 +100,7 @@ class JobTests(saliweb.test.TestCase):
         expectedParameterFile = expectedOutputDir + "/parameters.txt"
         observedParameterFile = j.directory + "/parameters.txt"
         self.compareFiles(expectedParameterFile, observedParameterFile, 1, parameterSkip)
-       
+
 
     """
     General testing flow:
@@ -125,7 +125,7 @@ class JobTests(saliweb.test.TestCase):
         print "Testing Run Training"
         trainingDirectory= "/modbase5/home/dbarkan/peptide/test/backend/run/training/"
         self.runTrainingRunSvmTest(trainingDirectory, 10)  #test training run in SVM mode (second call to run() over the course of processing a server job)
-        
+
 
 
     def runTrainingRunSvmTest(self, trainingDir, taskCount):
@@ -231,7 +231,7 @@ class JobTests(saliweb.test.TestCase):
         print "Testing error training postprocess"
         self.errorTrainingPostprocessTest(j, trainingErrorPostprocessDir)
 
-            
+
         print "Testing Normal Postprocess"
         self.applicationPostprocessTest(j, applicationScanDir, 2014)
 
@@ -240,7 +240,7 @@ class JobTests(saliweb.test.TestCase):
         print "Testing Error Postprocess"
         self.errorApplicationPostprocess(applicationErrorPostprocessDir)
 
-       
+
 
     def applicationPostprocessTest(self, j, postprocessDir, peptideCount):
 
@@ -260,7 +260,7 @@ class JobTests(saliweb.test.TestCase):
 
         logMessage = "peptides processed without errors: %s" % peptideCount #stats
         self.checkLogMessageWritten(j, logMessage)
-       
+
 
     def trainingPostprocessTest(self, j, postprocessDir):
 
@@ -268,7 +268,7 @@ class JobTests(saliweb.test.TestCase):
         self.copyPostprocessTrainingInput(inputDir, j)
         j.postprocess()
 
-        
+
         expectedOutputDir = postprocessDir + "/expectedOutput"
         outputFiles = ["svmTrainingFinalResults.txt", "framework.log", "user.log", "userCreatedSvmModel.txt"]
         self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
@@ -292,7 +292,7 @@ class JobTests(saliweb.test.TestCase):
 
         self.runPostprocessMissingLooFile(inputDir, expectedOutputDir)
         self.runPostprocessLooNoContent(inputDir, expectedOutputDir)
-        
+
         self.runPostprocessMissingUserModel(inputDir, expectedOutputDir)
         self.runPostprocessWrongPeptideCount(inputDir, expectedOutputDir)
 
@@ -308,15 +308,15 @@ class JobTests(saliweb.test.TestCase):
         self.copyFiles(inputDir, j.directory, [wrongCountFile])
         self.updateParameters(parameterFile, "loo_model_pipeline_result_file_name", wrongCountFile)
         j.postprocess()
-        
+
         outputFiles = ["postprocessErrors", "framework.log", "user.log", "svm"]
-        
+
         self.checkErrorFileWritten(j, "training_content_error")
         self.checkErrorMessageWritten(j)
-                
+
         self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
-        
-        
+
+
 
     def runPostprocessMissingLooFile(self, inputDir, expectedOutputDir):
         print "Testing training error thrown when leave one out result file not written"
@@ -325,15 +325,15 @@ class JobTests(saliweb.test.TestCase):
         self.copyPostprocessTrainingInput(inputDir, j)
 
         parameterFile = j.directory + "/parameters.txt"
-        
+
         self.updateParameters(parameterFile, "loo_model_pipeline_result_file_name", "fake")
         j.postprocess()
-        
+
         outputFiles = ["postprocessErrors", "framework.log", "user.log", "svm"]
-        
+
         self.checkErrorFileWritten(j, "cluster_missing_file")
         self.checkErrorMessageWritten(j)
-                
+
         self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
 
     def runPostprocessLooNoContent(self, inputDir, expectedOutputDir):
@@ -347,12 +347,12 @@ class JobTests(saliweb.test.TestCase):
         self.copyFiles(inputDir, j.directory, [noContentFile])
         self.updateParameters(parameterFile, "loo_model_pipeline_result_file_name", noContentFile)
         j.postprocess()
-        
+
         outputFiles = ["postprocessErrors", "framework.log", "user.log", "svm"]
-        
+
         self.checkErrorFileWritten(j, "cluster_missing_file")
         self.checkErrorMessageWritten(j)
-                
+
         self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
 
 
@@ -363,72 +363,72 @@ class JobTests(saliweb.test.TestCase):
         self.copyPostprocessTrainingInput(inputDir, j)
 
         parameterFile = j.directory + "/parameters.txt"
-        
+
         self.updateParameters(parameterFile, "user_created_svm_model_name", "fake")
         j.postprocess()
-        
+
         outputFiles = ["postprocessErrors", "framework.log", "user.log", "svm"]
-        
+
         self.checkErrorFileWritten(j, "cluster_missing_file")
         self.checkErrorMessageWritten(j)
-                
+
         self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
 
 
     def runPostprocessTrainingResultsNotIncremented(self, inputDir, expectedOutputDir):
 
         print "testing training error thrown when counts in result file are not greater with each successive line"
-        
+
         j = self.createRunningJobDirectory()
         self.copyPostprocessTrainingInput(inputDir, j)
 
         parameterFile = j.directory + "/parameters.txt"
-       
+
         self.updateParameters(parameterFile, "model_pipeline_result_file_name", "modelPipelineResultsNotIncremented.txt")
         self.updateParameters(parameterFile, "iteration_count", "1")
         j.postprocess()
-        
+
         outputFiles = ["postprocessErrors", "framework.log", "user.log", "svm", "parameters.txt"]
-        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)        
+        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
         self.checkErrorFileWritten(j, "training_content_error")
         self.checkErrorMessageWritten(j)
 
     def runPostprocessTrainingResultsInvalidNegativeRef(self, inputDir, expectedOutputDir):
 
         print "testing training error thrown when different number of reference negative counts in result file"
-        
+
         j = self.createRunningJobDirectory()
         self.copyPostprocessTrainingInput(inputDir, j)
 
         parameterFile = j.directory + "/parameters.txt"
-       
+
         self.updateParameters(parameterFile, "model_pipeline_result_file_name", "modelPipelineResultsInvalidNegative.txt")
         self.updateParameters(parameterFile, "iteration_count", "2")
         j.postprocess()
-        
+
         outputFiles = ["postprocessErrors", "framework.log", "user.log", "svm", "parameters.txt"]
-        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)        
+        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
         self.checkErrorFileWritten(j, "training_content_error")
         self.checkErrorMessageWritten(j)
 
     def runPostprocessTrainingResultsInvalidPositiveRef(self, inputDir, expectedOutputDir):
 
         print "testing training error thrown when different number of reference positive counts in result file"
-        
+
         j = self.createRunningJobDirectory()
         self.copyPostprocessTrainingInput(inputDir, j)
 
         parameterFile = j.directory + "/parameters.txt"
-       
+
         self.updateParameters(parameterFile, "model_pipeline_result_file_name", "modelPipelineResultsInvalidPositive.txt")
         self.updateParameters(parameterFile, "iteration_count", "2")
         j.postprocess()
-        
+
         outputFiles = ["postprocessErrors", "framework.log", "user.log", "svm", "parameters.txt"]
-        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)        
+        self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
         self.checkErrorFileWritten(j, "training_content_error")
         self.checkErrorMessageWritten(j)
-        
+
 
 
     def runPostprocessEmptyResultFileError(self, inputDir, expectedOutputDir):
@@ -439,16 +439,16 @@ class JobTests(saliweb.test.TestCase):
         self.copyPostprocessTrainingInput(inputDir, j)
 
         parameterFile = j.directory + "/parameters.txt"
-       
+
         self.updateParameters(parameterFile, "model_pipeline_result_file_name", "modelPipelineResultsEmptyFile")
         j.postprocess()
-        
+
         outputFiles = ["postprocessErrors", "framework.log", "user.log", "svm"]
-        
+
         self.checkErrorFileWritten(j, "cluster_missing_file")
         self.checkErrorMessageWritten(j)
         self.checkLogMessageWritten(j, "Sending webserver feature error email")
-        
+
         self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
 
     def runPostprocessTrainingMissingResultFileError(self, inputDir, expectedOutputDir):
@@ -459,15 +459,15 @@ class JobTests(saliweb.test.TestCase):
         self.copyPostprocessTrainingInput(inputDir, j)
 
         parameterFile = j.directory + "/parameters.txt"
-        
+
         self.updateParameters(parameterFile, "model_pipeline_result_file_name", "fake")
         j.postprocess()
-        
+
         outputFiles = ["postprocessErrors", "framework.log", "user.log", "svm"]
-        
+
         self.checkErrorFileWritten(j, "cluster_missing_file")
         self.checkErrorMessageWritten(j)
-                
+
         self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
 
     def runPostprocessTrainingGlobalError(self, inputDir, expectedOutputDir):
@@ -478,15 +478,15 @@ class JobTests(saliweb.test.TestCase):
         self.copyPostprocessTrainingInput(inputDir, j)
 
         parameterFile = j.directory + "/parameters.txt"
-        
+
         self.updateParameters(parameterFile, "model_pipeline_result_file_name", "modelPipelineResultsGlobalError")
         j.postprocess()
-        
+
         outputFiles = ["postprocessErrors", "framework.log", "user.log", "parameters.txt", "svm"]
-        
+
         self.checkErrorFileWritten(j, "file_missing")
         self.checkErrorMessageWritten(j)
-                
+
         self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
 
     def runPostprocessMissingSvmDirError(self, inputDir, expectedOutputDir):
@@ -496,15 +496,15 @@ class JobTests(saliweb.test.TestCase):
         self.copyPostprocessTrainingInput(inputDir, j)
 
         parameterFile = j.directory + "/parameters.txt"
-        
+
         self.updateParameters(parameterFile, "top_level_svm_directory", "fake")
         j.postprocess()
-        
+
         outputFiles = ["postprocessErrors", "framework.log", "user.log", "svm"]
-        
+
         self.checkErrorFileWritten(j, "cluster_missing_file")
         self.checkErrorMessageWritten(j)
-                
+
         self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
 
 
@@ -515,13 +515,13 @@ class JobTests(saliweb.test.TestCase):
         self.copyPostprocessTrainingInput(inputDir, j)
 
         parameterFile = j.directory + "/parameters.txt"
-        
+
         self.updateParameters(parameterFile, "model_pipeline_result_file_name", "modelPipelineResultsOutputError")
         j.postprocess()
-        
+
         outputFiles = ["postprocessErrors", "framework.log", "user.log", "parameters.txt", "svm"]
         self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
-        
+
         self.checkErrorFileWritten(j, "output_error")
         self.checkErrorMessageWritten(j)
 
@@ -568,15 +568,15 @@ class JobTests(saliweb.test.TestCase):
         self.copyPostprocessApplicationInput(inputDir, j)
 
         parameterFile = j.directory + "/parameters.txt"
-        
+
         self.updateParameters(parameterFile, "seq_batch_directory_prefix", "fake")
         j.postprocess()
-        
+
         outputFiles = ["postprocessErrors", "framework.log", "user.log"]
-        
+
         self.checkErrorFileWritten(j, "cluster_missing_file")
         self.checkErrorMessageWritten(j)
-                
+
         self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
 
     def runPostprocessApplicationMissingSequenceError(self, inputDir, expectedOutputDir):
@@ -604,15 +604,15 @@ class JobTests(saliweb.test.TestCase):
         self.copyPostprocessApplicationInput(inputDir, j)
 
         parameterFile = j.directory + "/parameters.txt"
-        
+
         self.updateParameters(parameterFile, "model_pipeline_result_file_name", "modelPipelineResultsDisopredError")
         self.updateParameters(parameterFile, "seq_batch_count", "1")
 
         j.postprocess()
         outputFiles = ["framework.log", "user.log"]
-        
+
         self.checkLogMessageWritten(j, "Sending webserver feature error email")
-                
+
         self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
 
 
@@ -624,15 +624,15 @@ class JobTests(saliweb.test.TestCase):
         self.copyPostprocessApplicationInput(inputDir, j)
 
         parameterFile = j.directory + "/parameters.txt"
-       
+
         self.updateParameters(parameterFile, "model_pipeline_result_file_name", "modelPipelineResultsEmptyFile")
         j.postprocess()
-        
+
         outputFiles = ["postprocessErrors", "framework.log", "user.log"]
-        
+
         self.checkErrorFileWritten(j, "cluster_missing_file")
         self.checkErrorMessageWritten(j)
-        
+
         self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
 
     def runPostprocessApplicationMissingResultFileError(self, inputDir, expectedOutputDir):
@@ -643,15 +643,15 @@ class JobTests(saliweb.test.TestCase):
         self.copyPostprocessApplicationInput(inputDir, j)
 
         parameterFile = j.directory + "/parameters.txt"
-        
+
         self.updateParameters(parameterFile, "model_pipeline_result_file_name", "fake")
         j.postprocess()
-        
+
         outputFiles = ["postprocessErrors", "framework.log", "user.log"]
-        
+
         self.checkErrorFileWritten(j, "cluster_missing_file")
         self.checkErrorMessageWritten(j)
-                
+
         self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
 
 
@@ -663,15 +663,15 @@ class JobTests(saliweb.test.TestCase):
         self.copyPostprocessApplicationInput(inputDir, j)
 
         parameterFile = j.directory + "/parameters.txt"
-        
+
         self.updateParameters(parameterFile, "model_pipeline_result_file_name", "modelPipelineResultsGlobalError")
         j.postprocess()
-        
+
         outputFiles = ["postprocessErrors", "framework.log", "user.log"]
-        
+
         self.checkErrorFileWritten(j, "file_missing")
         self.checkErrorMessageWritten(j)
-                
+
         self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
 
 
@@ -683,15 +683,15 @@ class JobTests(saliweb.test.TestCase):
         self.copyPostprocessApplicationInput(inputDir, j)
 
         parameterFile = j.directory + "/parameters.txt"
-        
+
         self.updateParameters(parameterFile, "model_pipeline_result_file_name", "modelPipelineResultsOutputError")
         j.postprocess()
-        
+
         outputFiles = ["postprocessErrors", "framework.log", "user.log"]
-        
+
         self.checkErrorFileWritten(j, "output_error")
         self.checkErrorMessageWritten(j)
-                
+
         self.copyFiles(j.directory, expectedOutputDir + "/observedOutput/", outputFiles)
 
     def checkErrorMessageWritten(self, j):
@@ -699,7 +699,7 @@ class JobTests(saliweb.test.TestCase):
         self.checkLogMessageWritten(j, "Writing error output file")
 
     def checkLogMessageWritten(self, j, msg):
-    
+
         msgRegex = re.compile(msg)
         foundLogMessage = 0
 
@@ -710,13 +710,13 @@ class JobTests(saliweb.test.TestCase):
             if (msgRegex.search(line)):
                 foundLogMessage = 1
         self.assertTrue(foundLogMessage == 1, " Log message " + msg + " not written to framework log")
-    
+
 
     def checkErrorFileWritten(self, j, errorKeyword):
         errorFileName = j.directory + "/postprocessErrors"
         errorFh = open(errorFileName, "r")
         errorLine = errorFh.readline()
-        errorLine = errorLine.rstrip("\n\r")       
+        errorLine = errorLine.rstrip("\n\r")
         self.assertEqual(errorLine, errorKeyword, "Error file with keyword " + errorKeyword + " not written")
 
 
@@ -725,18 +725,18 @@ class JobTests(saliweb.test.TestCase):
     def copyPostprocessTrainingInput(self, inputDir, j):
         #copy input
         files = ["cluster_state",  "inputSequences.fasta",  "parameters.txt", "svm",  "rawUserModelFile", "looModelPipelineResults.txt"]
-        self.copyFiles(inputDir, j.directory, files)  
+        self.copyFiles(inputDir, j.directory, files)
 
     def copyPostprocessApplicationInput(self, inputDir, j):
 
         #copy input
         files = ["cluster_state",   "inputSequences.fasta",  "parameters.txt",  "sequenceBatches"]
-        self.copyFiles(inputDir, j.directory, files)  
+        self.copyFiles(inputDir, j.directory, files)
 
     def copyFiles(self, sourceDirectory, destinationDirectory, files):
         for file in files:
             fullFile = sourceDirectory + "/" + file
-            
+
             process = subprocess.Popen(['cp', '-r', fullFile, destinationDirectory], shell=False, stderr=subprocess.PIPE)
             output = process.communicate()
             msg = output[1]
@@ -746,7 +746,7 @@ class JobTests(saliweb.test.TestCase):
     def checkNormalPostprocessCompletion(self, j, expectedOutputDir):
         expectedResultFile = os.path.join(expectedOutputDir, "svmTrainingFinalResults.txt")
         observedResultFile = os.path.join(j.directory, "svmTrainingFinalResults.txt")
-        
+
         expectedFh = open(expectedResultFile, "r")
         observedFh = open(observedResultFile, "r")
 
@@ -761,7 +761,7 @@ class JobTests(saliweb.test.TestCase):
             observedLine = observedLines[observedLineCounter]
             observedLineCounter = observedLineCounter + 1
 
-                        
+
             expectedLine = expectedLine.rstrip("\n\r")
             observedLine = observedLine.rstrip("\n\r")
 
@@ -781,13 +781,13 @@ class JobTests(saliweb.test.TestCase):
             else:
                 print "did not get expected number of columns in %s" % observedResultFile
                 exit
-                            
+
 
 
         expectedFh.close()
         observedFh.close()
-        
-            
+
+
 
     def compareFiles(self, firstFile, secondFile, sortFiles, skipList):
 
@@ -839,14 +839,14 @@ class JobTests(saliweb.test.TestCase):
         #create job
         j = self.make_test_job(peptide.Job, 'RUNNING')
         d = saliweb.test.RunInDir(j.directory)
-        
+
         #make log
         hdlr = j.get_log_handler()
         j.logger = logging.getLogger("peptide")
         j.logger.addHandler(hdlr)
 
         return j
-    
+
     def createPreprocessingJobDirectory(self):
         #create job
         j = self.make_test_job(peptide.Job, 'PREPROCESSING')
@@ -875,7 +875,7 @@ class JobTests(saliweb.test.TestCase):
             line = line.rstrip("\n\r")
 
             [paramName, paramValue] = line.split('\t')
-            
+
             if (paramName == newParamName):
 
                 paramValue = newParamValue
@@ -890,7 +890,7 @@ class JobTests(saliweb.test.TestCase):
         fastaFh = open(fastaFile)
         headerRe = re.compile('\>(\w+)\|(\w+)')
         blankRe = re.compile('^\s*$')
- 
+
         for line in fastaFh:
 
             #next if blank line
@@ -904,7 +904,7 @@ class JobTests(saliweb.test.TestCase):
                 modbaseSeqId = str(header.group(1))
                 seqDict[modbaseSeqId] = 1
 
-               
+
     def loadFile(self, fileLines, skipReList):
 
         blankRe = re.compile("^\s*$")
@@ -932,4 +932,3 @@ class JobTests(saliweb.test.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-                                                                                                                                                                                             
