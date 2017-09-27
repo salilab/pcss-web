@@ -214,7 +214,7 @@ class Job(saliweb.backend.Job):
                     self.checkPeptideJobCompleted(seqBatchList)
                     self.processPeptideJob(seqBatchList)
                     #self.validateFinalFeatureFiles()
-                except ClusterJobError,  e:
+                except ClusterJobError as e:
                     self.handleClusterError(e)
                     return
     
@@ -232,7 +232,7 @@ class Job(saliweb.backend.Job):
                     self.processSvmResults()
                     self.makeUserCreatedModelPackage()
                     #self.validateFinalSvmFiles()
-                except (ClusterJobError, TrainingContentError), e:
+                except (ClusterJobError, TrainingContentError) as e:
                     
                     self.handleClusterError(e)
                     return
