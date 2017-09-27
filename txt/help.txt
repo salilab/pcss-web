@@ -1,7 +1,7 @@
 <h1>Help</h1>
 
-<p><b>Please note: This server is undergoing minor modifications to the documentation and layout, in preparation for
-the publication of the <a href="http://bioinformatics.oxfordjournals.org/cgi/reprint/btq267">manuscript which describes it.</a>
+<p><b>Please note: This server is undergoing minor modifications to the documentation and layout, in order to match the
+<a href="https://www.ncbi.nlm.nih.gov/pubmed/20505003">publication which describes it.</a>
 Please feel free to <a href="http://modbase.compbio.ucsf.edu/peptide/help.cgi?type=contact">contact us</a> with any questions or concerns
 until we finalize the server.  Thank you for your patience!</b></p>
 
