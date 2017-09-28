@@ -14,7 +14,7 @@ SConscript('lib/SConscript')
 SConscript('txt/SConscript')
 SConscript('html/SConscript')
 
-#SConscript('test/frontend/SConscript')
+SConscript('test/frontend/SConscript')
 #SConscript('test/svmApplication/SConscript')
 #SConscript('test/pipeline/SConscript')
 #SConscript('test/svmTraining/SConscript')
