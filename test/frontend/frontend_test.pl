@@ -828,7 +828,7 @@ sub testAndPostprocessFiles{
     push (@fileNames, "inputSequences.fasta_sorted");
 
     
-    &copyFiles($runDirectory, "$expectedOutputDir/observedOutput", @fileNames);
+#   &copyFiles($runDirectory, "$expectedOutputDir/observedOutput", @fileNames);
 }
 
 sub checkFilesExist{
