@@ -46,7 +46,8 @@ my $applicationScanTestDir = "${testdir}/applicationScan/";
 my $applicationDefinedTestDir = "${testdir}/applicationDefined/";
 my $trainingTestDir = "${testdir}/training/";
 
-my $parameterFileName= "/netapp/sali/peptide/data/testPeptideServerParameters.txt";
+# Use local copy of parameter file, not that from PCSS
+my $parameterFileName= "${testdir}/testPeptideServerParameters.txt";
 
 #one test for each server mode 
 #&testTraining($frontend, $trainingTestDir, $parameterFileName);

@@ -1,0 +1,123 @@
+#ERROR KEYWORDS
+keyword_no_modbase_for_uniprot	Not_Found
+keyword_peptide_sequence_mismatch	mismatch
+keyword_no_peptides_parsed	no_peptides_parsed
+keyword_disopred_error	disopred_error
+keyword_psipred_error	psipred_error
+keyword_no_cluster_errors	no_cluster_errors
+keyword_output_error	output_error
+
+#COLUMN KEYWORDS
+keyword_application_display	applicationDisplay
+keyword_training_display	trainingDisplay
+keyword_feature_internal	featureInternal
+keyword_application_classification	Application
+
+#RESULT AND LOG FILES
+framework_log_file_name	framework.log
+user_log_file_name	user.log
+creation_pipeline_output_file	creationPipelineOut
+model_pipeline_result_file_name	modelPipelineResults.txt
+peptide_pipeline_result_file_name	peptidePipelineResults.txt
+training_final_result_file_name	svmTrainingFinalResults.txt
+application_final_result_file_name	applicationFinalResults.txt
+model_pipeline_output_file	modelPipelineOut.txt
+peptide_pipeline_output_file	peptidePipelineOut.txt
+model_pipeline_log_name	modelPipelineLog
+peptide_pipeline_log_name	peptidePipelineLog
+saved_input_file_name	userInputFile.txt
+loo_model_pipeline_result_file_name	looModelPipelineResults.txt
+loo_model_pipeline_log_name	looModelPipelineLog
+
+#SVM TRAINING FILES
+svm_complete_set_file_name	fullTrainingSet
+
+#MULTI-STEP FILES
+input_fasta_file_name	inputSequences.fasta
+rules_file_name	peptideRulesFile	
+job_parameter_file_name	parameters.txt
+loo_parameter_file_name	leaveOneOutParams.txt
+column_info_file	/netapp/sali/peptide/data/columnInfo.txt
+mismatch_file_name	mismatches.fasta
+
+#SAVED MODELS AND BENCHMARKS
+user_created_svm_model_name	rawUserModelFile
+caspase_model_file	/netapp/sali/peptide/data/caspaseSvmModel_20100527
+grb_model_file	/netapp/sali/peptide/data/grbSvmModel_20100310.txt
+hiv_model_file	/netapp/sali/peptide/data/hivCreateModel_svmModelFile.txt
+caspase_benchmark_score_file	/netapp/sali/peptide/data/caspaseBenchmarkScores_20100527
+grb_benchmark_score_file	/netapp/sali/peptide/data/grbBenchmarkScores.txt
+hiv_benchmark_score_file	/netapp/sali/peptide/data/hivBenchmarkScores.txt
+user_separator_line	***TTTTT***
+user_model_package_name	userCreatedSvmModel.txt
+custom_model_file	userCustomModelFile
+custom_benchmark_file	userCustomBenchmarkFile
+
+#DIRECTORY STRUCTURES
+seq_batch_directory_prefix	seq_batch
+seq_batch_top_directory	sequenceBatches
+top_level_seq_directory	sequences
+top_level_svm_directory	svm
+perl_lib_directory	/netapp/sali/peptide/lib/
+cluster_pipeline_directory	/scratch/peptide/
+netapp_bin_directory	/netapp/sali/peptide/bin/
+
+#PROTEIN ANNOTATION FILES
+peptide_protein_map_file	/netapp/sali/peptide/data/caspaseHomologMap.txt
+protein_name_file	/netapp/sali/peptide/data/uniprotDescriptions.txt
+
+#CLUSTER PARAMS
+seqs_in_batch_count	50
+
+#CLUSTER PERL MODULES AND SCRIPTS
+creation_class_name	CreationPipeline
+benchmark_class	Jackknife
+application_class_name	ApplicationPipeline
+benchmarker_class_name	BenchmarkerPipeline
+peptide_pipeline_script_name	runPeptidePipeline.pl
+model_pipeline_script_name	runModelPipeline.pl
+
+#MODEL AND DSSP INFO
+modpipe_run_name	pcss_modpipe_runs
+model_table	/netapp/sali/peptide/data/human2008ModelTableTrinidad.txt
+dssp_directory	/netapp/sali/peptide/data/landing/dssp/
+
+#SEQUENCE BASED METHOD INFO
+disopred_results_dir	/netapp/sali/peptide/data/landing/disopred/disopredResults
+psipred_results_dir	/netapp/sali/peptide/data/landing/psipred/psipredResults
+run_disopred_cmd	/netapp/sali/peptide/data/landing/disopred/disopredRun/rundisopred
+run_psipred_cmd	/netapp/sali/peptide/data/landing/psipred/psipredRun/runpsipred
+
+#PIPELINE STEPS TO TAKE
+applyHmm	no
+runDssp	yes
+addLysateExpression	no
+processDisopredResults	yes
+processPsipredResults	yes
+addAntibodyAvailability	no
+processDomainAnnotation	no
+processGoAnnotation	no
+writeUserResults	yes
+processProfResults	no
+
+#SVM FILES AND PARAMETERS
+negative_training_set_ratio	1
+use_structure_features	yes
+zeroes	explicit
+gamma	0.01
+c	10
+svm_software	svmlite
+model_class	SvmModel
+svm_test_set_file_name	svmTestSet
+svm_training_set_file_name	svmTrainingSet
+svm_application_set_file_name	svmApplicationSet
+svm_score_file_name	svmScoreFile
+svm_classify_command	/netapp/sali/peptide/bin/svm_classify_x64
+svm_training_model_name	trainingModel
+svm_learn_command	/netapp/sali/peptide/bin/svm_learn_x64 -t 2
+
+#TESTING
+test_mode	yes
+
+
+
