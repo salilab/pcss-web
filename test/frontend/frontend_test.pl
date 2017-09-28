@@ -462,7 +462,9 @@ sub runApplicationScanNormalTests{
     #Main data files were output correctly
     &compareFileLines("$expectedOutputDir/inputSequences.fasta", "$runDirectory/inputSequences.fasta", 1, []);
     &compareFileLines("$expectedOutputDir/userInputFile.txt", "$runDirectory/userInputFile.txt", 1, []);
-    file_contents_identical("$expectedOutputDir/inputSequences.fasta", "$runDirectory/inputSequences.fasta", "application scan fasta sequences");    
+
+    &compareFileLines("$expectedOutputDir/inputSequences.fasta", "$runDirectory/inputSequences.fasta", 1, []);
+
     &compareFileLines("$expectedOutputDir/parameters.txt", "$runDirectory/parameters.txt", 1, ["seqs_in_batch_count", "test_mode", "job_name"]);
     &compareFileLines("$expectedOutputDir/peptideRulesFile", "$runDirectory/peptideRulesFile", 1, []);
   	
