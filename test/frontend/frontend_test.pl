@@ -38,10 +38,11 @@ my $t = new saliweb::Test('peptide');
 ########################################################################################################################################################
 
 my $frontend = $t->make_frontend();
-my $dbh = &loadDbh();
+my $testdir = dirname($0);
+
+my $dbh = new MockDBH("$testdir/modbase_data");
 $frontend->{'dbh'} = $dbh;
 
-my $testdir = dirname($0);
 my $applicationScanTestDir = "${testdir}/applicationScan/";
 my $applicationDefinedTestDir = "${testdir}/applicationDefined/";
 my $trainingTestDir = "${testdir}/training/";
@@ -867,14 +868,55 @@ sub makeGlobalInputValues{
     return $input;
 }
 
+# PCSS queries ModBase via SQL to get AA sequences for UniProt accessions.
+# This won't work outside of the Sali lab, and will break if any of the
+# data in ModBase changes, so instead provide a mock database handle that
+# returns a snapshot of the database.
+package MockDBH;
 
-sub loadDbh{
-    my $dbString = "DBI:mysql:database=modbase_synonyms:hostname=modbase";
-    my $username = "modbase";
-    my $password = "***REMOVED***";
-    my $dbh = DBI->connect( $dbString, $username, $password, {RaiseError => 1});
-    return $dbh;
+sub new {
+  my ($invocant, $data_file) = @_;
+  my $class = ref($invocant) || $invocant;
+  my $self = {};
+  bless($self, $class);
+  $self->{accession_map} = $self->read_modbase_data($data_file);
+  return $self;
 }
 
+sub read_modbase_data {
+  my ($self, $data_file) = @_;
+  my $acmap = {};
+  open(FH, $data_file) or die "Cannot open $data_file: $!";
+  for my $line (<FH>) {
+    if ($line =~ /^#/) {
+      next;
+    }
+    chomp $line;
+    my ($uniprot_id, $seq_id, $seq) = split(/\t/, $line);
+    $acmap->{$uniprot_id} = [$seq_id, $seq];
+  }
+  close(FH);
+  return $acmap;
+}
 
+sub prepare {
+  my ($self, $query) = @_;
+  # Really we should return a prepared query here, but rather than create
+  # another class, just return ourselves:
+  return $self;
+}
 
+sub execute {
+  my ($self, $accession) = @_;
+  $self->{accession} = $accession;
+}
+
+sub fetchrow_array {
+  my ($self) = @_;
+  my $data = $self->{accession_map}->{$self->{accession}};
+  if (defined $data) {
+    return @$data;
+  }
+}
+
+1;
