@@ -860,7 +860,7 @@ sub makeGlobalInputValues{
     my $errorHandling = 'I';                                 $input->{'error_handling'} = $errorHandling;
     my $bestModel = 'nativeOverlap';                         $input->{'best_model'} = $bestModel; 
     my $directory = 
-	File::Temp->tempdir("XXXX", CLEANUP => 1);  $input->{'directory'} = $directory;
+	File::Temp->newdir(CLEANUP => 1);  $input->{'directory'} = $directory;
     
     return $input;
 }
