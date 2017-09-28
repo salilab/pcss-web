@@ -3,7 +3,6 @@ use Test::More 'no_plan';
 
 use Test::Builder;
 use Test::Exception;
-use Test::File::Contents;
 
 use File::Basename;
 use File::Temp;
