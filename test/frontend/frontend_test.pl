@@ -604,13 +604,15 @@ sub testValidRulesFile{
 sub compareFileLines{
 
     my ($firstFile, $secondFile, $sortFiles, $skipList) = @_;
+    my $td;
 
     if ($sortFiles){
-	my $firstSortedFile = $firstFile . "_sorted";
+        $td = File::Temp->newdir(CLEANUP => 1);
+	my $firstSortedFile = "$td/" . basename $firstFile . "_sorted";
 	my $firstSortCmd = "sort $firstFile > $firstSortedFile";
 	system($firstSortCmd);
 
-	my $secondSortedFile = $secondFile . "_sorted";
+	my $secondSortedFile = "$td/" . basename $secondFile . "_sorted";
 	my $secondSortCmd = "sort $secondFile > $secondSortedFile";
 	system($secondSortCmd);
 
