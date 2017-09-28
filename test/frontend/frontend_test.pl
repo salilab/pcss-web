@@ -15,6 +15,65 @@ BEGIN {
 
 my $t = new saliweb::Test('peptide');
 
+# Test get_index_page
+{
+    my $self = $t->make_frontend();
+    my $txt = $self->get_index_page();
+    like($txt, qr/PCSS: Peptide Classification using Sequence and Structure/ms,
+         'get_index_page');
+}
+
+# Test get_footer
+{
+    my $self = $t->make_frontend();
+    my $txt = $self->get_footer();
+    like($txt, qr/&nbsp/ms, 'get_footer');
+}
+
+# Test getSvmModelFileLocation
+{
+    my $self = $t->make_frontend();
+    $self->{Parameters}->{grb_model_file} = "test-grb";
+    $self->{Parameters}->{caspase_model_file} = "test-caspase";
+    $self->{Parameters}->{hiv_model_file} = "test-hiv";
+
+    is($self->getSvmModelFileLocation("grb"), "test-grb",
+       'getSvmModelFileLocation grb');
+    is($self->getSvmModelFileLocation("caspase"), "test-caspase",
+       'getSvmModelFileLocation caspase');
+    is($self->getSvmModelFileLocation("hiv"), "test-hiv",
+       'getSvmModelFileLocation hiv');
+    is($self->getSvmModelFileLocation("custom"), undef,
+       'getSvmModelFileLocation custom');
+    throws_ok { $self->getSvmModelFileLocation("foo") }
+              qr/Did not get expected SVM Model type/,
+              'getSvmModelFileLocation bad type';
+}
+#
+# Test getBenchmarkScoreFileLocation
+{
+    my $self = $t->make_frontend();
+    my $tempdir = File::Temp->newdir(CLEANUP => 1);
+    $self->{Parameters}->{framework_log_file_name} = "test-log";
+    $self->getInternalLogFile($tempdir);
+
+    $self->{Parameters}->{grb_benchmark_score_file} = "test-grb";
+    $self->{Parameters}->{caspase_benchmark_score_file} = "test-caspase";
+    $self->{Parameters}->{hiv_benchmark_score_file} = "test-hiv";
+
+    is($self->getBenchmarkScoreFileLocation("grb"), "test-grb",
+       'getBenchmarkScoreFileLocation grb');
+    is($self->getBenchmarkScoreFileLocation("caspase"), "test-caspase",
+       'getBenchmarkScoreFileLocation caspase');
+    is($self->getBenchmarkScoreFileLocation("hiv"), "test-hiv",
+       'getBenchmarkScoreFileLocation hiv');
+    is($self->getBenchmarkScoreFileLocation("custom"), undef,
+       'getBenchmarkScoreFileLocation custom');
+    throws_ok { $self->getBenchmarkScoreFileLocation("foo") }
+              qr/Did not get expected SVM Model type/,
+              'getBenchmarkScoreFileLocation bad type';
+}
+
 #######################################################################################################################################################
 # Testing Notes:
 # Test that frontend successfully completes all three modes (application scan, application user defined, training)
