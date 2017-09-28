@@ -651,6 +651,14 @@ sub loadFile{
 		$skipLine = 1;
 	    }
 	}
+        # If line is a FASTA header, sort annotations (since their
+        # order isn't guaranteed)
+        if ($line =~ />.*\|/) {
+          my @spl = split(/\|/, $line);
+          my $first = shift @spl;
+          my $second = shift @spl;
+          my $line = "$first|$second|" . join('|', sort @spl);
+        }
 	next if ($skipLine == 1);
 	push (@fileLines, $line);
     }
