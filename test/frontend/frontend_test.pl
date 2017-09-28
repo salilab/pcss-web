@@ -604,6 +604,8 @@ sub testValidRulesFile{
 sub compareFileLines{
 
     my ($firstFile, $secondFile, $sortFiles, $skipList) = @_;
+    my $firstname = $firstFile;
+    my $secondname = $secondFile;
     my $td;
 
     if ($sortFiles){
@@ -627,7 +629,7 @@ sub compareFileLines{
     foreach my $firstLine (@$firstFileLines){
 	my $secondLine = $secondFileLines->[$secondLineCounter];
 #	print STDERR "comparing lines $firstLine and $second
-	is($firstLine, $secondLine, "lines in $firstFile and $secondFile match");
+	is($firstLine, $secondLine, "lines in $firstname and $secondname match");
 	$secondLineCounter++;
     }
     
