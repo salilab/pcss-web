@@ -1,5 +1,5 @@
 use saliweb::Test;
-use Test::More tests => 2313;
+use Test::More 'no_plan';
 
 use Test::Builder;
 use Test::Exception;
