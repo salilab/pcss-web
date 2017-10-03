@@ -1131,8 +1131,6 @@ class Job(saliweb.backend.Job):
 
     def makeBaseSgeScript(self, taskList):
         jobDirectory = self.directory
-        netappBinDirectory = self.getParam("netapp_bin_directory")
-        netappLibDirectory = self.getParam("perl_lib_directory")
         topLevelSeqBatchDir = self.getParam("seq_batch_top_directory")
         parameterFileName = self.getParam("job_parameter_file_name")
         inputFileName = self.getParam("input_fasta_file_name")
@@ -1143,8 +1141,8 @@ class Job(saliweb.backend.Job):
 
         script = """
 
-set HOME_BIN_DIR="%(netappBinDirectory)s"
-set HOME_LIB_DIR="%(netappLibDirectory)s"
+# Set paths to PCSS pipeline scripts
+module load pcss
 
 set tasks=( %(taskListString)s )
 set input=$tasks[$SGE_TASK_ID]
@@ -1169,8 +1167,6 @@ date
 hostname
 pwd
 
-setenv PERLLIB $HOME_LIB_DIR
-
 """ %locals()
         return script
     
@@ -1183,7 +1179,7 @@ setenv PERLLIB $HOME_LIB_DIR
 
  
         baseScript += """
-perl $HOME_BIN_DIR/%(peptidePipelineScriptName)s --parameterFileName $PARAMETER_FILE_NAME > & $PEPTIDE_OUTPUT_FILE_NAME
+%(peptidePipelineScriptName)s --parameterFileName $PARAMETER_FILE_NAME > & $PEPTIDE_OUTPUT_FILE_NAME
 
 set PEPTIDE_LOG_FILE_NAME="%(peptideLogFileName)s"
 set PEPTIDE_RESULTS_FILE_NAME="%(peptideResultsFileName)s"
@@ -1215,7 +1211,7 @@ rm -r $NODE_HOME_DIR/
         baseScript += """
 
 cp $HOME_RUN_DIR/%(rulesFileName)s $NODE_HOME_DIR
-perl $HOME_BIN_DIR/%(peptidePipelineScriptName)s --parameterFileName $PARAMETER_FILE_NAME > & $PEPTIDE_OUTPUT_FILE_NAME
+%(peptidePipelineScriptName)s --parameterFileName $PARAMETER_FILE_NAME > & $PEPTIDE_OUTPUT_FILE_NAME
 
 set MODEL_OUTPUT_FILE_NAME="%(modelOutputFileName)s"
 set MODEL_LOG_FILE_NAME="%(modelLogFileName)s"
@@ -1226,7 +1222,7 @@ set PEPTIDE_RESULTS_FILE_NAME="%(peptideResultsFileName)s"
 
 set SVM_SCORE_FILE_NAME="%(svmScoreFileName)s"
 
-perl $HOME_BIN_DIR/%(modelPipelineScriptName)s --parameterFileName $PARAMETER_FILE_NAME --pipelineClass %(applicationClassName)s > & $MODEL_OUTPUT_FILE_NAME
+%(modelPipelineScriptName)s --parameterFileName $PARAMETER_FILE_NAME --pipelineClass %(applicationClassName)s > & $MODEL_OUTPUT_FILE_NAME
 
 cp  $PEPTIDE_OUTPUT_FILE_NAME $PEPTIDE_LOG_FILE_NAME $PEPTIDE_RESULTS_FILE_NAME $MODEL_OUTPUT_FILE_NAME $MODEL_LOG_FILE_NAME $MODEL_RESULTS_FILE_NAME $SVM_SCORE_FILE_NAME $HOME_SEQ_BATCH_DIR
 rm -r $NODE_HOME_DIR/
@@ -1251,8 +1247,6 @@ rm -r $NODE_HOME_DIR/
 
     def makeModelSgeScript(self, taskList):
         jobDirectory = self.directory
-        netappBinDirectory = self.getParam("netapp_bin_directory")
-        netappLibDirectory = self.getParam("perl_lib_directory")
         topLevelSvmDir = self.getParam("top_level_svm_directory")
         parameterFileName = self.getParam("job_parameter_file_name")
         inputFileName = self.getParam("input_fasta_file_name")
@@ -1276,8 +1270,8 @@ rm -r $NODE_HOME_DIR/
         looParameterFileName = self.getParam("loo_parameter_file_name")
         script = """
 
-set HOME_BIN_DIR="%(netappBinDirectory)s"
-set HOME_LIB_DIR="%(netappLibDirectory)s"
+# Set paths to PCSS pipeline scripts
+module load pcss
 
 set HOME_RUN_DIR="%(jobDirectory)s" 
 
@@ -1305,9 +1299,7 @@ date
 hostname
 pwd
 
-setenv PERLLIB $HOME_LIB_DIR
-
-perl $HOME_BIN_DIR/%(modelPipelineScriptName)s --parameterFileName $PARAMETER_FILE_NAME --pipelineClass %(benchmarkerClassName)s > & $MODEL_OUTPUT_FILE_NAME
+%(modelPipelineScriptName)s --parameterFileName $PARAMETER_FILE_NAME --pipelineClass %(benchmarkerClassName)s > & $MODEL_OUTPUT_FILE_NAME
 
 cp  $MODEL_OUTPUT_FILE_NAME  $MODEL_LOG_FILE_NAME $MODEL_RESULTS_FILE_NAME $HOME_RESULTS_DIR
 
@@ -1317,7 +1309,7 @@ set CREATION_OUTPUT_FILE_NAME="%(creationOutputFileName)s"
 
 echo "svm iteration 1"
 echo %(creationClassName)s
-perl $HOME_BIN_DIR/%(modelPipelineScriptName)s --parameterFileName $PARAMETER_FILE_NAME --pipelineClass %(creationClassName)s > & $CREATION_OUTPUT_FILE_NAME  
+%(modelPipelineScriptName)s --parameterFileName $PARAMETER_FILE_NAME --pipelineClass %(creationClassName)s > & $CREATION_OUTPUT_FILE_NAME  
 cp %(creationUserModelName)s $HOME_RUN_DIR
 cp $CREATION_OUTPUT_FILE_NAME $HOME_RUN_DIR
 
@@ -1327,7 +1319,7 @@ echo -e "\\nrun_name\\t$input" >>  $NODE_HOME_DIR/$LOO_PARAMETER_FILE_NAME
 set LOO_MODEL_LOG_FILE_NAME="%(looModelLogFileName)s"
 set LOO_MODEL_RESULTS_FILE_NAME="%(looModelResultsFileName)s"
 set LOO_MODEL_OUTPUT_FILE_NAME="%(looModelOutputFileName)s"
-perl $HOME_BIN_DIR/%(modelPipelineScriptName)s --parameterFileName $LOO_PARAMETER_FILE_NAME --pipelineClass %(benchmarkerClassName)s > & $LOO_MODEL_OUTPUT_FILE_NAME
+%(modelPipelineScriptName)s --parameterFileName $LOO_PARAMETER_FILE_NAME --pipelineClass %(benchmarkerClassName)s > & $LOO_MODEL_OUTPUT_FILE_NAME
 cp $LOO_MODEL_LOG_FILE_NAME $LOO_MODEL_RESULTS_FILE_NAME $LOO_MODEL_OUTPUT_FILE_NAME $HOME_RUN_DIR
 
 endif
