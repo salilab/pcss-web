@@ -57,7 +57,7 @@ my $t = new saliweb::Test('peptide');
               qr/Did not get expected SVM Model type/,
               'getSvmModelFileLocation bad type';
 }
-#
+
 # Test getBenchmarkScoreFileLocation
 {
     my $self = $t->make_frontend();
@@ -80,6 +80,29 @@ my $t = new saliweb::Test('peptide');
     throws_ok { $self->getBenchmarkScoreFileLocation("foo") }
               qr/Did not get expected SVM Model type/,
               'getBenchmarkScoreFileLocation bad type';
+}
+
+# Test writeTrainingStats
+{
+    my $self = $t->make_frontend();
+    my $tempdir = File::Temp->newdir(CLEANUP => 1);
+    $self->{Parameters}->{user_log_file_name} = "user-log";
+    $self->getUserLogFile($tempdir);
+    $self->{Parameters}->{framework_log_file_name} = "internal-log";
+    $self->getInternalLogFile($tempdir);
+
+    $self->{Parameters}->{test_set_percentage} = 0.5;
+    $self->{Parameters}->{mismatch_file_name} = 'mismatch';
+
+    ok(open(FH, ">$tempdir/mismatch"), 'open mismatch file');
+    print FH ">foo\nCCC\n";
+    ok(close(FH), 'close mismatch file');
+
+    my $stats;
+    $stats->{output}->{positive} = 5;
+    $stats->{output}->{negative} = 10;
+
+    $self->writeTrainingStats($stats, $tempdir);
 }
 
 #######################################################################################################################################################
