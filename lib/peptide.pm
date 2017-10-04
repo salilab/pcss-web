@@ -348,7 +348,7 @@ sub get_results_page {
 	my $modelFile = $self->getParam("user_model_package_name");
 	my $errorFileName = "postprocessErrors";
 	
-	if ((-f $errorFileName) || (-f $resultsFile == 0)){
+	if ((-f $errorFileName) || (! -f $resultsFile)){
 	    $returnValue .= $q->p("We're sorry; an error occurred while this server job was being processed. " . 
 				  "An email has been sent to the administrator notifying them of the problem (which may also be found in the log file) ");
 	    $returnValue .= $q->p("Common errors include that our cluster experienced a problem, in which case you may try submitting the job again later. " .
@@ -375,7 +375,7 @@ sub get_results_page {
 	
 	my $errorFileName = "postprocessErrors";
 	my $resultsFile = $self->getParam("application_final_result_file_name");
-	if ((-f $errorFileName) || (-f $resultsFile == 0)){
+	if ((-f $errorFileName) || (! -f $resultsFile)){
 	    $returnValue .= $q->p("We're sorry; an error occurred while this server job was being processed. " . 
 				  "An email has been sent to the administrator notifying them of the problem (which may also be found in the log file) ");
 	    $returnValue .= $q->p("Common errors include that our cluster experienced a problem, in which you may try submitting the job again later. " .
