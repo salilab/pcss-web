@@ -6,8 +6,8 @@ setenv _SALI_JOB_DIR `pwd`
 echo "STARTED" > ${_SALI_JOB_DIR}/job-state
 
 
-set HOME_BIN_DIR="/netapp/sali/peptide/bin/"
-set HOME_LIB_DIR="/netapp/sali/peptide/lib/"
+# Set paths to PCSS pipeline scripts
+module load pcss
 
 set tasks=( seq_batch_1 )
 set input=$tasks[$SGE_TASK_ID]
@@ -32,12 +32,10 @@ date
 hostname
 pwd
 
-setenv PERLLIB $HOME_LIB_DIR
-
 
 
 cp $HOME_RUN_DIR/peptideRulesFile $NODE_HOME_DIR
-perl $HOME_BIN_DIR/runPeptidePipeline.pl --parameterFileName $PARAMETER_FILE_NAME > & $PEPTIDE_OUTPUT_FILE_NAME
+runPeptidePipeline.pl --parameterFileName $PARAMETER_FILE_NAME > & $PEPTIDE_OUTPUT_FILE_NAME
 
 set MODEL_OUTPUT_FILE_NAME="modelPipelineOut.txt"
 set MODEL_LOG_FILE_NAME="modelPipelineLog"
@@ -48,7 +46,7 @@ set PEPTIDE_RESULTS_FILE_NAME="peptidePipelineResults.txt"
 
 set SVM_SCORE_FILE_NAME="svmScoreFile"
 
-perl $HOME_BIN_DIR/runModelPipeline.pl --parameterFileName $PARAMETER_FILE_NAME --pipelineClass ApplicationPipeline > & $MODEL_OUTPUT_FILE_NAME
+runModelPipeline.pl --parameterFileName $PARAMETER_FILE_NAME --pipelineClass ApplicationPipeline > & $MODEL_OUTPUT_FILE_NAME
 
 cp  $PEPTIDE_OUTPUT_FILE_NAME $PEPTIDE_LOG_FILE_NAME $PEPTIDE_RESULTS_FILE_NAME $MODEL_OUTPUT_FILE_NAME $MODEL_LOG_FILE_NAME $MODEL_RESULTS_FILE_NAME $SVM_SCORE_FILE_NAME $HOME_SEQ_BATCH_DIR
 rm -r $NODE_HOME_DIR/

@@ -6,8 +6,8 @@ setenv _SALI_JOB_DIR `pwd`
 echo "STARTED" > ${_SALI_JOB_DIR}/job-state
 
 
-set HOME_BIN_DIR="/netapp/sali/peptide/bin/"
-set HOME_LIB_DIR="/netapp/sali/peptide/lib/"
+# Set paths to PCSS pipeline scripts
+module load pcss
 
 set HOME_RUN_DIR="/netapp/sali/peptide/live/preprocess/trainingLoo_668280" 
 
@@ -35,9 +35,7 @@ date
 hostname
 pwd
 
-setenv PERLLIB $HOME_LIB_DIR
-
-perl $HOME_BIN_DIR/runModelPipeline.pl --parameterFileName $PARAMETER_FILE_NAME --pipelineClass BenchmarkerPipeline > & $MODEL_OUTPUT_FILE_NAME
+runModelPipeline.pl --parameterFileName $PARAMETER_FILE_NAME --pipelineClass BenchmarkerPipeline > & $MODEL_OUTPUT_FILE_NAME
 
 cp  $MODEL_OUTPUT_FILE_NAME  $MODEL_LOG_FILE_NAME $MODEL_RESULTS_FILE_NAME $HOME_RESULTS_DIR
 
@@ -47,7 +45,7 @@ set CREATION_OUTPUT_FILE_NAME="creationPipelineOut"
 
 echo "svm iteration 1"
 echo CreationPipeline
-perl $HOME_BIN_DIR/runModelPipeline.pl --parameterFileName $PARAMETER_FILE_NAME --pipelineClass CreationPipeline > & $CREATION_OUTPUT_FILE_NAME  
+runModelPipeline.pl --parameterFileName $PARAMETER_FILE_NAME --pipelineClass CreationPipeline > & $CREATION_OUTPUT_FILE_NAME  
 cp rawUserModelFile $HOME_RUN_DIR
 cp $CREATION_OUTPUT_FILE_NAME $HOME_RUN_DIR
 
@@ -57,7 +55,7 @@ echo -e "\nrun_name\t$input" >>  $NODE_HOME_DIR/$LOO_PARAMETER_FILE_NAME
 set LOO_MODEL_LOG_FILE_NAME="looModelPipelineLog"
 set LOO_MODEL_RESULTS_FILE_NAME="looModelPipelineResults.txt"
 set LOO_MODEL_OUTPUT_FILE_NAME="looModelOutputFile.txt"
-perl $HOME_BIN_DIR/runModelPipeline.pl --parameterFileName $LOO_PARAMETER_FILE_NAME --pipelineClass BenchmarkerPipeline > & $LOO_MODEL_OUTPUT_FILE_NAME
+runModelPipeline.pl --parameterFileName $LOO_PARAMETER_FILE_NAME --pipelineClass BenchmarkerPipeline > & $LOO_MODEL_OUTPUT_FILE_NAME
 cp $LOO_MODEL_LOG_FILE_NAME $LOO_MODEL_RESULTS_FILE_NAME $LOO_MODEL_OUTPUT_FILE_NAME $HOME_RUN_DIR
 
 endif
