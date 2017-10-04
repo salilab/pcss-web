@@ -30,6 +30,14 @@ my $t = new saliweb::Test('peptide');
     like($txt, qr/&nbsp/ms, 'get_footer');
 }
 
+# Test get_project_menu
+{
+    my $self = $t->make_frontend();
+    my $txt = $self->get_project_menu();
+    like($txt, qr/Lead Authors:.*Web Developers.*Version testversion/ms,
+         'get_project_menu');
+}
+
 # Test getSvmModelFileLocation
 {
     my $self = $t->make_frontend();
