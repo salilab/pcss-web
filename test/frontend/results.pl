@@ -107,12 +107,16 @@ sub make_parameters_file {
     ok(chdir($tmpdir), "chdir into tempdir");
     make_parameters_file("application");
 
-    my $m = "applicationFinalResults.txt";
-    ok(open(FH, "> $m"), "Open $m");
-    ok(close(FH), "Close $m");
+    for my $m ("applicationFinalResults.txt", "user.log", "mismatches.fasta") {
+        ok(open(FH, "> $m"), "Open $m");
+        print FH "foo\n";
+        ok(close(FH), "Close $m");
+    }
 
     my $ret = $frontend->get_results_page($job);
-    like($ret, qr/Download application results file/ms,
+    like($ret,
+         '/Download application results file.*Download log file.*' .
+         'Download protein sequences.*peptide matched the protein residue/ms',
          'get_results_page (successful application mode)');
 }
 
