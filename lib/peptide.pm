@@ -148,7 +148,7 @@ sub get_submit_page {
 	#Read training specific options; save in $userInput
 	my $trainingFh = $q->upload('training_file');               $userInput->{"training_file"} = $trainingFh;
 	my $jackknifeFraction = $q->param('jackknife_fraction');    $userInput->{"jackknife_fraction"} = $jackknifeFraction;
-	my $trainingIterations = $q->param('training_iterations');  $userInput->{"training_iterations"} = $trainingIterations;
+	my $trainingIterations = $q->param('training_iterations') + 0;  $userInput->{"training_iterations"} = $trainingIterations;
     }
     elsif ($serverMode eq "application") {
 
@@ -1503,18 +1503,20 @@ sub validateJackknifeFraction{
 #################################################################################
 # validateTrainingIterations
 # Enforces user-specified number of iterations in training mode to be <= 1000
+# and > 0
 #
 # PARAM  $trainingIterations: Number of iterations specified by user in web form.
-# THROW  InputValidationError if $trainingIterations > 1000
+# THROW  InputValidationError if 0 >= $trainingIterations > 1000
 # RETURN NULL
 #################################################################################
-sub validateTrainingIterations{
+sub validateTrainingIterations {
     my ($self, $trainingIterations) = @_;
 
-    if ($trainingIterations > 1000){
-	throw saliweb::frontend::InputValidationError("Please set the Training Iterations value to 1000 or less (current value is $trainingIterations).");
+    if ($trainingIterations > 1000 || $trainingIterations <= 0) {
+        throw saliweb::frontend::InputValidationError(
+                  "Please set the Training Iterations value to be between " .
+                  "1 and 1000 (current value is $trainingIterations).");
     }
-
 }
 
 ##################################################################################################################

@@ -82,6 +82,21 @@ my $t = new saliweb::Test('peptide');
               'getBenchmarkScoreFileLocation bad type';
 }
 
+# Test validateTrainingIterations
+{
+    my $self = $t->make_frontend();
+    $self->validateTrainingIterations(1);
+    $self->validateTrainingIterations(1000);
+
+    throws_ok { $self->validateTrainingIterations(2000) }
+              qr/Please set the Training Iterations value to/,
+              'validateTrainingIterations over max';
+
+    throws_ok { $self->validateTrainingIterations(0) }
+              qr/Please set the Training Iterations value to/,
+              'validateTrainingIterations under min';
+}
+
 # Test writeTrainingStats
 {
     my $self = $t->make_frontend();
