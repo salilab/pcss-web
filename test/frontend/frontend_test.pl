@@ -447,6 +447,7 @@ sub getBadCustomModelFiles{
     my $badCustomModelFiles;
     $badCustomModelFiles->{"userModelInvalidLength.txt"} = "Line 'peptideLength (#) not found";
     $badCustomModelFiles->{"userModelNoSeparator.txt"} = "Separator line not found";
+    $badCustomModelFiles->{"userModelNotSvmlight.txt"} = "Invalid SVM-light model file";
     $badCustomModelFiles->{"userModelSmallBenchmark.txt"} = "benchmark model too small (< 3)";
     $badCustomModelFiles->{"userModelNoModel.txt"} = "model component not found";
     return $badCustomModelFiles;

@@ -1310,7 +1310,13 @@ sub processUserCreatedModel{
 	}
 	if ($writingModelFile){
 	    print $customModelFh $line . "\n";
-	    $modelLineCount++ unless $line =~ /^\s*$/;
+            if ($line !~ /^\s*$/) {
+                if ($modelLineCount == 0 && $line !~ /^SVM-light Version/) {
+                    throw saliweb::frontend::InputValidationError(
+                                                        $invalidModelFileMsg);
+                }
+                $modelLineCount++;
+            }
 	}
 	else {
 	    print $customBenchmarkFh $line . "\n";
