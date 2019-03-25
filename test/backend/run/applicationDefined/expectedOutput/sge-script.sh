@@ -1,12 +1,13 @@
 #!/bin/tcsh
 #$ -S /bin/tcsh
 #$ -cwd
-#$  -o output.txt -e error.txt -l netappsali=1G,database=1G,scratch=1G -l arch=linux-x64 -r y -j y  -l mem_free=1G -l h_rt=72:00:00 -p 0 -t 1-1
+#$  -o output.txt -e error.txt -l netappsali=1G,database=1G,scratch=1G -l arch=lx-amd64 -r y -j y  -l mem_free=1G -l h_rt=72:00:00 -p 0 -t 1-1
 setenv _SALI_JOB_DIR `pwd`
 echo "STARTED" > ${_SALI_JOB_DIR}/job-state
 
 
 # Set paths to PCSS pipeline scripts
+module load Sali
 module load pcss
 
 set tasks=( seq_batch_1 )
