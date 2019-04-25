@@ -164,7 +164,7 @@ sub get_submit_page {
     }
 
     #perform all validation and create files
-    my $globalParameterFileName = "/netapp/sali/peptide/data/globalPeptideParameters.txt";   #hardcoded location -- TODO -- see if there is a better way to do this
+    my $globalParameterFileName = "/wynton/home/sali/peptide/data/globalPeptideParameters.txt";   #hardcoded location -- TODO -- see if there is a better way to do this
     $self->process_user_input($userInput, $globalParameterFileName);
     
     #submit and user output
