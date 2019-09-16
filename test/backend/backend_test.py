@@ -733,7 +733,7 @@ class JobTests(saliweb.test.TestCase):
         observedLineCounter = 0
 
         #compare each file line by line
-        previousFpr = 0
+        previousFpr = 0.
         for expectedLine in expectedLines:
             observedLine = observedLines[observedLineCounter]
             observedLineCounter = observedLineCounter + 1
@@ -752,8 +752,9 @@ class JobTests(saliweb.test.TestCase):
                 secondCol.rstrip("\n\r\s")
                 self.assertTrue(len(observedCols) == 4)
                 self.assertTrue(expectedCols[1] == observedCols[1])
-                self.assertTrue(previousFpr <= observedCols[0], "FPR increased over all results")
-                previousFpr = observedCols[0]
+                fpr = float(observedCols[0])
+                self.assertTrue(previousFpr <= fpr, "FPR increased over all results")
+                previousFpr = fpr
 
             else:
                 print "did not get expected number of columns in %s" % observedResultFile
