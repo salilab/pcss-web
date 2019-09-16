@@ -1,3 +1,4 @@
+from __future__ import division
 import saliweb.backend
 import os
 import subprocess
@@ -106,7 +107,7 @@ class Job(saliweb.backend.Job):
 
         #calculate number of sequence batches to create                                                                        
         [sequenceDict, sequenceIdList, modbaseToAccession] = self.getSequenceDict()
-        headerList = sequenceDict.keys()
+        headerList = list(sequenceDict.keys())
         seqBatchCount = self.getSeqBatchCount(headerList)
         self.setParam("seq_batch_count", seqBatchCount)
 
@@ -331,7 +332,7 @@ class Job(saliweb.backend.Job):
             modbaseSeqId = self.getResultValue("Sequence ID", resultValues, fileColumnMap)
 
             #initialize sequencesToResults with this sequence if not done already
-            if (sequencesToResults.has_key(modbaseSeqId) == 0):
+            if modbaseSeqId not in sequencesToResults:
                 sequencesToResults[modbaseSeqId] = {}
                 sequencesToResults[modbaseSeqId]["count"] = 0
                 sequencesToResults[modbaseSeqId]["result"] = 0
@@ -370,7 +371,7 @@ class Job(saliweb.backend.Job):
         
         for sequenceId in sequenceIdList:
 
-            if (sequencesToResults.has_key(sequenceId) == 0):
+            if sequenceId not in sequencesToResults:
                 seqMsg = "Peptide webserver job %s, Didn't find result for sequence %s" %(self.name, sequenceId)
                 accession = modbaseToAccession[sequenceId]
                 userMsg = "Accession %s was not processed at all due to an error" % accession
@@ -547,17 +548,17 @@ class Job(saliweb.backend.Job):
                     previousTp = tpCount
                     score = float(columns[2])
                     
-                    if fpsAtEachTp.has_key(tpCount):
+                    if tpCount in fpsAtEachTp:
                         fpsAtThisTp = fpsAtEachTp[tpCount]
                         scoresAtThisTp = scoresAtEachTp[tpCount]
                     else:
                         fpsAtThisTp = {}
                         scoresAtThisTp = {}
-                    if (fpsAtThisTp.has_key(fpCount)):
+                    if fpCount in fpsAtThisTp:
                         fpsAtThisTp[fpCount] += 1
                     else:
                         fpsAtThisTp[fpCount] = 1
-                    if (scoresAtThisTp.has_key(score)):
+                    if score in scoresAtThisTp:
                         scoresAtThisTp[score] += 1
                     else:
                         scoresAtThisTp[score] = 1
@@ -655,7 +656,7 @@ class Job(saliweb.backend.Job):
         """
         seqsInBatchCount = int(self.getParam("seqs_in_batch_count"))
         sequenceCount = len(headerList)
-        seqBatchCount = sequenceCount / seqsInBatchCount
+        seqBatchCount = sequenceCount // seqsInBatchCount
         
         remainder = sequenceCount % seqsInBatchCount
 

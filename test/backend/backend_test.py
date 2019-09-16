@@ -1,3 +1,4 @@
+from __future__ import print_function
 import unittest
 import peptide
 import saliweb.test
@@ -29,12 +30,12 @@ class JobTests(saliweb.test.TestCase):
     """
     def test_preprocess(self):
 
-        print "Testing Preprocess Application Scan"
+        print("Testing Preprocess Application Scan")
         applicationScanDirectory = self.get_test_directory(
                                       "preprocess/applicationScan/")
         self.runPreprocess(applicationScanDirectory, 3, 102)
 
-        print "Testing Preprocess Application Defined"
+        print("Testing Preprocess Application Defined")
 
         applicationDefinedDirectory = self.get_test_directory(
                                          "preprocess/applicationDefined/")
@@ -88,11 +89,17 @@ class JobTests(saliweb.test.TestCase):
             expectedFastaFile = seqBatchExpectedOutputDir + "/" + prefixDir + "/inputSequences.fasta"
             observedFastaFile = j.directory + "/sequenceBatches/" + prefixDir +  "/inputSequences.fasta"
             fastaSkip = []
-            self.compareFiles(observedFastaFile, expectedFastaFile, 0, fastaSkip)
+            # Cannot compare FASTA files directly, since the sequences in
+            # each batch are extracted from a dict, whose keys are in random
+            # order, so different platforms/Python versions will put
+            # different sequences in each batch
+#           self.compareFiles(observedFastaFile, expectedFastaFile, 0, fastaSkip)
             self.getSequenceIdsFromFasta(observedFastaFile, allSeqBatchSeqIds)
 
         for inputSeqId in inputFastaSeqIds.keys():
-            self.assertTrue(allSeqBatchSeqIds.has_key(inputSeqId), "Sequence " + inputSeqId + " in input fasta but did not get written to any seqBatch directory")
+            self.assertTrue(inputSeqId in allSeqBatchSeqIds,
+                "Sequence " + inputSeqId + " in input fasta but did not "
+                "get written to any seqBatch directory")
 
         #check cluster state param file exists
         otherFileSkip = []
@@ -117,19 +124,19 @@ class JobTests(saliweb.test.TestCase):
     """
     def test_run(self):
 
-        print "Testing Run Application Scan"
+        print("Testing Run Application Scan")
 
         applicationScanDirectory = self.get_test_directory(
                                                 "run/applicationScan/")
         self.runRunTest(applicationScanDirectory, 3)
 
-        print "Testing Run Application Defined"
+        print("Testing Run Application Defined")
 
         applicationDefinedDirectory = self.get_test_directory(
                                                  "run/applicationDefined/")
         self.runRunTest(applicationDefinedDirectory, 1)
 
-        print "Testing Run Training"
+        print("Testing Run Training")
         trainingDirectory= self.get_test_directory("run/training/")
         self.runTrainingRunSvmTest(trainingDirectory, 10)  #test training run in SVM mode (second call to run() over the course of processing a server job)
 
@@ -235,19 +242,19 @@ class JobTests(saliweb.test.TestCase):
 
         self.applicationPostprocessTest(j, trainingFeaturesDir, 424)
 
-        print "Testing training postprocess"
+        print("Testing training postprocess")
         self.trainingPostprocessTest(j, trainingDir)
 
-        print "Testing error training postprocess"
+        print("Testing error training postprocess")
         self.errorTrainingPostprocessTest(j, trainingErrorPostprocessDir)
 
 
-        print "Testing Normal Postprocess"
+        print("Testing Normal Postprocess")
         self.applicationPostprocessTest(j, applicationScanDir, 2014)
 
         self.applicationPostprocessTest(j, applicationDefinedDir, 22)
 
-        print "Testing Error Postprocess"
+        print("Testing Error Postprocess")
         self.errorApplicationPostprocess(applicationErrorPostprocessDir)
 
 
@@ -263,7 +270,8 @@ class JobTests(saliweb.test.TestCase):
 
         expectedResultsFile = expectedOutputDir + "/applicationFinalResults.txt"
         observedResultsFile = j.directory + "/applicationFinalResults.txt"
-        print "comparing " + expectedResultsFile + " and " + observedResultsFile
+        print("comparing " + expectedResultsFile + " and "
+              + observedResultsFile)
         postprocessSkip = []
         self.compareFiles(expectedResultsFile, observedResultsFile, 1, postprocessSkip)
 
@@ -306,7 +314,8 @@ class JobTests(saliweb.test.TestCase):
 
 
     def runPostprocessWrongPeptideCount(self, inputDir, expectedOutputDir):
-        print "Testing training error thrown when leave one out result file has no content"
+        """Testing training error thrown when leave one out result
+           file has no content"""
 
         j = self.createRunningJobDirectory()
         self.copyPostprocessTrainingInput(inputDir, j)
@@ -323,7 +332,8 @@ class JobTests(saliweb.test.TestCase):
         self.checkErrorMessageWritten(j)
 
     def runPostprocessMissingLooFile(self, inputDir, expectedOutputDir):
-        print "Testing training error thrown when leave one out result file not written"
+        """Testing training error thrown when leave one out result
+           file not written"""
 
         j = self.createRunningJobDirectory()
         self.copyPostprocessTrainingInput(inputDir, j)
@@ -339,7 +349,8 @@ class JobTests(saliweb.test.TestCase):
         self.checkErrorMessageWritten(j)
 
     def runPostprocessLooNoContent(self, inputDir, expectedOutputDir):
-        print "Testing training error thrown when leave one out result file has no content"
+        """Testing training error thrown when leave one out result
+           file has no content"""
 
         j = self.createRunningJobDirectory()
         self.copyPostprocessTrainingInput(inputDir, j)
@@ -356,7 +367,8 @@ class JobTests(saliweb.test.TestCase):
         self.checkErrorMessageWritten(j)
 
     def runPostprocessMissingUserModel(self, inputDir, expectedOutputDir):
-        print "Testing training error thrown when user-created model file not found"
+        """Testing training error thrown when user-created model file
+           not found"""
 
         j = self.createRunningJobDirectory()
         self.copyPostprocessTrainingInput(inputDir, j)
@@ -372,8 +384,8 @@ class JobTests(saliweb.test.TestCase):
         self.checkErrorMessageWritten(j)
 
     def runPostprocessTrainingResultsNotIncremented(self, inputDir, expectedOutputDir):
-
-        print "testing training error thrown when counts in result file are not greater with each successive line"
+        """testing training error thrown when counts in result file are
+           not greater with each successive line"""
 
         j = self.createRunningJobDirectory()
         self.copyPostprocessTrainingInput(inputDir, j)
@@ -389,8 +401,8 @@ class JobTests(saliweb.test.TestCase):
         self.checkErrorMessageWritten(j)
 
     def runPostprocessTrainingResultsInvalidNegativeRef(self, inputDir, expectedOutputDir):
-
-        print "testing training error thrown when different number of reference negative counts in result file"
+        """testing training error thrown when different number of reference
+           negative counts in result file"""
 
         j = self.createRunningJobDirectory()
         self.copyPostprocessTrainingInput(inputDir, j)
@@ -406,8 +418,8 @@ class JobTests(saliweb.test.TestCase):
         self.checkErrorMessageWritten(j)
 
     def runPostprocessTrainingResultsInvalidPositiveRef(self, inputDir, expectedOutputDir):
-
-        print "testing training error thrown when different number of reference positive counts in result file"
+        """testing training error thrown when different number of reference
+           positive counts in result file"""
 
         j = self.createRunningJobDirectory()
         self.copyPostprocessTrainingInput(inputDir, j)
@@ -425,8 +437,8 @@ class JobTests(saliweb.test.TestCase):
 
 
     def runPostprocessEmptyResultFileError(self, inputDir, expectedOutputDir):
-
-        print "Testing training error thrown when a result file was empty for a sequence batch"
+        """Testing training error thrown when a result file was empty
+           for a sequence batch"""
 
         j = self.createRunningJobDirectory()
         self.copyPostprocessTrainingInput(inputDir, j)
@@ -443,8 +455,8 @@ class JobTests(saliweb.test.TestCase):
         self.checkLogMessageWritten(j, "Sending webserver feature error email")
 
     def runPostprocessTrainingMissingResultFileError(self, inputDir, expectedOutputDir):
-
-        print "Testing training error thrown when a result file was not written for a sequence batch"
+        """Testing training error thrown when a result file was not
+           written for a sequence batch"""
 
         j = self.createRunningJobDirectory()
         self.copyPostprocessTrainingInput(inputDir, j)
@@ -460,8 +472,8 @@ class JobTests(saliweb.test.TestCase):
         self.checkErrorMessageWritten(j)
 
     def runPostprocessTrainingGlobalError(self, inputDir, expectedOutputDir):
-
-        print "Testing training error thrown when cluster had an internal error, but still returned a result file"
+        """Testing training error thrown when cluster had an internal
+           error, but still returned a result file"""
 
         j = self.createRunningJobDirectory()
         self.copyPostprocessTrainingInput(inputDir, j)
@@ -477,7 +489,7 @@ class JobTests(saliweb.test.TestCase):
         self.checkErrorMessageWritten(j)
 
     def runPostprocessMissingSvmDirError(self, inputDir, expectedOutputDir):
-        print "Testing error thrown when svm directory didn't return from cluster"
+        "Testing error thrown when svm directory didn't return from cluster"
 
         j = self.createRunningJobDirectory()
         self.copyPostprocessTrainingInput(inputDir, j)
@@ -493,7 +505,8 @@ class JobTests(saliweb.test.TestCase):
         self.checkErrorMessageWritten(j)
 
     def runPostprocessTrainingOutputError(self, inputDir, expectedOutputDir):
-        print "Testing training error thrown when cluster had an error writing to a result file, but still returned it"
+        """Testing training error thrown when cluster had an error writing
+           to a result file, but still returned it"""
 
         j = self.createRunningJobDirectory()
         self.copyPostprocessTrainingInput(inputDir, j)
@@ -543,8 +556,8 @@ class JobTests(saliweb.test.TestCase):
 
 
     def runPostprocessApplicationMissingSeqBatchError(self,  inputDir, expectedOutputDir):
-
-        print "Testing error thrown when sequence batch directory didn't return from cluster"
+        """Testing error thrown when sequence batch directory didn't
+           return from cluster"""
 
         j = self.createRunningJobDirectory()
         self.copyPostprocessApplicationInput(inputDir, j)
@@ -560,8 +573,7 @@ class JobTests(saliweb.test.TestCase):
         self.checkErrorMessageWritten(j)
 
     def runPostprocessApplicationMissingSequenceError(self, inputDir, expectedOutputDir):
-
-        print "Testing log message written when a sequence wasn't processed"
+        """Testing log message written when a sequence wasn't processed"""
         j = self.createRunningJobDirectory()
         self.copyPostprocessApplicationInput(inputDir, j)
 
@@ -576,8 +588,7 @@ class JobTests(saliweb.test.TestCase):
 
 
     def runPostprocessApplicationFeatureError(self,  inputDir, expectedOutputDir):
-
-        print "Testing log message written for a feature error"
+        """Testing log message written for a feature error"""
 
         j = self.createRunningJobDirectory()
         self.copyPostprocessApplicationInput(inputDir, j)
@@ -593,8 +604,8 @@ class JobTests(saliweb.test.TestCase):
         self.checkLogMessageWritten(j, "Sending webserver feature error email")
 
     def runPostprocessApplicationEmptyResultFileError(self, inputDir, expectedOutputDir):
-
-        print "Testing error thrown when a result file was empty for a sequence batch"
+        """Testing error thrown when a result file was empty for a
+           sequence batch"""
 
         j = self.createRunningJobDirectory()
         self.copyPostprocessApplicationInput(inputDir, j)
@@ -610,8 +621,8 @@ class JobTests(saliweb.test.TestCase):
         self.checkErrorMessageWritten(j)
 
     def runPostprocessApplicationMissingResultFileError(self, inputDir, expectedOutputDir):
-
-        print "Testing error thrown when a result file was not written for a sequence batch"
+        """Testing error thrown when a result file was not written
+           for a sequence batch"""
 
         j = self.createRunningJobDirectory()
         self.copyPostprocessApplicationInput(inputDir, j)
@@ -628,7 +639,8 @@ class JobTests(saliweb.test.TestCase):
 
     def runPostprocessApplicationGlobalError(self, inputDir, expectedOutputDir):
 
-        print "Testing error thrown when cluster had an internal error, but still returned a result file"
+        """Testing error thrown when cluster had an internal error, but
+           still returned a result file"""
 
         j = self.createRunningJobDirectory()
         self.copyPostprocessApplicationInput(inputDir, j)
@@ -644,8 +656,8 @@ class JobTests(saliweb.test.TestCase):
         self.checkErrorMessageWritten(j)
 
     def runPostprocessApplicationOutputError(self, inputDir, expectedOutputDir):
-
-        print "Testing error thrown when cluster had an error writing to a result file, but still returned it"
+        """Testing error thrown when cluster had an error writing to a
+           result file, but still returned it"""
 
         j = self.createRunningJobDirectory()
         self.copyPostprocessApplicationInput(inputDir, j)
@@ -714,11 +726,13 @@ class JobTests(saliweb.test.TestCase):
         for file in files:
             fullFile = sourceDirectory + "/" + file
 
-            process = subprocess.Popen(['cp', '-r', fullFile, destinationDirectory], shell=False, stderr=subprocess.PIPE)
+            process = subprocess.Popen(['cp', '-r', fullFile,
+                destinationDirectory], shell=False, stderr=subprocess.PIPE,
+                universal_newlines=True)
             output = process.communicate()
             msg = output[1]
             if (msg != ""):
-                print "Error in copying file " + fullFile + ": " + msg
+                print("Error in copying file " + fullFile + ": " + msg)
 
     def checkNormalPostprocessCompletion(self, j, expectedOutputDir):
         expectedResultFile = os.path.join(expectedOutputDir, "svmTrainingFinalResults.txt")
@@ -757,7 +771,8 @@ class JobTests(saliweb.test.TestCase):
                 previousFpr = fpr
 
             else:
-                print "did not get expected number of columns in %s" % observedResultFile
+                print("did not get expected number of columns in %s"
+                      % observedResultFile)
                 exit
 
 
@@ -860,7 +875,7 @@ class JobTests(saliweb.test.TestCase):
                 foundParamName = 1
             parameterFh.write(paramName + "\t" + paramValue + "\n")
         if (foundParamName == 0):
-            print "did not find parameter name" + newParamName + "to update"
+            print("did not find parameter name" + newParamName + "to update")
             sys.exit()
         parameterFh.close()
 
