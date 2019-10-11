@@ -324,12 +324,7 @@ class JobTests(saliweb.test.TestCase):
         wrongCountFile = "looModelPipelineResultsWrongCount.txt"
         self.copyFiles(inputDir, j.directory, [wrongCountFile])
         self.updateParameters(parameterFile, "loo_model_pipeline_result_file_name", wrongCountFile)
-        j.postprocess()
-
-        outputFiles = ["postprocessErrors", "framework.log", "user.log", "svm"]
-
-        self.checkErrorFileWritten(j, "training_content_error")
-        self.checkErrorMessageWritten(j)
+        self.assertRaises(peptide.TrainingContentError, j.postprocess)
 
     def runPostprocessMissingLooFile(self, inputDir, expectedOutputDir):
         """Testing training error thrown when leave one out result
@@ -341,12 +336,7 @@ class JobTests(saliweb.test.TestCase):
         parameterFile = j.directory + "/parameters.txt"
 
         self.updateParameters(parameterFile, "loo_model_pipeline_result_file_name", "fake")
-        j.postprocess()
-
-        outputFiles = ["postprocessErrors", "framework.log", "user.log", "svm"]
-
-        self.checkErrorFileWritten(j, "cluster_missing_file")
-        self.checkErrorMessageWritten(j)
+        self.assertRaises(peptide.ClusterJobEmptyFileError, j.postprocess)
 
     def runPostprocessLooNoContent(self, inputDir, expectedOutputDir):
         """Testing training error thrown when leave one out result
@@ -359,12 +349,7 @@ class JobTests(saliweb.test.TestCase):
         noContentFile = "looModelPipelineResultsNoContent.txt"
         self.copyFiles(inputDir, j.directory, [noContentFile])
         self.updateParameters(parameterFile, "loo_model_pipeline_result_file_name", noContentFile)
-        j.postprocess()
-
-        outputFiles = ["postprocessErrors", "framework.log", "user.log", "svm"]
-
-        self.checkErrorFileWritten(j, "cluster_missing_file")
-        self.checkErrorMessageWritten(j)
+        self.assertRaises(peptide.ClusterJobEmptyFileError, j.postprocess)
 
     def runPostprocessMissingUserModel(self, inputDir, expectedOutputDir):
         """Testing training error thrown when user-created model file
@@ -376,12 +361,7 @@ class JobTests(saliweb.test.TestCase):
         parameterFile = j.directory + "/parameters.txt"
 
         self.updateParameters(parameterFile, "user_created_svm_model_name", "fake")
-        j.postprocess()
-
-        outputFiles = ["postprocessErrors", "framework.log", "user.log", "svm"]
-
-        self.checkErrorFileWritten(j, "cluster_missing_file")
-        self.checkErrorMessageWritten(j)
+        self.assertRaises(peptide.ClusterJobEmptyFileError, j.postprocess)
 
     def runPostprocessTrainingResultsNotIncremented(self, inputDir, expectedOutputDir):
         """testing training error thrown when counts in result file are
@@ -394,11 +374,7 @@ class JobTests(saliweb.test.TestCase):
 
         self.updateParameters(parameterFile, "model_pipeline_result_file_name", "modelPipelineResultsNotIncremented.txt")
         self.updateParameters(parameterFile, "iteration_count", "1")
-        j.postprocess()
-
-        outputFiles = ["postprocessErrors", "framework.log", "user.log", "svm", "parameters.txt"]
-        self.checkErrorFileWritten(j, "training_content_error")
-        self.checkErrorMessageWritten(j)
+        self.assertRaises(peptide.TrainingContentError, j.postprocess)
 
     def runPostprocessTrainingResultsInvalidNegativeRef(self, inputDir, expectedOutputDir):
         """testing training error thrown when different number of reference
@@ -411,11 +387,7 @@ class JobTests(saliweb.test.TestCase):
 
         self.updateParameters(parameterFile, "model_pipeline_result_file_name", "modelPipelineResultsInvalidNegative.txt")
         self.updateParameters(parameterFile, "iteration_count", "2")
-        j.postprocess()
-
-        outputFiles = ["postprocessErrors", "framework.log", "user.log", "svm", "parameters.txt"]
-        self.checkErrorFileWritten(j, "training_content_error")
-        self.checkErrorMessageWritten(j)
+        self.assertRaises(peptide.TrainingContentError, j.postprocess)
 
     def runPostprocessTrainingResultsInvalidPositiveRef(self, inputDir, expectedOutputDir):
         """testing training error thrown when different number of reference
@@ -428,13 +400,7 @@ class JobTests(saliweb.test.TestCase):
 
         self.updateParameters(parameterFile, "model_pipeline_result_file_name", "modelPipelineResultsInvalidPositive.txt")
         self.updateParameters(parameterFile, "iteration_count", "2")
-        j.postprocess()
-
-        outputFiles = ["postprocessErrors", "framework.log", "user.log", "svm", "parameters.txt"]
-        self.checkErrorFileWritten(j, "training_content_error")
-        self.checkErrorMessageWritten(j)
-
-
+        self.assertRaises(peptide.TrainingContentError, j.postprocess)
 
     def runPostprocessEmptyResultFileError(self, inputDir, expectedOutputDir):
         """Testing training error thrown when a result file was empty
@@ -464,12 +430,7 @@ class JobTests(saliweb.test.TestCase):
         parameterFile = j.directory + "/parameters.txt"
 
         self.updateParameters(parameterFile, "model_pipeline_result_file_name", "fake")
-        j.postprocess()
-
-        outputFiles = ["postprocessErrors", "framework.log", "user.log", "svm"]
-
-        self.checkErrorFileWritten(j, "cluster_missing_file")
-        self.checkErrorMessageWritten(j)
+        self.assertRaises(peptide.ClusterJobEmptyFileError, j.postprocess)
 
     def runPostprocessTrainingGlobalError(self, inputDir, expectedOutputDir):
         """Testing training error thrown when cluster had an internal
@@ -481,12 +442,7 @@ class JobTests(saliweb.test.TestCase):
         parameterFile = j.directory + "/parameters.txt"
 
         self.updateParameters(parameterFile, "model_pipeline_result_file_name", "modelPipelineResultsGlobalError")
-        j.postprocess()
-
-        outputFiles = ["postprocessErrors", "framework.log", "user.log", "parameters.txt", "svm"]
-
-        self.checkErrorFileWritten(j, "file_missing")
-        self.checkErrorMessageWritten(j)
+        self.assertRaises(peptide.ClusterJobGlobalError, j.postprocess)
 
     def runPostprocessMissingSvmDirError(self, inputDir, expectedOutputDir):
         "Testing error thrown when svm directory didn't return from cluster"
@@ -497,12 +453,7 @@ class JobTests(saliweb.test.TestCase):
         parameterFile = j.directory + "/parameters.txt"
 
         self.updateParameters(parameterFile, "top_level_svm_directory", "fake")
-        j.postprocess()
-
-        outputFiles = ["postprocessErrors", "framework.log", "user.log", "svm"]
-
-        self.checkErrorFileWritten(j, "cluster_missing_file")
-        self.checkErrorMessageWritten(j)
+        self.assertRaises(peptide.ClusterJobEmptyFileError, j.postprocess)
 
     def runPostprocessTrainingOutputError(self, inputDir, expectedOutputDir):
         """Testing training error thrown when cluster had an error writing
@@ -514,13 +465,7 @@ class JobTests(saliweb.test.TestCase):
         parameterFile = j.directory + "/parameters.txt"
 
         self.updateParameters(parameterFile, "model_pipeline_result_file_name", "modelPipelineResultsOutputError")
-        j.postprocess()
-
-        outputFiles = ["postprocessErrors", "framework.log", "user.log", "parameters.txt", "svm"]
-        self.checkErrorFileWritten(j, "output_error")
-        self.checkErrorMessageWritten(j)
-
-
+        self.assertRaises(peptide.ClusterJobOutputError, j.postprocess)
 
     def errorApplicationPostprocess(self, postprocessDir):
 
@@ -565,12 +510,7 @@ class JobTests(saliweb.test.TestCase):
         parameterFile = j.directory + "/parameters.txt"
 
         self.updateParameters(parameterFile, "seq_batch_directory_prefix", "fake")
-        j.postprocess()
-
-        outputFiles = ["postprocessErrors", "framework.log", "user.log"]
-
-        self.checkErrorFileWritten(j, "cluster_missing_file")
-        self.checkErrorMessageWritten(j)
+        self.assertRaises(peptide.ClusterJobEmptyFileError, j.postprocess)
 
     def runPostprocessApplicationMissingSequenceError(self, inputDir, expectedOutputDir):
         """Testing log message written when a sequence wasn't processed"""
@@ -613,12 +553,7 @@ class JobTests(saliweb.test.TestCase):
         parameterFile = j.directory + "/parameters.txt"
 
         self.updateParameters(parameterFile, "model_pipeline_result_file_name", "modelPipelineResultsEmptyFile")
-        j.postprocess()
-
-        outputFiles = ["postprocessErrors", "framework.log", "user.log"]
-
-        self.checkErrorFileWritten(j, "cluster_missing_file")
-        self.checkErrorMessageWritten(j)
+        self.assertRaises(peptide.ClusterJobEmptyFileError, j.postprocess)
 
     def runPostprocessApplicationMissingResultFileError(self, inputDir, expectedOutputDir):
         """Testing error thrown when a result file was not written
@@ -630,12 +565,7 @@ class JobTests(saliweb.test.TestCase):
         parameterFile = j.directory + "/parameters.txt"
 
         self.updateParameters(parameterFile, "model_pipeline_result_file_name", "fake")
-        j.postprocess()
-
-        outputFiles = ["postprocessErrors", "framework.log", "user.log"]
-
-        self.checkErrorFileWritten(j, "cluster_missing_file")
-        self.checkErrorMessageWritten(j)
+        self.assertRaises(peptide.ClusterJobEmptyFileError, j.postprocess)
 
     def runPostprocessApplicationGlobalError(self, inputDir, expectedOutputDir):
 
@@ -648,12 +578,7 @@ class JobTests(saliweb.test.TestCase):
         parameterFile = j.directory + "/parameters.txt"
 
         self.updateParameters(parameterFile, "model_pipeline_result_file_name", "modelPipelineResultsGlobalError")
-        j.postprocess()
-
-        outputFiles = ["postprocessErrors", "framework.log", "user.log"]
-
-        self.checkErrorFileWritten(j, "file_missing")
-        self.checkErrorMessageWritten(j)
+        self.assertRaises(peptide.ClusterJobGlobalError, j.postprocess)
 
     def runPostprocessApplicationOutputError(self, inputDir, expectedOutputDir):
         """Testing error thrown when cluster had an error writing to a
@@ -665,12 +590,7 @@ class JobTests(saliweb.test.TestCase):
         parameterFile = j.directory + "/parameters.txt"
 
         self.updateParameters(parameterFile, "model_pipeline_result_file_name", "modelPipelineResultsOutputError")
-        j.postprocess()
-
-        outputFiles = ["postprocessErrors", "framework.log", "user.log"]
-
-        self.checkErrorFileWritten(j, "output_error")
-        self.checkErrorMessageWritten(j)
+        self.assertRaises(peptide.ClusterJobOutputError, j.postprocess)
 
     def checkErrorMessageWritten(self, j):
 

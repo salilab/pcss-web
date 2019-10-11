@@ -41,17 +41,11 @@ class SubprocessError(Exception):
     pass
 
 class SanityError(Exception):
-    def __init__(self, msg):
-        self.keyword = "sanity_error"
-        self.msg = msg
     """Exception raised if a job fails the sanity check, e.g. if a parameter
       was set to an unexpected value."""
     pass
 
 class TrainingContentError(Exception):
-    def __init__(self, msg):
-        self.keyword = "training_content_error"
-        self.msg = msg
     """Exception raised if a job training result didn't have expected format or content """
     pass
 
@@ -65,21 +59,17 @@ class ClusterJobError(Exception):
     pass
 
 class ClusterJobOutputError(ClusterJobError):
-    def __init__(self, msg):
-        self.keyword = "output_error"
-        self.msg = msg
     pass
 
 class ClusterJobGlobalError(ClusterJobError):
     def __init__(self, keyword, msg):
         self.keyword = keyword
         self.msg = msg
-    pass
+    def __str__(self):
+        return self.keyword + ": " + self.msg
+    __repr__ = __str__
 
 class ClusterJobEmptyFileError(ClusterJobError):
-    def __init__(self,  msg):
-        self.keyword = "cluster_missing_file"
-        self.msg = msg
     pass
 
 class Job(saliweb.backend.Job):
@@ -210,14 +200,10 @@ class Job(saliweb.backend.Job):
                 self.missingSequenceEmailSent = 0
                 seqBatchList = self.makeSeqBatchList(seqBatchCount)
     
-                try:
-                    #validate job ran correctly; process results and write to file
-                    self.checkPeptideJobCompleted(seqBatchList)
-                    self.processPeptideJob(seqBatchList)
-                    #self.validateFinalFeatureFiles()
-                except ClusterJobError as e:
-                    self.handleClusterError(e)
-                    return
+                #validate job ran correctly; process results and write to file
+                self.checkPeptideJobCompleted(seqBatchList)
+                self.processPeptideJob(seqBatchList)
+                #self.validateFinalFeatureFiles()
     
                 if (self.serverMode == "training"):
                     #prepare to use peptide features to train a new model
@@ -227,16 +213,11 @@ class Job(saliweb.backend.Job):
                     if (testMode == "no"):
                         self.reschedule_run()
             elif (clusterState == "SVM"):
-                try:
-                    #validate job ran correctly; process results and write to file
-                    self.checkTrainingJobCompleted()
-                    self.processSvmResults()
-                    self.makeUserCreatedModelPackage()
-                    #self.validateFinalSvmFiles()
-                except (ClusterJobError, TrainingContentError) as e:
-                    
-                    self.handleClusterError(e)
-                    return
+                #validate job ran correctly; process results and write to file
+                self.checkTrainingJobCompleted()
+                self.processSvmResults()
+                self.makeUserCreatedModelPackage()
+                #self.validateFinalSvmFiles()
                 self.logger.info("Completed training model.  Returning to front-end")
             else:
                 #close user log?
@@ -587,17 +568,6 @@ class Job(saliweb.backend.Job):
         self.logger.info("Read svm results. Processed %s positives and %s negatives (reference count, same across all files)" % (referencePositiveCount, referenceNegativeCount))
         return [fpsAtEachTp, scoresAtEachTp, referencePositiveCount, referenceNegativeCount, criticalFpRates, criticalTpRates, criticalEvalues]
        
-
-    def handleClusterError(self, e):
-        keyword = e.keyword
-        msg = e.msg
-        self.logger.info("Writing error output file. Keyword: %s Message:\n%s" % (keyword, msg))
-        self.writeErrorOutputFile(self.directory, keyword)
-        testMode = self.getParam("test_mode")
-        if (testMode == "no"):
-            self._db.config.send_admin_email("Global peptide server error for job %s error in job %s with keyword %s" %(self.name, self.name, keyword), msg)
-
-        
     def makeColumnHeaderString(self, columnInfo, columnOrderList, columnDisplayOrder):
         columnHeaderOutputList = []
         for columnNumber in columnOrderList:
@@ -635,14 +605,6 @@ class Job(saliweb.backend.Job):
                 position += 1 #convert to base-1
                 nextResultValue = str(position)
         return nextResultValue
-
-
-    def writeErrorOutputFile(self, directory, keyword):
-        errorFileName = "postprocessErrors"
-        errorFile = os.path.join(directory, errorFileName)     #todo - parameterize
-        errorFh = open(errorFile, "w")
-        errorFh.write(keyword)
-        errorFh.close()
 
     def getSeqBatchCount(self, headerList):
         """
