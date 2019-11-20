@@ -1,7 +1,7 @@
 from __future__ import division
 import saliweb.backend
 import os
-import subprocess
+import shutil
 import logging
 import re
 import copy
@@ -34,10 +34,6 @@ class UserLogger(object):
 
 class InvalidParamError(Exception):
     """Exception raised for parameter name that was not found in the list of Job's valid parameter names when retrieved, or one that already existed when set"""
-    pass
-
-class SubprocessError(Exception):
-    """Exception raised for perl subprocess that returned with non-zero error code"""
     pass
 
 class SanityError(Exception):
@@ -118,8 +114,9 @@ class Job(saliweb.backend.Job):
             
             #make directory
             seqBatchDirectory = os.path.join(self.directory, seqBatchTopDirectory, seqBatch)
-            process = subprocess.Popen(['mkdir', '-p', seqBatchDirectory], shell=False, stderr=subprocess.PIPE)
-            self.runSubprocess(process)
+            if os.path.exists(seqBatchDirectory):
+                shutil.rmtree(seqBatchDirectory)
+            os.makedirs(seqBatchDirectory)
 
             #write sequences fasta file
             seqBatchFastaFileName =  os.path.join(seqBatchDirectory, fastaFileName)
@@ -1073,24 +1070,6 @@ class Job(saliweb.backend.Job):
             existingParamValue = self.parameters[paramName]
             errorString = "Error: tried to set parameter %s but this parameter already had an existing value: %s" % (paramName, existingParamValue)
             raise InvalidParamError(errorString)
-
-
-    def runSubprocess(self, process):
-        """
-        runSubprocess
-        Executes system call
-
-        PARAM  process:  process object returned by subprocess.Popen method
-        RAISE  SubprocessError if there is a non-zero exit code
-        """
-        processOutput = process.communicate()
-        returnCode = process.returncode
-        if (returnCode != 0):
-            outputString = "Backend ran subprocess which returned with non-zero error code %s and output:\n\n %s" %(returnCode, processOutput)
-            raise SubprocessError(outputString)
-
-
-
 
     def makeBaseSgeScript(self, taskList):
         jobDirectory = self.directory
