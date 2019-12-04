@@ -1,7 +1,7 @@
 #!/bin/tcsh
 #$ -S /bin/tcsh
 #$ -cwd
-#$  -o output.txt -e error.txt -l scratch=1G -l arch=lx-amd64 -r y -j y  -l mem_free=1G -l h_rt=144:00:00 -p 0 -t 1-10
+#$  -o output.txt -e error.txt -l scratch=1G -l arch=lx-amd64 -r y -j y  -l mem_free=1G -l h_rt=300:00:00 -p 0 -t 1-10
 setenv _SALI_JOB_DIR `pwd`
 echo "STARTED" > ${_SALI_JOB_DIR}/job-state
 
