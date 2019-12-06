@@ -1,0 +1,169 @@
+{% extends "layout.html" %}
+
+{% block title %}PCSS Server Help{% endblock %}
+
+{% block body %}
+<h1>Help</h1>
+
+<p><b>Please note: This server is undergoing minor modifications to the documentation and layout, in order to match the
+<a href="https://www.ncbi.nlm.nih.gov/pubmed/20505003">publication which describes it.</a>
+Please feel free to <a href="//modbase.compbio.ucsf.edu/peptide/help.cgi?type=contact">contact us</a> with any questions or concerns
+until we finalize the server.  Thank you for your patience!</b></p>
+
+<ul>
+
+
+<li>
+
+<a id="server_mode"><b>Server Mode</b></a>
+
+<p>Use this option to select whether to train a new predictive model on a set of known positives and known negatives that you provide
+("Training") or to use an existing model to search a set of proteins to look for high scoring sites of interest ("Application").
+</p>
+</li>
+
+<li>
+<a id="email"><b>E-mail address (optional)</b></a>
+
+<p>If an e-mail address is entered here, it will be used to notify you 
+when the job has completed.</p>
+<br />
+</li>
+
+<li>
+<a id="best_model"><b>Best Protein Structure Model Criteria</b></a>
+<p>This option allows the user to choose which criteria will be used to select the best quality comparative model (when one is available)
+to evaluate secondary structure and solvent accessiblity for a peptide in a protein.  Often there will be more than one model generated
+for the protein, but only one is used to evaluate these structure features, chosen according to these criteria.  The following options
+are available:<br /><br />
+<b>Model Score:</b> A general score for the reliability of a model, as described in the <a href="//modbase.compbio.ucsf.edu/modbase-cgi/display.cgi?type=help&amp;server=modbase#mpqs">ModBase documentation</a>. <br /><br />
+<b>Model coverage:</b> Fraction of the target protein sequence for which a comparative model was generated.<br /><br />
+<b>Predicted Native Overlap:</b> Fraction of alpha carbons in the model that are predicted to be within 3.5 angstroms of the native state.</p><br />
+<p>The algorithm for predicting the native overlap is described in <a href="//salilab.org/pdf/Eramian_ProteinSci_2008.pdf">this study</a>. It was shown 
+to outperform the Model Score metric in evaluating comparative model quality, but the two are generally correlated, and users who are familiar with 
+ModBase may wish to use Model Score.  Model coverage is a useful evaluation metric when a user wishes to evaluate a model that has a larger fraction of the
+target included, for example when only a small portion of the target is included in the model but it receives a very high score.  </p>
+</li>
+
+<li>
+<a id="error_handling"><b>Select Error Handling Mode</b></a>
+<p>Error handling allows the user to specify what to do if a UniProt accession is not found in ModBase.  There are two options:<br /><br />
+<b>Quit:</b> This will inform the user of an accession error immediately and allow them to correct it.<br /><br />
+<b>Ignore:</b> This will continue processing the job, and a message will be displayed in the results file for the missing accession.<br /><br /></p>
+<p>If searching through a small number of accessions for high scoring peptides, choosing the <b>Quit</b> option is suggested, as the user will
+not have to wait for the job to complete before discovering there is a problem.  However, if a large number of accessions are uploaded, it
+is probably more beneficial to choose the <b>Ignore</b> option and just receive a list of all accessions that were missed upon job completion.</p>
+</li>
+
+
+<li>
+<a id="training_file"><b>Upload Training Peptide File</b></a>
+
+<p>In Training mode, the uploaded file is a list of peptides found in proteins that are known to be either postive or negative examples
+in a system involving specificity in protein-peptide recognition.  For example, in studying which peptide sequences are 
+recognized by a protease, the file could include a list of peptides known to be cleaved by the protease (the positives) and other peptides
+known <b>not</b> to be cleaved (the negatives). The file can include multiple peptides from one protein.</p>
+<br />
+<p> Each line in the file should include one peptide.  The peptide is specified as such:<br />
+<tt>Accession Start_Position Sequence Classification</tt><br />
+<b>Accession</b>:      The UniProt accession of the protein containing the training peptide<br /><br />
+<b>Start_Position</b>:  The position in the sequence repersenting the first residue of the peptide (position counting is 1-based)<br /><br />
+<b>Sequence</b>:        The amino acid residue sequence of the peptide<br /><br />
+<b>Classification</b>:  This should be set to "Positive" or "Negative", reflecting whether the peptide is a positive or negative example of specificity </p>
+
+<p>Entries on each line are separated by a space or tab. UniProt accessions are mapped to IDs in <a href="//modbase.compbio.ucsf.edu/modbase-cgi/index.cgi">ModBase</a>, a database of 
+comparative protein structure models.  ModBase continually updates this mapping.  Occasionally a UniProt accession will not be found in ModBase.  This could be due to
+ModBase not having processed this sequence yet in its mapping, or that the accession is outdated or not the primary
+accession for the protein.  Note that accessions in UniProt contain six characters and are distinct from UniProt entry 
+names, which are up to 11 characters and contain an '_'.</p>
+<br />
+<p>Additionally, all peptides must be the same length.  The provided peptide start position and peptide sequence must match the residue sequence for the UniProt accession
+in ModBase. The number of negatives in the file must be greater than or equal to the number of positives (if this is not the case in your dataset, you can simply reverse
+your definition of Negative and Positive for each peptide.)</p>
+<br />
+<p>An example follows:<br />
+
+<tt>O75791 11 SGEDELSF Positive</tt></p>
+
+<p>This represents the peptide SGEDELSF, found in the protein specified by UniProt accession O75791, starting at position 11.
+The protein will be considered a known positive in the training set.</p>
+<br />
+</li>
+
+
+<li>
+<a id="training_iterations"><b>Training Iterations</b></a>
+
+<p>In Training mode, use this option to select how many Jackknifing iterations to run.  Each iteration trains on a portion of the known positives and negatives listed in
+the Peptide Training File and tests on another fraction (specified by the option "Jackknife Fraction") of these known positives and negatives.  It is suggested that multiple
+iterations of the Jackknifing procedure are run to avoid biasing the results to which peptides are chosen to be in the test set. The maximum number of iterations that
+can be run is 1000. The results of the procedure are averaged to produce final results.</p>
+<br />
+</li>
+
+<li>
+<a id="jackknife_fraction"><b>Jackknife Fraction</b></a>
+
+<p>In Training mode, use this option to select what percentage of positive peptides in the Training file are set aside for testing; the remaining set of positives will be used for training.  
+An equal number of negatives will be included in the training set, and the remaining negatives will be used in testing.</p>
+
+<p>Thus, if you have 100 positives and 200 negatives in your training file, and specify .1 as the jackknife fraction, there will be 90 positives and 90 negatives in the training set, 10 positives
+in the test set, and 110 negatives in the test set. </p>
+</li>
+
+
+<li>
+<a id="application_file"><b>Upload Application Target Peptide File</b></a>
+
+<p>In application mode, the uploaded file is a list of UniProt accessions, one per line.  The predictive model will
+search for high scoring peptides in the protein sequences for these accessions.</p>
+<br />
+<p> These accessions are mapped to IDs in <a href="//modbase.compbio.ucsf.edu/modbase-cgi/index.cgi">ModBase</a>, a database of 
+comparative protein structure models.  ModBase continually updates this mapping.  Occasionally a UniProt accession will not be found in ModBase.  This could be due to
+ModBase not having processed this sequence yet in its mapping, or that the accession is outdated or not the primary
+accession for the protein.  Note that accessions in UniProt contain six characters and are distinct from UniProt entry 
+names, which are up to 11 characters and contain an '_'.</p>
+<br />
+<p>Note that only human protein sequences currently have structural features calculated for them in this framework.  
+More organisms may be represented as this service is developed.  If you are interested in training or testing a specific
+species other than human, please contact the administrators.</p>
+<br />
+</li>
+
+<li>
+<a id="rules_file"><b>Upload Peptide Specifier File (Optional)</b></a>
+
+<p>In application mode, the uploaded file allows the user to specify restrictions on the peptides they wish to score. 
+These take the form of allowing only certain residues to be present at different positions in the peptide.  This reduces
+the number of peptides scored and output, and allows the user to incorporate knowledge of the system into predictions.  A 
+demonstration is given by the GrB and caspase systems, where these proteases recognize peptides containing an aspartic acid
+at the P1 site. The provided GrB and caspase predictive models were optimized on these peptides, so it follows that when applying 
+these models to search for high-scoring peptides, the user should restrict peptides to have the same property.</p>
+
+<p>The format of the specifier file is simple.  Each position to restrict is designated with one line in the file.  The line should
+begin with a number representing the position in the peptide.  This is followed by a space separated list of residues that should
+<b>not</b> be present in that position.  If there are no restrictions on a position in the peptide, then there does not need to be a
+line specifying that position. Position counting is 1-based.</p>
+
+<p>An example follows: </p>
+
+<pre>1 E D
+4 A C E F G H I K L M N P Q R S T V W Y
+8 W
+</pre>
+
+<p>This file will tell the service to only score peptides that don't have an acidic residue in the first position, that only
+contain Asp in the fourth position, and that don't have Trp in the 8th position.</p>
+
+<p>Note the number of the maximum position to restrict should not exceed the length of the peptides on which the predictive model
+was trained.  For the provided GrB and Caspase predictors, this length is 8, representing the peptide from P4 to P4'.</p>
+</li>
+
+<li>
+<a id="svm_model"><b>Predictive Model to Apply</b></a>
+<p>This lets the user select which predictive model to use to score the peptides found in the accessions.  Each model has been trained on a different set of
+known positives and negatives and is optimized for sequence and structure features in that set. Currently the available models include one to predict
+which peptides will be recognized by Granzyme B and another for Caspase peptides.</p>
+</li>
+</ul>
+{% endblock %}

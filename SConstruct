@@ -10,11 +10,13 @@ env.InstallCGIScripts()
 
 Export('env')
 SConscript('backend/peptide/SConscript')
+SConscript('frontend/peptide/SConscript')
 SConscript('lib/SConscript')
 SConscript('txt/SConscript')
 SConscript('html/SConscript')
 
 SConscript('test/frontend/SConscript')
+SConscript('test/pyfrontend/SConscript')
 #SConscript('test/svmApplication/SConscript')
 #SConscript('test/pipeline/SConscript')
 #SConscript('test/svmTraining/SConscript')

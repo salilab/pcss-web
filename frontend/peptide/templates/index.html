@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}PCSS Server{% endblock %}
+
+{% block body %}
+<h2 align="center">PCSS: Peptide Classification using Sequence and Structure</h2>
+
+<form method="post" action="{{ url_for("job") }}" enctype="multipart/form-data" 
+name="peptideform">
+<table>
+<tr><td><u><b>Global options for running the PCSS Server</b></u></td></tr>
+<tr><td>Select PCSS Server Mode {{ help_link("server_mode") }}</td> <td><label><input type="radio" name="server_mode" value="training" checked="checked" />Training Mode</label> <label><input type="radio" name="server_mode" value="application" />Application Mode</label></td></tr>
+<tr><td>Email address (optional)</td> <td><input type="text" name="email" value="{{ g.user.email }}" size="25" /></td></tr>
+<tr><td>Name your model</td> <td><input type="text" name="name"  size="9" /></td></tr>
+<tr><td>Best Protein Structure Model Criteria {{ help_link("best_model") }}</td> <td><select name="best_model" >
+<option value="modelScore">Model Score</option>
+<option value="coverage">Model Target Coverage</option>
+<option selected="selected" value="nativeOverlap">Predicted Native Overlap</option>
+</select></td></tr>
+<tr><td>Select error handling mode {{ help_link("error_handling") }}</td> <td><label><input type="radio" name="error_handling" value="Q" />Quit</label> <label><input type="radio" name="error_handling" value="I" checked="checked" />Ignore</label></td></tr>
+<tr><td><br /></td></tr>
+<tr><td><u><b>Set these options when TRAINING a new model</b></u></td></tr>
+<tr><td>Upload Training Peptide File {{ help_link("training_file") }} <br /></td> <td><input type="file" name="training_file"  /></td></tr>
+<tr><td>Training Iterations {{ help_link("training_iterations") }}</td> <td><input type="text" name="training_iterations"  size="5" maxlength="4" /></td></tr>
+<tr><td>Jackknife Fraction {{ help_link("jackknife_fraction") }}</td> <td><input type="text" name="jackknife_fraction"  size="5" maxlength="4" /></td></tr>
+<tr><td><br /></td></tr>
+<tr><td><u><b>Set these options when APPLYING an existing model</b></u></td></tr>
+<tr><td>Upload Application Target File {{ help_link("application_file") }} <br /></td> <td><input type="file" name="application_file"  /></td></tr>
+<tr><td>Select Application Peptide Specification Method {{ help_link("application_specification") }}</td> <td><label><input type="radio" name="application_specification" value="D" checked="checked" />User Specified</label> <label><input type="radio" name="application_specification" value="S" />Full Sequence Scan</label></td></tr>
+<tr><td>Upload Peptide Specifier File (Optional) {{ help_link("rules_file") }} <br /></td> <td><input type="file" name="rules_file"  /></td></tr>
+<tr><td>Upload model file created in Training mode {{ help_link("svm_model") }} <br /></td> <td><input type="file" name="svm_custom_model"  /></td></tr>
+<tr><td>OR use a pre-generated model for a specific system {{ help_link("svm_model") }}</td> <td><select name="svm_model" >
+<option value="grb">Granzyme B</option>
+<option value="caspase">Caspase</option>
+<option value="hiv">HIV Protease</option>
+<option selected="selected" value="none">&lt;None&gt;</option>
+</select></td></tr>
+<tr><td colspan="2"><center><input type="submit" value="Process" /><input type="reset" value="Reset" /></center><p>&nbsp;</p></td></tr>
+</table><div>
+
+<input type="hidden" name=".cgifields" value="application_specification"  />
+<input type="hidden" name=".cgifields" value="server_mode"  />
+<input type="hidden" name=".cgifields" value="error_handling"  />
+</div>
+</form>
+{% endblock %}

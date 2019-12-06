@@ -1,0 +1,35 @@
+{% extends "saliweb/layout.html" %}
+
+{% block navigation %}
+{{ get_navigation_links(
+       [(url_for("index"), "PCSS Home"),
+        (url_for("job"), "Current PCSS queue"),
+        (url_for("help"), "Help"),
+        (url_for("contact"), "Contact")])
+}}
+{% endblock %}
+
+{% block sidebar %}
+<p>&nbsp;</p>
+<h4><small>Full PCSS Documentation</small></h4>
+<p><a href="html/doc/PCSS_Documentation.pdf">Download</a></p>
+<h4><small>Lead Authors:</small></h4>
+<p>Dave Barkan<br />
+Dan Hostetter<br />
+</p>
+<h4><small>Web Developers:</small></h4>
+<p>Dave Barkan<br />
+Ben Webb</p>
+<h4><small>Corresponding Authors:</small></h4>
+<p>Andrej Sali<br />
+Charles Craik</p>
+
+<p><i>Version <a href="{{ config.GITHUB }}">{{ config.VERSION }}</a></i></p>
+
+<p><font color="FIREBRICK">Download Granzyme B and Caspase predicted cleavage
+sites generated from study in Barkan, Hostetter, <i>et al</i>,
+<i>Bioinformatics</i>, 2010</font></p>
+
+<p><a href="{{ url_for("static", filename="doc/caspase_proteome_results.zip") }}">Caspase</a>
+<a href="{{ url_for("static", filename="doc/grb_proteome_results.zip") }}">Granzyme B</a></p>
+{% endblock %}
