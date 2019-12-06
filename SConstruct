@@ -9,7 +9,7 @@ env.InstallCGIScripts()
 
 
 Export('env')
-SConscript('python/peptide/SConscript')
+SConscript('backend/peptide/SConscript')
 SConscript('lib/SConscript')
 SConscript('txt/SConscript')
 SConscript('html/SConscript')
