@@ -1,0 +1,14 @@
+{% extends "results_base.html" %}
+
+{% block results %}
+<p><a href="{{ results_file.url }}">Download training benchmark results file</a>.</p>
+
+{%- if model_file.exists() %}
+<p><a href="{{ model_file.url }}">Download SVM model file generated from your input.</a>
+This file can be uploaded in Application mode to search for new peptides.</p>
+{%- else %}
+<p>No model file was produced (searched for {{ model_file.name }}).
+Please inspect the log file to determine the problem.</p>
+{%- endif %}
+
+{% endblock %}

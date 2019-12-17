@@ -1,6 +1,8 @@
 from flask import render_template, request, send_from_directory
 import saliweb.frontend
 from saliweb.frontend import get_completed_job, Parameter, FileParameter
+from .param import ParameterFile
+from .results import ResultFile
 import os
 
 parameters = []
@@ -34,7 +36,25 @@ def job():
 @app.route('/job/<name>')
 def results(name):
     job = get_completed_job(name, request.args.get('passwd'))
-    pass
+    params = ParameterFile.read(job.get_path('parameters.txt'))
+    log_file = ResultFile(job, params['user_log_file_name'])
+    mismatch_file = ResultFile(job, params['mismatch_file_name'])
+    server_mode = params['server_mode']
+    if server_mode == 'training':
+        results_file = ResultFile(job,
+                                  params['training_final_result_file_name'])
+        model_file = ResultFile(job, params['user_model_package_name'])
+        return saliweb.frontend.render_results_template(
+                    "results_training.html", job=job,
+                    results_file=results_file, model_file=model_file,
+                    log_file=log_file, mismatch_file=mismatch_file)
+    elif server_mode == 'application':
+        results_file = ResultFile(job,
+                                  params['application_final_result_file_name'])
+        return saliweb.frontend.render_results_template(
+                    "results_application.html", job=job,
+                    results_file=results_file,
+                    log_file=log_file, mismatch_file=mismatch_file)
 
 
 @app.route('/job/<name>/<path:fp>')

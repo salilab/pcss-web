@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}PCSS Server Results{% endblock %}
+
+{% block body %}
+
+<p>Job '<b>{{ job.name }}</b>' has completed.</p>
+
+{% block results %}{% endblock %}
+
+{%- if log_file.exists() %}
+<p><a href="{{ log_file.url }}">Download log file</a>.</p>
+{%- endif %}
+
+{%- if not mismatch_file.empty() %}
+<p><a href="{{ mismatch_file.url }}">Download protein sequences where no
+user-supplied peptide matched the protein residue sequence in Modbase</a>.</p>
+{%- endif %}
+
+{{ job.get_results_available_time() }}
+{% endblock %}
