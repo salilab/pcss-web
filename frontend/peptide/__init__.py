@@ -3,6 +3,7 @@ import saliweb.frontend
 from saliweb.frontend import get_completed_job, Parameter, FileParameter
 from .param import ParameterFile
 from .results import ResultFile
+from . import submit
 import os
 
 parameters = []
@@ -29,7 +30,7 @@ def job():
     if request.method == 'GET':
         return saliweb.frontend.render_queue_page()
     else:
-        pass
+        return submit.handle_new_job()
 
 
 @app.route('/results.cgi/<name>')  # compatibility with old perl-CGI scripts

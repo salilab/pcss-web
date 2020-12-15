@@ -28,3 +28,21 @@ class ParameterFile(dict):
         with open(fname, 'w') as fh:
             for name, value in self.items():
                 fh.write('%s\t%s\n' % (name, value))
+
+    def set_unique(self, name, value, log=None):
+        """Set parameter value (for example, after reading user input.)
+
+           :param str name: name of parameter whose value is to be set.
+           :param value: value to set.
+           :param log: If set, write name and value to the log (useful for
+                  logging values set by user at web site).
+           :raises: KeyError if there is already a parameter set with this name
+        """
+        if name in self:
+            raise KeyError("Tried to set parameter %s to %s but found "
+                    "existing value '%s' for this parameter"
+                    % (name, value, self[name]))
+        else:
+            self[name] = value
+            if log:
+                log.write("%s:\t%s" % (name, value))
