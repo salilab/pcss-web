@@ -28,7 +28,7 @@ jobs:
         mkdir -p ~/perl5 ~/python ~/usr
         export PERL5LIB=~/perl5
         export PYTHONPATH=~/python
-        sudo apt update && sudo apt install scons libdbi-perl
+        sudo apt-get update && sudo apt-get install scons libdbi-perl
         pip install coverage
         cpanm --quiet --notest --skip-satisfied Devel::Cover::Report::Codecov Test::Exception Test::Output Test::MockModule Devel::Cover MIME::Lite
         git clone --depth=5 https://github.com/salilab/saliweb
