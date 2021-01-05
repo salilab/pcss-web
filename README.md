@@ -1,5 +1,5 @@
-[![Build Status](https://github.com/salilab/pcss-web/workflows/build/badge.svg?branch=master)](https://github.com/salilab/pcss-web/actions?query=workflow%3Abuild)
-[![codecov](https://codecov.io/gh/salilab/pcss-web/branch/master/graph/badge.svg)](https://codecov.io/gh/salilab/pcss-web)
+[![Build Status](https://github.com/salilab/pcss-web/workflows/build/badge.svg?branch=main)](https://github.com/salilab/pcss-web/actions?query=workflow%3Abuild)
+[![codecov](https://codecov.io/gh/salilab/pcss-web/branch/main/graph/badge.svg)](https://codecov.io/gh/salilab/pcss-web)
 
 This is the source code for [PCSS](https://salilab.org/pcss/), a web
 service for peptide classification using sequence and structure.
