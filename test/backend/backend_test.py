@@ -751,7 +751,6 @@ class JobTests(saliweb.test.TestCase):
 
         #create job
         j = self.make_test_job(peptide.Job, 'RUNNING')
-        d = saliweb.test.RunInDir(j.directory)
 
         #make log
         hdlr = j.get_log_handler()
@@ -763,7 +762,6 @@ class JobTests(saliweb.test.TestCase):
     def createPreprocessingJobDirectory(self):
         #create job
         j = self.make_test_job(peptide.Job, 'PREPROCESSING')
-        d = saliweb.test.RunInDir(j.directory)
 
         #make log
         hdlr = j.get_log_handler()
