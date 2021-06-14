@@ -159,7 +159,7 @@ class JobTests(saliweb.test.TestCase):
         #write sge script -- this isn't done by run() itself, so do it here
         script = os.path.join(j.directory, 'sge-script.sh')
         fh = open(script, 'w')
-        r._write_sge_script(fh)
+        r._write_script(fh)
         fh.close()
 
         #copy files
@@ -201,7 +201,7 @@ class JobTests(saliweb.test.TestCase):
         #write sge script -- this isn't done by run() itself, so do it here
         script = os.path.join(j.directory, 'sge-script.sh')
         fh = open(script, 'w')
-        r._write_sge_script(fh)
+        r._write_script(fh)
         fh.close()
 
         #copy files
