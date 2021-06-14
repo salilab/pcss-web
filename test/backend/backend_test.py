@@ -69,8 +69,8 @@ class JobTests(saliweb.test.TestCase):
 
         seqBatchExpectedOutputDir = expectedOutputDir + "/sequenceBatches"
 
-        dotRegex = re.compile('^\.')
-        tildaRegex = re.compile('\~')
+        dotRegex = re.compile(r'^\.')
+        tildaRegex = re.compile(r'\~')
 
         allSeqBatchSeqIds = {}
         inputFastaSeqIds = {}
@@ -108,7 +108,7 @@ class JobTests(saliweb.test.TestCase):
         self.compareFiles(expectedClusterStateFile, observedClusterStateFile, 0, otherFileSkip)
 
         #check global parameter file matches
-        parameterSkip = ["head\_node"]
+        parameterSkip = [r"head\_node"]
         expectedParameterFile = expectedOutputDir + "/parameters.txt"
         observedParameterFile = j.directory + "/parameters.txt"
         self.compareFiles(expectedParameterFile, observedParameterFile, 1, parameterSkip)
@@ -166,13 +166,13 @@ class JobTests(saliweb.test.TestCase):
         outputFiles = ["sge-script.sh", "framework.log", "leaveOneOutParams.txt"]
 
         #compare sge script to expected
-        sgeTestSkip = ["set\sHOME\_RUN\_DIR"]
+        sgeTestSkip = [r"set\sHOME\_RUN\_DIR"]
         expectedSgeScriptFile = expectedOutputDir + "/sge-script.sh"
         observedSgeScriptFile = j.directory + "/sge-script.sh"
         self.compareFiles(expectedSgeScriptFile, observedSgeScriptFile, 0, sgeTestSkip)
 
         #Compare dynamically generated parameter file for LeaveOneOutBenchmarker pipeline to expected
-        parameterSkip = ["head\_node"]
+        parameterSkip = [r"head\_node"]
         expectedLooParamsFile = expectedOutputDir + "/leaveOneOutParams.txt"
         observedLooParamsFile = j.directory + "/leaveOneOutParams.txt"
         self.compareFiles(expectedLooParamsFile, observedLooParamsFile, 1, parameterSkip)
@@ -207,7 +207,7 @@ class JobTests(saliweb.test.TestCase):
         outputFiles = ["sge-script.sh", "framework.log"]
 
         #compare sge script to expected
-        sgeTestSkip = ["set\sHOME\_RUN\_DIR"]
+        sgeTestSkip = [r"set\sHOME\_RUN\_DIR"]
 
         expectedSgeScriptFile = expectedOutputDir + "/sge-script.sh"
         observedSgeScriptFile = j.directory + "/sge-script.sh"
@@ -595,17 +595,18 @@ class JobTests(saliweb.test.TestCase):
         self.checkLogMessageWritten(j, "Writing error output file")
 
     def checkLogMessageWritten(self, j, msg):
-
         msgRegex = re.compile(msg)
         foundLogMessage = 0
 
         logFileName = j.directory + "/framework.log"
-        logFh = open(logFileName, "r")
-        fileLines = logFh.readlines()
+        with open(logFileName, "r") as logFh:
+            fileLines = logFh.readlines()
         for line in fileLines:
             if (msgRegex.search(line)):
                 foundLogMessage = 1
-        self.assertTrue(foundLogMessage == 1, " Log message " + msg + " not written to framework log")
+        self.assertTrue(
+            foundLogMessage == 1,
+            " Log message " + msg + " not written to framework log")
 
 
     def checkErrorFileWritten(self, j, errorKeyword):
@@ -681,7 +682,7 @@ class JobTests(saliweb.test.TestCase):
                 secondCol = observedCols[1]
                 if (secondCol == "TPR"):
                     continue
-                secondCol.rstrip("\n\r\s")
+                secondCol.rstrip("\n\r\t")
                 self.assertTrue(len(observedCols) == 4)
                 self.assertTrue(expectedCols[1] == observedCols[1])
                 fpr = float(observedCols[0])
@@ -775,7 +776,7 @@ class JobTests(saliweb.test.TestCase):
         foundParamName = 0
 
         parameterFh = open(parameterFile, "w")
-        blankRe = re.compile('^\s*$')
+        blankRe = re.compile(r'^\s*$')
         for line in paramLines:
             blankLine = blankRe.search(line)
             if blankLine:
@@ -796,27 +797,27 @@ class JobTests(saliweb.test.TestCase):
         parameterFh.close()
 
     def getSequenceIdsFromFasta(self, fastaFile, seqDict):
-        fastaFh = open(fastaFile)
-        headerRe = re.compile('\>(\w+)\|(\w+)')
-        blankRe = re.compile('^\s*$')
+        headerRe = re.compile(r'\>(\w+)\|(\w+)')
+        blankRe = re.compile(r'^\s*$')
+        with open(fastaFile) as fastaFh:
 
-        for line in fastaFh:
+            for line in fastaFh:
 
-            #next if blank line
-            blankLine = blankRe.search(line)
-            if blankLine:
-                continue
-            line.rstrip("\n\r\s")
-            header = headerRe.search(line)
-            if header:
-                #add to dictionary
-                modbaseSeqId = str(header.group(1))
-                seqDict[modbaseSeqId] = 1
+                #next if blank line
+                blankLine = blankRe.search(line)
+                if blankLine:
+                    continue
+                line.rstrip("\n\r\t")
+                header = headerRe.search(line)
+                if header:
+                    #add to dictionary
+                    modbaseSeqId = str(header.group(1))
+                    seqDict[modbaseSeqId] = 1
 
 
     def loadFile(self, fileLines, skipReList):
 
-        blankRe = re.compile("^\s*$")
+        blankRe = re.compile(r"^\s*$")
         allLines = []
         for line in fileLines:
 

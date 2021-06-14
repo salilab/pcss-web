@@ -247,9 +247,9 @@ class Job(saliweb.backend.Job):
         #write leave-one-out benchmark results file
         looBenchmarkResults = self.getParam("loo_model_pipeline_result_file_name")
         fullLooResultsFile = os.path.join(self.directory, looBenchmarkResults)
-        looResultFh = open(fullLooResultsFile, 'r')
-        for line in looResultFh:
-            packageFh.write(line)
+        with open(fullLooResultsFile, 'r') as looResultFh:
+            for line in looResultFh:
+                packageFh.write(line)
 
     def processPeptideJob(self, seqBatchList):
         """
@@ -715,18 +715,15 @@ class Job(saliweb.backend.Job):
 
     def getParamState(self, directory, param):
         fileName = os.path.join(directory, param)
-        parameterFh = open(fileName, "r")
-        line = parameterFh.readline()
+        with open(fileName, "r") as parameterFh:
+            line = parameterFh.readline()
         line = line.rstrip("\n\r")
-        parameterFh.close()
         return line
 
     def setParamState(self, directory, param, state):
         fileName = os.path.join(directory, param)
-        parameterFh = open(fileName, "w")
-        parameterFh.write(state)
-        parameterFh.close()
-        
+        with open(fileName, "w") as parameterFh:
+            parameterFh.write(state)
 
     def setServerMode(self):
         mode = self.getParam("server_mode")
@@ -749,10 +746,10 @@ class Job(saliweb.backend.Job):
         PARAM  parameterFileName: full name of the parameter file to write to (format paramName\tparamValue)
         PARAM  parameters: dictionary where keys are the parameter names and the values are the corresponding parameter values
         """
-        parameterFh = open(parameterFileName, 'w')
-        for paramName in parameters.keys():
-            paramValue = parameters[paramName]
-            parameterFh.write("%s\t%s\n" % (paramName, paramValue))
+        with open(parameterFileName, 'w') as parameterFh:
+            for paramName in parameters.keys():
+                paramValue = parameters[paramName]
+                parameterFh.write("%s\t%s\n" % (paramName, paramValue))
 
     
     def readParameters(self, parameterFileName):                              
@@ -765,19 +762,17 @@ class Job(saliweb.backend.Job):
         """
         #TODO -- see how to handle IOError exceptions for this and all other files
         parameters = {}
-        parameterFh = open(parameterFileName)
-        blankRe = re.compile('^\s*$')
-        for line in parameterFh:
-            
-            blankLine = blankRe.search(line)
-            if blankLine:
-                continue
+        with open(parameterFileName) as parameterFh:
+            blankRe = re.compile(r'^\s*$')
+            for line in parameterFh:
+                blankLine = blankRe.search(line)
+                if blankLine:
+                    continue
 
-            line = line.rstrip("\n\r")
-            [paramName, paramValue] = line.split('\t')
-            parameters[paramName] = paramValue
+                line = line.rstrip("\n\r")
+                [paramName, paramValue] = line.split('\t')
+                parameters[paramName] = paramValue
             
-        parameterFh.close()
         self.parameters = parameters
 
     def getIterationList(self):
@@ -809,10 +804,10 @@ class Job(saliweb.backend.Job):
         fullFastaFileName =  os.path.join(self.directory, fastaFileName)
  
         #header regex
-        headerRe = re.compile('\>(\w+)\|(\w+)')
+        headerRe = re.compile(r'\>(\w+)\|(\w+)')
 
         #blank line regex
-        blankRe = re.compile('^\s*$')
+        blankRe = re.compile(r'^\s*$')
     
         fastaFh = open(fullFastaFileName)
         sequenceDict = {}
@@ -828,7 +823,7 @@ class Job(saliweb.backend.Job):
             blankLine = blankRe.search(line)
             if blankLine:
                 continue
-            line.rstrip("\n\r\s")
+            line.rstrip("\n\r\t")
             header = headerRe.search(line)
             if header:
                 #add to dictionary
@@ -953,7 +948,7 @@ class Job(saliweb.backend.Job):
         #Read results files for errors that may have occurred while running the job
         resultFh = open(fullResultFile, "r")
         lineCount = 0
-        lineContentRe = re.compile('\S')
+        lineContentRe = re.compile(r'\S')
 
         #todo -- parameterize
         lineOutputError = re.compile('output_error')
@@ -962,7 +957,7 @@ class Job(saliweb.backend.Job):
         foundContent = 0
         for line in resultFh:
 
-            line = line.rstrip("\n\r\s")
+            line = line.rstrip("\n\r\t")
 
             #make sure file is non-empty
             lineNonEmpty = lineContentRe.search(line)
@@ -1003,16 +998,16 @@ class Job(saliweb.backend.Job):
             raise ClusterJobEmptyFileError("Did not LeaveOneOutBenchmarker results file finishing cluster job (searched for %s)" % fullLooResultsFile)
 
         #benchmark results file is not empty
-        looResultFh = open(fullLooResultsFile, 'r')
-        totalPeptides = -1
-        foundContent = 0
-        for line in looResultFh:
-
-            resultValues = line.split('\t')
-            resultCount = len(resultValues)
-            if (len(resultValues) == 6):
-                totalPeptides = int(resultValues[4]) + int(resultValues[5])  #get peptide count for validating SVM model below
-                foundContent = 1
+        with open(fullLooResultsFile, 'r') as looResultFh:
+            totalPeptides = -1
+            foundContent = 0
+            for line in looResultFh:
+                resultValues = line.split('\t')
+                resultCount = len(resultValues)
+                if (len(resultValues) == 6):
+                    # get peptide count for validating SVM model below
+                    totalPeptides = int(resultValues[4]) + int(resultValues[5])
+                    foundContent = 1
         if (foundContent == 0):
             raise ClusterJobEmptyFileError("LeaveOneOut benchmark results file %s did not have any content" %fullLooResultsFile)
 
@@ -1025,7 +1020,7 @@ class Job(saliweb.backend.Job):
 
         #make sure number of peptides reported by SVM software is the same number as in our benchmark set
         trainingPeptidesFound = -2
-        trainingRe = re.compile('^(\d+).*number of training documents')
+        trainingRe = re.compile(r'^(\d+).*number of training documents')
         userModelFh = open(fullCreatedModelFile, 'r')
         for line in userModelFh:
             foundTrainingPeptide = trainingRe.search(line)
@@ -1175,17 +1170,18 @@ rm -r $NODE_HOME_DIR/
     def makeLooParameterFile(self):
         
         looParameterFileName = self.getParam("loo_parameter_file_name")
-        looFh = open(os.path.join(self.directory, looParameterFileName), "w")
-        
-        for paramName in self.parameters.keys():
-            paramValue = self.parameters[paramName]
-            if (paramName == "benchmark_class"):
-                paramValue = "LeaveOneOut"
-            if (paramName == "model_pipeline_log_name"): 
-                paramValue = self.getParam("loo_model_pipeline_log_name")
-            if (paramName == "model_pipeline_result_file_name"):
-                paramValue  = self.getParam("loo_model_pipeline_result_file_name")
-            looFh.write("%s\t%s\n" % (paramName, paramValue))
+        with open(os.path.join(self.directory, looParameterFileName),
+                  "w") as looFh:
+            for paramName in self.parameters.keys():
+                paramValue = self.parameters[paramName]
+                if paramName == "benchmark_class":
+                    paramValue = "LeaveOneOut"
+                if paramName == "model_pipeline_log_name":
+                    paramValue = self.getParam("loo_model_pipeline_log_name")
+                if paramName == "model_pipeline_result_file_name":
+                    paramValue = self.getParam(
+                        "loo_model_pipeline_result_file_name")
+                looFh.write("%s\t%s\n" % (paramName, paramValue))
 
 
     def makeModelSgeScript(self, taskList):
