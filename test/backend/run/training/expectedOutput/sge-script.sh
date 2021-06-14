@@ -29,16 +29,18 @@ set PARAMETER_FILE_NAME="parameters.txt"
 cp $HOME_RUN_DIR/$PARAMETER_FILE_NAME $NODE_HOME_DIR
 cp $HOME_RUN_DIR/inputSequences.fasta $NODE_HOME_DIR
 
-echo -e "\nrun_name\t$input" >>  $NODE_HOME_DIR/$PARAMETER_FILE_NAME     
+echo -e "\nrun_name\t$input" >>  $NODE_HOME_DIR/$PARAMETER_FILE_NAME
 
 cd $NODE_HOME_DIR
 date
 hostname
 pwd
 
-runModelPipeline.pl --parameterFileName $PARAMETER_FILE_NAME --pipelineClass BenchmarkerPipeline > & $MODEL_OUTPUT_FILE_NAME
+runModelPipeline.pl --parameterFileName $PARAMETER_FILE_NAME \
+        --pipelineClass BenchmarkerPipeline > & $MODEL_OUTPUT_FILE_NAME
 
-cp  $MODEL_OUTPUT_FILE_NAME  $MODEL_LOG_FILE_NAME $MODEL_RESULTS_FILE_NAME $HOME_RESULTS_DIR
+cp $MODEL_OUTPUT_FILE_NAME  $MODEL_LOG_FILE_NAME $MODEL_RESULTS_FILE_NAME \
+   $HOME_RESULTS_DIR
 
 if ($input == svm_iteration_1) then
 set CREATION_OUTPUT_FILE_NAME="creationPipelineOut"
@@ -46,18 +48,21 @@ set CREATION_OUTPUT_FILE_NAME="creationPipelineOut"
 
 echo "svm iteration 1"
 echo CreationPipeline
-runModelPipeline.pl --parameterFileName $PARAMETER_FILE_NAME --pipelineClass CreationPipeline > & $CREATION_OUTPUT_FILE_NAME  
+runModelPipeline.pl --parameterFileName $PARAMETER_FILE_NAME \
+        --pipelineClass CreationPipeline > & $CREATION_OUTPUT_FILE_NAME
 cp rawUserModelFile $HOME_RUN_DIR
 cp $CREATION_OUTPUT_FILE_NAME $HOME_RUN_DIR
 
 set LOO_PARAMETER_FILE_NAME="leaveOneOutParams.txt"
 cp $HOME_RUN_DIR/$LOO_PARAMETER_FILE_NAME $NODE_HOME_DIR
-echo -e "\nrun_name\t$input" >>  $NODE_HOME_DIR/$LOO_PARAMETER_FILE_NAME     
+echo -e "\nrun_name\t$input" >>  $NODE_HOME_DIR/$LOO_PARAMETER_FILE_NAME
 set LOO_MODEL_LOG_FILE_NAME="looModelPipelineLog"
 set LOO_MODEL_RESULTS_FILE_NAME="looModelPipelineResults.txt"
 set LOO_MODEL_OUTPUT_FILE_NAME="looModelOutputFile.txt"
-runModelPipeline.pl --parameterFileName $LOO_PARAMETER_FILE_NAME --pipelineClass BenchmarkerPipeline > & $LOO_MODEL_OUTPUT_FILE_NAME
-cp $LOO_MODEL_LOG_FILE_NAME $LOO_MODEL_RESULTS_FILE_NAME $LOO_MODEL_OUTPUT_FILE_NAME $HOME_RUN_DIR
+runModelPipeline.pl --parameterFileName $LOO_PARAMETER_FILE_NAME \
+      --pipelineClass BenchmarkerPipeline > & $LOO_MODEL_OUTPUT_FILE_NAME
+cp $LOO_MODEL_LOG_FILE_NAME $LOO_MODEL_RESULTS_FILE_NAME \
+   $LOO_MODEL_OUTPUT_FILE_NAME $HOME_RUN_DIR
 
 endif
 

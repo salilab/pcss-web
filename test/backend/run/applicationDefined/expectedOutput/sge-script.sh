@@ -22,10 +22,10 @@ mkdir -p $NODE_HOME_DIR
 set PEPTIDE_OUTPUT_FILE_NAME="peptidePipelineOut.txt"
 set PARAMETER_FILE_NAME="parameters.txt"
 
-cp $HOME_RUN_DIR/$PARAMETER_FILE_NAME $NODE_HOME_DIR 
+cp $HOME_RUN_DIR/$PARAMETER_FILE_NAME $NODE_HOME_DIR
 cp $HOME_SEQ_BATCH_DIR/inputSequences.fasta $NODE_HOME_DIR
 
-echo -e "\nrun_name\t$input" >>  $NODE_HOME_DIR/$PARAMETER_FILE_NAME     
+echo -e "\nrun_name\t$input" >>  $NODE_HOME_DIR/$PARAMETER_FILE_NAME
 
 cd $NODE_HOME_DIR
 
@@ -36,7 +36,8 @@ pwd
 
 
 cp $HOME_RUN_DIR/peptideRulesFile $NODE_HOME_DIR
-runPeptidePipeline.pl --parameterFileName $PARAMETER_FILE_NAME > & $PEPTIDE_OUTPUT_FILE_NAME
+runPeptidePipeline.pl --parameterFileName $PARAMETER_FILE_NAME \
+        > & $PEPTIDE_OUTPUT_FILE_NAME
 
 set MODEL_OUTPUT_FILE_NAME="modelPipelineOut.txt"
 set MODEL_LOG_FILE_NAME="modelPipelineLog"
@@ -47,9 +48,12 @@ set PEPTIDE_RESULTS_FILE_NAME="peptidePipelineResults.txt"
 
 set SVM_SCORE_FILE_NAME="svmScoreFile"
 
-runModelPipeline.pl --parameterFileName $PARAMETER_FILE_NAME --pipelineClass ApplicationPipeline > & $MODEL_OUTPUT_FILE_NAME
+runModelPipeline.pl --parameterFileName $PARAMETER_FILE_NAME \
+        --pipelineClass ApplicationPipeline > & $MODEL_OUTPUT_FILE_NAME
 
-cp  $PEPTIDE_OUTPUT_FILE_NAME $PEPTIDE_LOG_FILE_NAME $PEPTIDE_RESULTS_FILE_NAME $MODEL_OUTPUT_FILE_NAME $MODEL_LOG_FILE_NAME $MODEL_RESULTS_FILE_NAME $SVM_SCORE_FILE_NAME $HOME_SEQ_BATCH_DIR
+cp $PEPTIDE_OUTPUT_FILE_NAME $PEPTIDE_LOG_FILE_NAME \
+   $PEPTIDE_RESULTS_FILE_NAME $MODEL_OUTPUT_FILE_NAME $MODEL_LOG_FILE_NAME \
+   $MODEL_RESULTS_FILE_NAME $SVM_SCORE_FILE_NAME $HOME_SEQ_BATCH_DIR
 rm -r $NODE_HOME_DIR/
 
 echo "DONE" > ${_SALI_JOB_DIR}/job-state

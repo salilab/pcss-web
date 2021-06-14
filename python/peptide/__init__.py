@@ -740,11 +740,12 @@ class Job(saliweb.backend.Job):
             
     def writeParameterFile(self, parameterFileName, parameters):
         """
-        writeParameterFile
         Writes the given parameter dictionary to disk
     
-        PARAM  parameterFileName: full name of the parameter file to write to (format paramName\tparamValue)
-        PARAM  parameters: dictionary where keys are the parameter names and the values are the corresponding parameter values
+        PARAM  parameterFileName: full name of the parameter file to write to
+               (format paramName\tparamValue)
+        PARAM  parameters: dictionary where keys are the parameter names and
+               the values are the corresponding parameter values
         """
         with open(parameterFileName, 'w') as parameterFh:
             for paramName in parameters.keys():
@@ -754,13 +755,15 @@ class Job(saliweb.backend.Job):
     
     def readParameters(self, parameterFileName):                              
         """
-        readParameters
         Reads the parameter file in peparation for loading self.parameters
-        
-        PARAM  parameterFileName: full name of the parameter file to write to (format paramName\tparamValue)
-        PARAM  parameters: dictionary where keys are the parameter names and the values are the corresponding parameter values
+
+        PARAM  parameterFileName: full name of the parameter file to write to
+               (format paramName\tparamValue)
+        PARAM  parameters: dictionary where keys are the parameter names
+               and the values are the corresponding parameter values
         """
-        #TODO -- see how to handle IOError exceptions for this and all other files
+        # TODO -- see how to handle IOError exceptions for this and all
+        # other files
         parameters = {}
         with open(parameterFileName) as parameterFh:
             blankRe = re.compile(r'^\s*$')
@@ -772,13 +775,13 @@ class Job(saliweb.backend.Job):
                 line = line.rstrip("\n\r")
                 [paramName, paramValue] = line.split('\t')
                 parameters[paramName] = paramValue
-            
+
         self.parameters = parameters
 
     def getIterationList(self):
         """
-        getIterationList
-        Creates an array that will be used in the training cluster script to define the task list.  Each entry is 'svm_iteration_#',
+        Creates an array that will be used in the training cluster script to
+        define the task list.  Each entry is 'svm_iteration_#',
         # from 1 to iteration count defined by user input
         """
 
@@ -788,27 +791,30 @@ class Job(saliweb.backend.Job):
             iterationList.append("svm_iteration_" + str(i))
         return iterationList
 
-
     def getSequenceDict(self):
         """
         getSequenceDict
-        Reads input fasta file and creates dictionary containing header and sequence information
+        Reads input fasta file and creates dictionary containing header and
+        sequence information
 
-        RETURN sequenceDict: Dictionary where keys are the headers in the fasta file (with leading '>' stripped and
-                             the values are strings containing the full residue sequence
-        RETURN sequenceList: List of modbase sequence IDs stripped from the headers
-        RETURN modbaseToAccession: Dictionary where keys are modbase sequence IDs and values are Accessions for the sequence
+        RETURN sequenceDict: Dictionary where keys are the headers in the
+               fasta file (with leading '>' stripped and the values are
+               strings containing the full residue sequence
+        RETURN sequenceList: List of modbase sequence IDs stripped from the
+               headers
+        RETURN modbaseToAccession: Dictionary where keys are modbase sequence
+               IDs and values are Accessions for the sequence
         """
-        
+
         fastaFileName = self.getParam("input_fasta_file_name")
-        fullFastaFileName =  os.path.join(self.directory, fastaFileName)
- 
-        #header regex
+        fullFastaFileName = os.path.join(self.directory, fastaFileName)
+
+        # header regex
         headerRe = re.compile(r'\>(\w+)\|(\w+)')
 
-        #blank line regex
+        # blank line regex
         blankRe = re.compile(r'^\s*$')
-    
+
         fastaFh = open(fullFastaFileName)
         sequenceDict = {}
         modbaseToAccession = {}
@@ -819,27 +825,27 @@ class Job(saliweb.backend.Job):
         currentHeaderLine = ""
         for line in fastaFh:
 
-            #next if blank line
+            # next if blank line
             blankLine = blankRe.search(line)
             if blankLine:
                 continue
             line.rstrip("\n\r\t")
             header = headerRe.search(line)
             if header:
-                #add to dictionary
-                if currentHeaderLine != "":  #we are past the first header
-                    
-                    #add to id list
+                # add to dictionary
+                if currentHeaderLine != "":   # we are past the first header
+
+                    # add to id list
                     modbaseSeqId = str(header.group(1))
                     accession = str(header.group(2))
                     modbaseToAccession[modbaseSeqId] = accession
                     seqIdList.append(modbaseSeqId)
-                    
-                    #add to id dictionary
+
+                    # add to id dictionary
                     finalSequence = "".join(currentSeqLines)
                     sequenceDict[currentHeaderLine] = finalSequence
-                    
-                    #reset variables
+
+                    # reset variables
                     currentHeaderLine = line.lstrip('>')
                     currentSeqLines = []
                 else:
@@ -849,14 +855,13 @@ class Job(saliweb.backend.Job):
                     modbaseToAccession[modbaseSeqId] = accession
                     seqIdList.append(modbaseSeqId)
             else:
-                #continue to build sequence
+                # continue to build sequence
                 currentSeqLines.append(line)
-        #add the final sequence
+        # add the final sequence
         finalSequence = "".join(currentSeqLines)
         sequenceDict[currentHeaderLine] = finalSequence
         fastaFh.close()
         return [sequenceDict, seqIdList, modbaseToAccession]
-
 
     def readColumnInfo(self):
         columnInfoFile = self.getParam("column_info_file")
@@ -864,12 +869,11 @@ class Job(saliweb.backend.Job):
         columnInfo = {}
 
         myMode = ""
-        
-        if (self.serverMode == "training"):
-            myMode = "trainingDisplay"
-        else: #application
-            myMode = "applicationDisplay"
 
+        if self.serverMode == "training":
+            myMode = "trainingDisplay"
+        else:  # application
+            myMode = "applicationDisplay"
 
         modeRe = re.compile(myMode)
 
@@ -877,7 +881,8 @@ class Job(saliweb.backend.Job):
         columnDisplayOrder = {}
         for line in columnInfoFh:
             line = line.rstrip("\n\r")
-            [displayName, shortName, mode, method, description] = line.split('\t')
+            [displayName, shortName, mode, method,
+             description] = line.split('\t')
             if (modeRe.search(mode)):
 
                 singleColumnInfo = {}
@@ -887,157 +892,183 @@ class Job(saliweb.backend.Job):
                 singleColumnInfo["displayOrder"] = counter
                 columnDisplayOrder[counter] = shortName
                 counter = counter + 1
-                
+
                 columnInfo[shortName] = singleColumnInfo
 
         columnInfoFh.close()
         return [columnInfo, columnDisplayOrder]
 
-
     def checkPeptideJobCompleted(self, seqBatchList):
         """
-        checkPeptideJobCompleted
-        Coordinates making sure jobs run on the cluster that assessed peptide features or application-mode svm scores finished correctly
+        Coordinates making sure jobs run on the cluster that assessed peptide
+        features or application-mode svm scores finished correctly
 
-        PARAM  seqBatchList: List of directories containing divided sequence batches
+        PARAM  seqBatchList: List of directories containing divided sequence
+               batches
         RAISE  anything that checkAllClusterFiles finds
         """
 
-        #Determine which result file we are validating
+        # Determine which result file we are validating
         resultFileToCheck = ""
-        if (self.serverMode == "training"):
-            resultFileToCheck = self.getParam("peptide_pipeline_result_file_name")  #check intermediate peptide assessment pipeline worked
-        else: #application
-            resultFileToCheck = self.getParam("model_pipeline_result_file_name")    #assume intermediate assessment worked; just go to model file
+        if self.serverMode == "training":
+            # check intermediate peptide assessment pipeline worked
+            resultFileToCheck = self.getParam(
+                "peptide_pipeline_result_file_name")
+        else:   # application
+            # assume intermediate assessment worked; just go to model file
+            resultFileToCheck = self.getParam(
+                "model_pipeline_result_file_name")
 
-
-        
-        [sequenceDict, sequenceList, modbaseToAccession] = self.getSequenceDict()
+        [sequenceDict, sequenceList,
+         modbaseToAccession] = self.getSequenceDict()
         seqBatchTopDir = self.getParam("seq_batch_top_directory")
 
         for seqBatchName in seqBatchList:
 
-            #check all files are accounted for in directory
-            fullSeqBatchDir = os.path.join(self.directory, seqBatchTopDir, seqBatchName)
+            # check all files are accounted for in directory
+            fullSeqBatchDir = os.path.join(
+                self.directory, seqBatchTopDir, seqBatchName)
             self.checkAllClusterFiles(fullSeqBatchDir, resultFileToCheck)
-
-
-
 
     def checkAllClusterFiles(self, resultDirectory, resultFile):
         """
-        checkAllClusterFiles
-        Checks a result file returned by the cluster to make sure no errors occurred.
+        Checks a result file returned by the cluster to make sure no
+        errors occurred.
 
         PARAM  resultDirectory: Directory containing the result file
         PARAM  resultFile: name of the result file to check
 
-        RAISE  ClusterJobEmptyFileError if the directory or file is missing or empty
-        RAISE  ClusterJobOutputError if the result file indicates the job had trouble writing output
-        RAISE  ClusterJobGlobalError if the result file indicates the job encountered a serious, non-recoverable error
+        RAISE  ClusterJobEmptyFileError if the directory or file is missing
+               or empty
+        RAISE  ClusterJobOutputError if the result file indicates the job had
+               trouble writing output
+        RAISE  ClusterJobGlobalError if the result file indicates the job
+               encountered a serious, non-recoverable error
         """
-        #Check directory exists
-        if (os.path.exists(resultDirectory) == 0):
-            raise ClusterJobEmptyFileError("Did not find expected peptide pipeline results directory after finishing cluster job (searched for %s)" %resultDirectory)
+        # Check directory exists
+        if not os.path.exists(resultDirectory):
+            raise ClusterJobEmptyFileError(
+                "Did not find expected peptide pipeline results directory "
+                "after finishing cluster job (searched for %s)"
+                % resultDirectory)
 
-        #check result file is there
+        # check result file is there
         fullResultFile = os.path.join(resultDirectory, resultFile)
-        if (os.path.exists(fullResultFile) == 0):
-            raise ClusterJobEmptyFileError("Did not find expected peptide pipeline results file after finishing cluster job (searched for %s)" %fullResultFile)
+        if not os.path.exists(fullResultFile):
+            raise ClusterJobEmptyFileError(
+                "Did not find expected peptide pipeline results file after "
+                "finishing cluster job (searched for %s)" % fullResultFile)
 
-        #Read results files for errors that may have occurred while running the job
+        # Read results files for errors that may have occurred while running
+        # the job
         resultFh = open(fullResultFile, "r")
-        lineCount = 0
         lineContentRe = re.compile(r'\S')
 
-        #todo -- parameterize
+        # todo -- parameterize
         lineOutputError = re.compile('output_error')
-        lineGlobalError = re.compile('file_missing|internal_error|invalid_model|invalid_residue|output_error|infinite_sampling_loop|invalid_benchmark_ratio')
-        
+        lineGlobalError = re.compile(
+            'file_missing|internal_error|invalid_model|invalid_residue|'
+            'output_error|infinite_sampling_loop|invalid_benchmark_ratio')
+
         foundContent = 0
         for line in resultFh:
 
             line = line.rstrip("\n\r\t")
 
-            #make sure file is non-empty
+            # make sure file is non-empty
             lineNonEmpty = lineContentRe.search(line)
             if lineNonEmpty:
                 foundContent = 1
 
-            #check for error job may have had in writing output
+            # check for error job may have had in writing output
             outputError = lineOutputError.search(line)
             if outputError:
-                raise ClusterJobOutputError("Cluster output file %s resulted in output error" %fullResultFile)
+                raise ClusterJobOutputError(
+                    "Cluster output file %s resulted in output error"
+                    % fullResultFile)
 
-            #check for error job might have had that required it to bail out (i.e. file missing)
+            # check for error job might have had that required it to bail out
+            # (i.e. file missing)
             globalError = lineGlobalError.search(line)
             if globalError:
-                raise ClusterJobGlobalError(line, "Cluster output file %s resulted in global error" %fullResultFile)
+                raise ClusterJobGlobalError(
+                    line,
+                    "Cluster output file %s resulted in global error"
+                    % fullResultFile)
 
-        if (foundContent == 0):
-            raise ClusterJobEmptyFileError("Cluster output file %s did not have any content" %fullResultFile)
-    
+        if foundContent == 0:
+            raise ClusterJobEmptyFileError(
+                "Cluster output file %s did not have any content"
+                % fullResultFile)
+
         resultFh.close()
-                                    
 
     def checkTrainingJobCompleted(self):
-        #check to make sure all benchmarking jobs completed successfully (produced non-empty output)
+        # check to make sure all benchmarking jobs completed successfully
+        # (produced non-empty output)
         iterationList = self.getIterationList()
         topLevelSvmDir = self.getParam("top_level_svm_directory")
         resultFile = self.getParam("model_pipeline_result_file_name")
         for iteration in iterationList:
-            fullSvmDir = os.path.join(self.directory, topLevelSvmDir, iteration)
-
+            fullSvmDir = os.path.join(
+                self.directory, topLevelSvmDir, iteration)
             self.checkAllClusterFiles(fullSvmDir, resultFile)
 
-        #leave one out benchmarker results file exists
-        looBenchmarkResults = self.getParam("loo_model_pipeline_result_file_name")
+        # leave one out benchmarker results file exists
+        looBenchmarkResults = self.getParam(
+            "loo_model_pipeline_result_file_name")
         fullLooResultsFile = os.path.join(self.directory, looBenchmarkResults)
         if (os.path.exists(fullLooResultsFile) == 0):
 
-            raise ClusterJobEmptyFileError("Did not LeaveOneOutBenchmarker results file finishing cluster job (searched for %s)" % fullLooResultsFile)
+            raise ClusterJobEmptyFileError(
+                "Did not LeaveOneOutBenchmarker results file finishing "
+                "cluster job (searched for %s)" % fullLooResultsFile)
 
-        #benchmark results file is not empty
+        # benchmark results file is not empty
         with open(fullLooResultsFile, 'r') as looResultFh:
             totalPeptides = -1
             foundContent = 0
             for line in looResultFh:
                 resultValues = line.split('\t')
-                resultCount = len(resultValues)
                 if (len(resultValues) == 6):
                     # get peptide count for validating SVM model below
                     totalPeptides = int(resultValues[4]) + int(resultValues[5])
                     foundContent = 1
-        if (foundContent == 0):
-            raise ClusterJobEmptyFileError("LeaveOneOut benchmark results file %s did not have any content" %fullLooResultsFile)
+        if foundContent == 0:
+            raise ClusterJobEmptyFileError(
+                "LeaveOneOut benchmark results file %s did not have "
+                "any content" % fullLooResultsFile)
 
-                
-        #user created svm model
-        userCreatedModelName =  self.getParam("user_created_svm_model_name")
-        fullCreatedModelFile = os.path.join(self.directory, userCreatedModelName)
+        # user created svm model
+        userCreatedModelName = self.getParam("user_created_svm_model_name")
+        fullCreatedModelFile = os.path.join(
+            self.directory, userCreatedModelName)
         if (os.path.exists(fullCreatedModelFile) == 0):
-            raise ClusterJobEmptyFileError("Did not get user created model after finishing cluster job (searched for %s)" %fullCreatedModelFile)
+            raise ClusterJobEmptyFileError(
+                "Did not get user created model after finishing cluster job "
+                "(searched for %s)" % fullCreatedModelFile)
 
-        #make sure number of peptides reported by SVM software is the same number as in our benchmark set
+        # make sure number of peptides reported by SVM software is the same
+        # number as in our benchmark set
         trainingPeptidesFound = -2
         trainingRe = re.compile(r'^(\d+).*number of training documents')
         userModelFh = open(fullCreatedModelFile, 'r')
         for line in userModelFh:
             foundTrainingPeptide = trainingRe.search(line)
-            if (foundTrainingPeptide):
-
+            if foundTrainingPeptide:
                 trainingPeptidesFound = int(foundTrainingPeptide.group(1))
 
-        if (trainingPeptidesFound != totalPeptides):
-            raise TrainingContentError("User created model is trained on %s peptides but LeaveOneOut benchmark results indicate %s peptides were used in the dataset" % (trainingPeptidesFound,
-                                                                                                                                                                         totalPeptides))
-        
-       
+        if trainingPeptidesFound != totalPeptides:
+            raise TrainingContentError(
+                "User created model is trained on %s peptides but "
+                "LeaveOneOut benchmark results indicate %s peptides were "
+                "used in the dataset" % (trainingPeptidesFound, totalPeptides))
+
     def getParam(self, paramName):
         """
         getParam
         Gets the value for the given parameter name
-        
+
         PARAM  paramName: name of the parameter to search for
         RAISE  InvalidParamError if the parameter is not in self.parameters
         RETURN value for paramName
@@ -1046,15 +1077,16 @@ class Job(saliweb.backend.Job):
             paramValue = self.parameters[paramName]
             return paramValue
         except KeyError:
-            errorString = "Backend tried to retrieve value for parameter %s but this is not a valid parameter.  Valid Parameters:\n--" % paramName
-            errorString += "\n--".join(self.parameters.keys())
-            raise InvalidParamError(errorString)
+            raise InvalidParamError(
+                "Backend tried to retrieve value for parameter %s but this "
+                "is not a valid parameter.  Valid Parameters:\n--" % paramName
+                + "\n--".join(self.parameters.keys()))
 
     def setParam(self, paramName, paramValue):
         """
         setParam
         Sets the value in self.parameters for the given param name
-        
+
         PARAM  paramName: name of the parameter to set
         PARAM  paramValue: value to set paramName to in self.parameters
         RAISE  InvalidParamError if this parameter is already set
@@ -1063,8 +1095,10 @@ class Job(saliweb.backend.Job):
             self.parameters[paramName] = paramValue
         except KeyError:
             existingParamValue = self.parameters[paramName]
-            errorString = "Error: tried to set parameter %s but this parameter already had an existing value: %s" % (paramName, existingParamValue)
-            raise InvalidParamError(errorString)
+            raise InvalidParamError(
+                "Error: tried to set parameter %s but this parameter "
+                "already had an existing value: %s"
+                % (paramName, existingParamValue))
 
     def makeBaseSgeScript(self, taskList):
         jobDirectory = self.directory
@@ -1085,7 +1119,7 @@ module load pcss
 set tasks=( %(taskListString)s )
 set input=$tasks[$SGE_TASK_ID]
 
-set HOME_RUN_DIR="%(jobDirectory)s" 
+set HOME_RUN_DIR="%(jobDirectory)s"
 set HOME_SEQ_BATCH_DIR="$HOME_RUN_DIR/%(topLevelSeqBatchDir)s/$input/"
 
 set NODE_HOME_DIR="%(nodeHomeDirectory)s/$input"
@@ -1094,10 +1128,10 @@ mkdir -p $NODE_HOME_DIR
 set PEPTIDE_OUTPUT_FILE_NAME="%(outputFileName)s"
 set PARAMETER_FILE_NAME="%(parameterFileName)s"
 
-cp $HOME_RUN_DIR/$PARAMETER_FILE_NAME $NODE_HOME_DIR 
+cp $HOME_RUN_DIR/$PARAMETER_FILE_NAME $NODE_HOME_DIR
 cp $HOME_SEQ_BATCH_DIR/%(inputFileName)s $NODE_HOME_DIR
 
-echo -e "\\nrun_name\\t$input" >>  $NODE_HOME_DIR/$PARAMETER_FILE_NAME     
+echo -e "\\nrun_name\\t$input" >>  $NODE_HOME_DIR/$PARAMETER_FILE_NAME
 
 cd $NODE_HOME_DIR
 
@@ -1105,51 +1139,57 @@ date
 hostname
 pwd
 
-""" %locals()
+""" % locals()
         return script
-    
+
     def makeTrainingSgeScript(self, taskList):
-        peptidePipelineScriptName = self.getParam("peptide_pipeline_script_name")
+        peptidePipelineScriptName = self.getParam(
+            "peptide_pipeline_script_name")
         baseScript = self.makeBaseSgeScript(taskList)
 
         peptideLogFileName = self.getParam("peptide_pipeline_log_name")
-        peptideResultsFileName = self.getParam("peptide_pipeline_result_file_name")
+        peptideResultsFileName = self.getParam(
+            "peptide_pipeline_result_file_name")
 
- 
         baseScript += """
-%(peptidePipelineScriptName)s --parameterFileName $PARAMETER_FILE_NAME > & $PEPTIDE_OUTPUT_FILE_NAME
+%(peptidePipelineScriptName)s --parameterFileName $PARAMETER_FILE_NAME \\
+        > & $PEPTIDE_OUTPUT_FILE_NAME
 
 set PEPTIDE_LOG_FILE_NAME="%(peptideLogFileName)s"
 set PEPTIDE_RESULTS_FILE_NAME="%(peptideResultsFileName)s"
 
-cp  $PEPTIDE_OUTPUT_FILE_NAME $PEPTIDE_LOG_FILE_NAME $PEPTIDE_RESULTS_FILE_NAME  $HOME_SEQ_BATCH_DIR
+cp $PEPTIDE_OUTPUT_FILE_NAME $PEPTIDE_LOG_FILE_NAME \\
+   $PEPTIDE_RESULTS_FILE_NAME  $HOME_SEQ_BATCH_DIR
 rm -r $NODE_HOME_DIR/
 
-""" %locals()
+""" % locals()
         return baseScript
 
-    def makeApplicationSgeScript(self, taskList):      
-        #script input
-        peptidePipelineScriptName = self.getParam("peptide_pipeline_script_name")
+    def makeApplicationSgeScript(self, taskList):
+        # script input
+        peptidePipelineScriptName = self.getParam(
+            "peptide_pipeline_script_name")
         modelPipelineScriptName = self.getParam("model_pipeline_script_name")
         applicationClassName = self.getParam("application_class_name")
         rulesFileName = self.getParam("rules_file_name")
-        
-        #things to copy back
+
+        # things to copy back
         modelResultsFileName = self.getParam("model_pipeline_result_file_name")
         modelLogFileName = self.getParam("model_pipeline_log_name")
         modelOutputFileName = self.getParam("model_pipeline_output_file")
 
         peptideLogFileName = self.getParam("peptide_pipeline_log_name")
-        peptideResultsFileName = self.getParam("peptide_pipeline_result_file_name")
+        peptideResultsFileName = self.getParam(
+            "peptide_pipeline_result_file_name")
 
         svmScoreFileName = self.getParam("svm_score_file_name")
-        
+
         baseScript = self.makeBaseSgeScript(taskList)
         baseScript += """
 
 cp $HOME_RUN_DIR/%(rulesFileName)s $NODE_HOME_DIR
-%(peptidePipelineScriptName)s --parameterFileName $PARAMETER_FILE_NAME > & $PEPTIDE_OUTPUT_FILE_NAME
+%(peptidePipelineScriptName)s --parameterFileName $PARAMETER_FILE_NAME \\
+        > & $PEPTIDE_OUTPUT_FILE_NAME
 
 set MODEL_OUTPUT_FILE_NAME="%(modelOutputFileName)s"
 set MODEL_LOG_FILE_NAME="%(modelLogFileName)s"
@@ -1160,15 +1200,17 @@ set PEPTIDE_RESULTS_FILE_NAME="%(peptideResultsFileName)s"
 
 set SVM_SCORE_FILE_NAME="%(svmScoreFileName)s"
 
-%(modelPipelineScriptName)s --parameterFileName $PARAMETER_FILE_NAME --pipelineClass %(applicationClassName)s > & $MODEL_OUTPUT_FILE_NAME
+%(modelPipelineScriptName)s --parameterFileName $PARAMETER_FILE_NAME \\
+        --pipelineClass %(applicationClassName)s > & $MODEL_OUTPUT_FILE_NAME
 
-cp  $PEPTIDE_OUTPUT_FILE_NAME $PEPTIDE_LOG_FILE_NAME $PEPTIDE_RESULTS_FILE_NAME $MODEL_OUTPUT_FILE_NAME $MODEL_LOG_FILE_NAME $MODEL_RESULTS_FILE_NAME $SVM_SCORE_FILE_NAME $HOME_SEQ_BATCH_DIR
+cp $PEPTIDE_OUTPUT_FILE_NAME $PEPTIDE_LOG_FILE_NAME \\
+   $PEPTIDE_RESULTS_FILE_NAME $MODEL_OUTPUT_FILE_NAME $MODEL_LOG_FILE_NAME \\
+   $MODEL_RESULTS_FILE_NAME $SVM_SCORE_FILE_NAME $HOME_SEQ_BATCH_DIR
 rm -r $NODE_HOME_DIR/
-""" %locals()
+""" % locals()
         return baseScript
 
     def makeLooParameterFile(self):
-        
         looParameterFileName = self.getParam("loo_parameter_file_name")
         with open(os.path.join(self.directory, looParameterFileName),
                   "w") as looFh:
@@ -1183,7 +1225,6 @@ rm -r $NODE_HOME_DIR/
                         "loo_model_pipeline_result_file_name")
                 looFh.write("%s\t%s\n" % (paramName, paramValue))
 
-
     def makeModelSgeScript(self, taskList):
         jobDirectory = self.directory
         topLevelSvmDir = self.getParam("top_level_svm_directory")
@@ -1195,16 +1236,17 @@ rm -r $NODE_HOME_DIR/
         modelPipelineScriptName = self.getParam("model_pipeline_script_name")
         benchmarkerClassName = self.getParam("benchmarker_class_name")
 
-
-        modelResultsFileName = self.getParam("model_pipeline_result_file_name")
+        modelResultsFileName = self.getParam(
+            "model_pipeline_result_file_name")
         modelLogFileName = self.getParam("model_pipeline_log_name")
 
         creationClassName = self.getParam("creation_class_name")
         creationOutputFileName = self.getParam("creation_pipeline_output_file")
-        creationUserModelName =  self.getParam("user_created_svm_model_name");
+        creationUserModelName = self.getParam("user_created_svm_model_name")
 
         looModelLogFileName = self.getParam("loo_model_pipeline_log_name")
-        looModelResultsFileName = self.getParam("loo_model_pipeline_result_file_name")
+        looModelResultsFileName = self.getParam(
+            "loo_model_pipeline_result_file_name")
         looModelOutputFileName = "looModelOutputFile.txt"
         looParameterFileName = self.getParam("loo_parameter_file_name")
         script = """
@@ -1213,7 +1255,7 @@ rm -r $NODE_HOME_DIR/
 module load Sali
 module load pcss
 
-set HOME_RUN_DIR="%(jobDirectory)s" 
+set HOME_RUN_DIR="%(jobDirectory)s"
 
 set tasks=( %(taskListString)s )
 set input=$tasks[$SGE_TASK_ID]
@@ -1232,16 +1274,18 @@ set PARAMETER_FILE_NAME="%(parameterFileName)s"
 cp $HOME_RUN_DIR/$PARAMETER_FILE_NAME $NODE_HOME_DIR
 cp $HOME_RUN_DIR/%(inputFileName)s $NODE_HOME_DIR
 
-echo -e "\\nrun_name\\t$input" >>  $NODE_HOME_DIR/$PARAMETER_FILE_NAME     
+echo -e "\\nrun_name\\t$input" >>  $NODE_HOME_DIR/$PARAMETER_FILE_NAME
 
 cd $NODE_HOME_DIR
 date
 hostname
 pwd
 
-%(modelPipelineScriptName)s --parameterFileName $PARAMETER_FILE_NAME --pipelineClass %(benchmarkerClassName)s > & $MODEL_OUTPUT_FILE_NAME
+%(modelPipelineScriptName)s --parameterFileName $PARAMETER_FILE_NAME \\
+        --pipelineClass %(benchmarkerClassName)s > & $MODEL_OUTPUT_FILE_NAME
 
-cp  $MODEL_OUTPUT_FILE_NAME  $MODEL_LOG_FILE_NAME $MODEL_RESULTS_FILE_NAME $HOME_RESULTS_DIR
+cp $MODEL_OUTPUT_FILE_NAME  $MODEL_LOG_FILE_NAME $MODEL_RESULTS_FILE_NAME \\
+   $HOME_RESULTS_DIR
 
 if ($input == svm_iteration_1) then
 set CREATION_OUTPUT_FILE_NAME="%(creationOutputFileName)s"
@@ -1249,18 +1293,21 @@ set CREATION_OUTPUT_FILE_NAME="%(creationOutputFileName)s"
 
 echo "svm iteration 1"
 echo %(creationClassName)s
-%(modelPipelineScriptName)s --parameterFileName $PARAMETER_FILE_NAME --pipelineClass %(creationClassName)s > & $CREATION_OUTPUT_FILE_NAME  
+%(modelPipelineScriptName)s --parameterFileName $PARAMETER_FILE_NAME \\
+        --pipelineClass %(creationClassName)s > & $CREATION_OUTPUT_FILE_NAME
 cp %(creationUserModelName)s $HOME_RUN_DIR
 cp $CREATION_OUTPUT_FILE_NAME $HOME_RUN_DIR
 
 set LOO_PARAMETER_FILE_NAME="%(looParameterFileName)s"
 cp $HOME_RUN_DIR/$LOO_PARAMETER_FILE_NAME $NODE_HOME_DIR
-echo -e "\\nrun_name\\t$input" >>  $NODE_HOME_DIR/$LOO_PARAMETER_FILE_NAME     
+echo -e "\\nrun_name\\t$input" >>  $NODE_HOME_DIR/$LOO_PARAMETER_FILE_NAME
 set LOO_MODEL_LOG_FILE_NAME="%(looModelLogFileName)s"
 set LOO_MODEL_RESULTS_FILE_NAME="%(looModelResultsFileName)s"
 set LOO_MODEL_OUTPUT_FILE_NAME="%(looModelOutputFileName)s"
-%(modelPipelineScriptName)s --parameterFileName $LOO_PARAMETER_FILE_NAME --pipelineClass %(benchmarkerClassName)s > & $LOO_MODEL_OUTPUT_FILE_NAME
-cp $LOO_MODEL_LOG_FILE_NAME $LOO_MODEL_RESULTS_FILE_NAME $LOO_MODEL_OUTPUT_FILE_NAME $HOME_RUN_DIR
+%(modelPipelineScriptName)s --parameterFileName $LOO_PARAMETER_FILE_NAME \\
+      --pipelineClass %(benchmarkerClassName)s > & $LOO_MODEL_OUTPUT_FILE_NAME
+cp $LOO_MODEL_LOG_FILE_NAME $LOO_MODEL_RESULTS_FILE_NAME \\
+   $LOO_MODEL_OUTPUT_FILE_NAME $HOME_RUN_DIR
 
 endif
 
@@ -1268,13 +1315,11 @@ endif
 
 rm -r $NODE_HOME_DIR/
 
-""" %locals()
+""" % locals()
         return script
-
 
 
 def get_web_service(config_file):
     db = saliweb.backend.Database(Job)
     config = saliweb.backend.Config(config_file)
     return saliweb.backend.WebService(config, db)
-
