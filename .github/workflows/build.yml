@@ -37,7 +37,8 @@ jobs:
     - name: Test
       run: |
         scons coverage=true python=$(which python) test
-    - name: Upload coverage to codecov
+    - name: Upload Python coverage to codecov
+      uses: codecov/codecov-action@v1
+    - name: Upload Perl coverage to codecov
       run: |
-        bash <(curl -s https://codecov.io/bash)
         cover -report codecov
