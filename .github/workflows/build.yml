@@ -32,8 +32,9 @@ jobs:
         reportdir=$(dirname $(perldoc -l Devel::Cover::Report::Codecov) )
         curl https://github.com/codecov/codecov-perl/commit/75ac8c01b3cccbff0acc879467b3952cd9605210.patch > gha.patch && patch -p5 < gha.patch && cp Codecov/Service/GitHub.pm $reportdir/Codecov/Service/GitHub.pm
         git clone --depth=5 https://github.com/salilab/saliweb
+        export PERL=`echo $PERL5LIB | cut -d: -f1`
         export PYTHON=`pip show coverage |grep Location|cut -b11-`
-        (cd saliweb && scons modeller_key=UNKNOWN pythondir=$PYTHON perldir=$PERL5LIB prefix=~/usr webdir=~/www install && touch $PYTHON/saliweb/frontend/config.py)
+        (cd saliweb && scons modeller_key=UNKNOWN pythondir=$PYTHON perldir=$PERL prefix=~/usr webdir=~/www install && touch $PYTHON/saliweb/frontend/config.py)
     - name: Test
       run: |
         scons coverage=true python=$(which python) test
