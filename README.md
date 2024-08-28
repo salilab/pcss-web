@@ -1,4 +1,4 @@
-[![Build Status](https://github.com/salilab/pcss-web/workflows/build/badge.svg?branch=main)](https://github.com/salilab/pcss-web/actions?query=workflow%3Abuild)
+[![Build Status](https://github.com/salilab/pcss-web/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/salilab/pcss-web/actions/workflows/build.yml)
 [![codecov](https://codecov.io/gh/salilab/pcss-web/branch/main/graph/badge.svg)](https://codecov.io/gh/salilab/pcss-web)
 
 This is the source code for [PCSS](https://salilab.org/pcss/), a web
